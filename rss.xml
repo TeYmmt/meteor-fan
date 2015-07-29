@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    
+    <title><![CDATA[Meteor Fan (日本語情報)]]></title>
+    <link>http://meteor-fan.axlight.com//</link>
+    <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
+    <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
+    <pubDate>Wed, 29 Jul 2015 15:41:29 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[初めてのSpacebarsでテンプレート]]></title>
+      <link>http://meteor-fan.axlight.com/first-spacebars-template/</link>
+      <guid>http://meteor-fan.axlight.com/first-spacebars-template/</guid>
+      <pubDate>Sun, 26 Jul 2015 14:18:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/templates">公式チュートリアル2</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li>初めてのSpacebarsでテンプレート (←今ここ)</li>
+</ol>
+<p>まだ序盤です。</p>
+<h2 id="テンプレート機能">テンプレート機能</h2><p>初めにsample-app.htmlの中身を次のようにしましょう。<br>既に書いてあるHTMLは消して、すべて置き換えて構いません。<br>]]>
+      
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/templates" target="_blank" rel="external">公式チュートリアル2</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li>初めてのSpacebarsでテンプレート (←今ここ)</li>
+</ol>
+<p>まだ序盤です。</p>
+<h2 id="テンプレート機能">テンプレート機能</h2><p>初めにsample-app.htmlの中身を次のようにしましょう。<br>既に書いてあるHTMLは消して、すべて置き換えて構いません。<br><a id="more"></a></p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">title</span>&gt;</span>Todo List<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">header</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Todo List<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">header</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">      </span><span class="expression">&#123;&#123;<span class="begin-block">#<span class="keyword">each</span> tasks</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">        </span><span class="expression">&#123;&#123;&gt; <span class="variable">task</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">      </span><span class="expression">&#123;&#123;<span class="end-block">/<span class="keyword">each</span></span>&#125;&#125;</span><span class="xml"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"task"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">text</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/meteor/simple-todos/blob/be5979a8eae5766f74314e57f41037f4977d1372/simple-todos.html" target="_blank" rel="external">こちら</a>を参照しても同じものが見えます。</p>
+<p>ここでの一つ目のポイントは最後の<code>&lt;template&gt;</code>です。このようにHTMLの一部分をテンプレートとして<code>&lt;body&gt;</code>の外に定義することができます。テンプレートを呼び出す際は、<code>{ {&gt; task}}</code>のようにします。</p>
+<p>次に、<code>&#x7b;{&#x23;each}}</code>です。これは、<code>tasks</code>という配列について繰り返すという処理です。<code>tasks</code>の一つひとつをテンプレート展開することになります。テンプレートには<code>{ {text}}</code>と記述されており、これが <code>tasks</code>の一つに設定されている(はずの)プロパティを表示することになります。</p>
+<h2 id="tasksの定義">tasksの定義</h2><p>今度は、sample-app.jsを次のように置き換えてください。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Meteor.isClient) &#123;</span><br><span class="line">  <span class="comment">// This code only runs on the client</span></span><br><span class="line">  Template.body.helpers(&#123;</span><br><span class="line"><span class="label">    tasks:</span> [</span><br><span class="line">      &#123; <span class="string">text:</span> <span class="string">"This is task 1"</span> &#125;,</span><br><span class="line">      &#123; <span class="string">text:</span> <span class="string">"This is task 2"</span> &#125;,</span><br><span class="line">      &#123; <span class="string">text:</span> <span class="string">"This is task 3"</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/meteor/simple-todos/blob/eda253878e20ba2577f28fe6fd7c3ce5090aec18/simple-todos.js" target="_blank" rel="external">こちら</a>に同じものがあります。</p>
+<p>これにより<code>&lt;body&gt;</code>で<code>tasks</code>が定義されます。<code>tasks</code>は3つのオブジェクトを含む配列で、それぞれのオブジェクトには<code>text</code>プロパティが設定されています。</p>
+<p>さて、これまでに編集した2つのファイルを保存して、ブラウザを見ると、ホットコードプッシュが効いて画面が更新されているはずです。3つのタスクが表示されていれば成功です。</p>
+<p>細かい定義は今後学んでいくとしても、とりあえずは全体像を把握して、なぜこのような結果になるのか分かるようにしておきましょう。</p>
+<h2 id="Spacebarsの概略">Spacebarsの概略</h2><p>今回、<code>&lt;template&gt;</code>や<code>&#x7b;{&#x23;each}}</code>などの機能を実現しているのがSpacebarsです。これは<a href="http://handlebarsjs.com/" target="_blank" rel="external">Handlebars</a>をもとにしています。</p>
+<p><code>&#x7b;{&#x23;each}}</code>の他にも<code>&#x7b;{&#x23;if}}</code>などが使えます。詳しくは、<a href="https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md" target="_blank" rel="external">こちら</a>のドキュメント(英語)を参照するとよいでしょう。</p>
+<h2 id="cssの準備">cssの準備</h2><p>現状でも機能は問題なく動きますが、より見栄えをよくしてチュートリアルを楽しむために、cssファイルを設置しておきましょう。下記の内容でsample-app.cssの内容を置き換えてください。</p>
+<p>長いので直接<a href="https://github.com/meteor/simple-todos/blob/e15faa0c628c7756e51d2470432f9aa548729739/simple-todos.css" target="_blank" rel="external">こちら</a>を参照するか、<a href="https://github.com/meteor/simple-todos/raw/e15faa0c628c7756e51d2470432f9aa548729739/simple-todos.css" target="_blank" rel="external">ダウンロード</a>しましょう。</p>
+<p>cssに慣れていない人は現時点では詳しく読む必要はありません。</p>
+<p>修正が終わってファイルを保存したら、ブラウザを見てみましょう。ホットコードプッシュされていれば、なにもしなくてもcssが適用されて、画面がきれいになっていると思います。</p>
+<h2 id="次のステップ">次のステップ</h2><p>今回は<code>tasks</code>の中身はダミーデータでしたが、これをちゃんとデータベースと連携するようにすることが次のステップです。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-spacebars-template/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[Meteorを3分以内で紹介するビデオ]]></title>
+      <link>http://meteor-fan.axlight.com/3min-meteor-intro-video/</link>
+      <guid>http://meteor-fan.axlight.com/3min-meteor-intro-video/</guid>
+      <pubDate>Sat, 25 Jul 2015 14:31:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorを手短に紹介するビデオを紹介します。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b4U2MaZSuXg" frameborder="0" allowfullsc]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorを手短に紹介するビデオを紹介します。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b4U2MaZSuXg" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="内容紹介">内容紹介</h2><p><img src="https://farm1.staticflickr.com/440/20002089191_794361c54c_z.jpg" alt="タイトル"><br>「ミーティアとは何か」</p>
+<p><img src="https://farm4.staticflickr.com/3767/19808801328_58464f4d0e_z.jpg" alt="タイトル"><br>「言語はJavaScript一つだけ」</p>
+<p><img src="https://farm1.staticflickr.com/303/19970619786_584f2c592b_z.jpg" alt="タイトル"><br>「変更があるデータだけを通信」</p>
+<p><img src="https://farm1.staticflickr.com/415/19810183949_9e9803e5c2_z.jpg" alt="タイトル"><br>「サーバとクライアントでデータベースの同期」</p>
+<p><img src="https://farm4.staticflickr.com/3725/19374245224_bc3e34838c_z.jpg" alt="タイトル"><br>色々よく出来たシステムです</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/3min-meteor-intro-video/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[初めてのMeteorアプリ作成]]></title>
+      <link>http://meteor-fan.axlight.com/creating-first-meteor-app/</link>
+      <guid>http://meteor-fan.axlight.com/creating-first-meteor-app/</guid>
+      <pubDate>Sat, 25 Jul 2015 12:30:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorの公式サイトのチュートリアルはとても良くできています。<br>今回は第一歩として、アプリの作成について説明します。<br><a href="https://www.meteor.com/tutorials/blaze/creating-an-app" targe]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorの公式サイトのチュートリアルはとても良くできています。<br>今回は第一歩として、アプリの作成について説明します。<br><a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">公式チュートリアル1</a>の内容に沿った説明と多少の補足をします。</p>
+<h2 id="事前準備">事前準備</h2><p>まず、Meteorのインストールが完了している必要があります。<br>まだの方は、<a href="http://meteor-fan.axlight.com/install-meteor/">Meteorをインストールしよう</a>を参照してインストールしてください。</p>
+<p>既にインストールされているかは下記のコマンドで確認できます。</p>
+<pre><code>meteor <span class="comment">--version</span>
+</code></pre><p>これでインストールされているバージョンが表示されます。</p>
+<h2 id="アプリ名の決定">アプリ名の決定</h2><p>まず、アプリ名を決めましょう。ここで言うアプリ名はアプリのフォルダ名になります。<br>フォルダ名は一般的には半角文字のみの方が便利なので、日本語ではなく、英語かローマ字表記にしましょう。<br>ここでは、<code>sample-app</code>として説明します。</p>
+<h2 id="アプリの作成">アプリの作成</h2><p>Meteorのコマンドはターミナルで実行します。Windowsの場合はコマンドプロンプトです。ターミナルやコマンドプロンプトに慣れていないと戸惑うかもしれませんが、次第に慣れてくるかと思います。</p>
+<p>ターミナルを開いたら、まずアプリのフォルダを作成したい場所に移動します。よく分からない方は、初期状態のホームディレクトリでよいかと思います。<br>その後、ターミナルに次のように打ち込みます。</p>
+<pre><code>meteor create <span class="keyword">sample</span>-<span class="keyword">app</span>
+</code></pre><p>これでアプリのフォルダが作成されました。</p>
+<pre><code><span class="keyword">cd</span> <span class="keyword">sample</span>-<span class="keyword">app</span>
+<span class="keyword">ls</span> -<span class="keyword">l</span>
+</code></pre><p>と打ち込むと、アプリフォルダの中のファイルが表示されます。cdはディレクトリの移動コマンドです。lsはファイルを表示するコマンドです。<br>3つのファイルが表示されているはずです。チュートリアルでは、この3つのファイルを編集してアプリを開発します。大きめのプロジェクトの場合などのために、ファイルを分割する方法もあります。</p>
+<h2 id="アプリの実行">アプリの実行</h2><p>sample-appのディレクトリ(フォルダと同じ意味)にいる状態で次のコマンドを実行します。</p>
+<pre><code>meteor
+</code></pre><p>これによりサーバが起動しますので、 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a> をブラウザで開きましょう。<br>ページが表示されれば成功です。</p>
+<h2 id="ホットコードプッシュ">ホットコードプッシュ</h2><p>アプリを実行したままファイルを編集してみましょう。<br>エディタでsample-appの中にあるsample-app.htmlを開きます。</p>
+<p>普段からコーディングしている人は困ることはないと思いますが、初めての人はsample-appフォルダがどこにあるか分からず苦労するかもしれません。一度覚えてしまえば、慣れるかと思います。どうしてもファイルの場所が分からなければ、OSの検索機能で探してしまいましょう。</p>
+<p>エディタでファイルを開いたら例えば<code>&lt;h1&gt;</code>の中を変更してみましょう。ファイルを保存すると、ブラウザが自動でリロードします。変更が反映されたことを確認しましょう。この機能を「ホットコードプッシュ」と呼びます。試しに、sample-app.cssも編集してみてください。cssのホットコードプッシュはhtmlよりも速いことに気づくかもしれません。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/creating-first-meteor-app/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[accounts-ui-bootstrapパッケージを使ってみよう]]></title>
+      <link>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</link>
+      <guid>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</guid>
+      <pubDate>Mon, 20 Jul 2015 10:25:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>今回はパッケージの紹介をします。Meteorのパッケージは、<a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a>で管理されています。</p>
+<h3 id="acc]]>
+      </description>
+      <content:encoded><![CDATA[<p>今回はパッケージの紹介をします。Meteorのパッケージは、<a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a>で管理されています。</p>
+<h3 id="accounts-uiパッケージ">accounts-uiパッケージ</h3><p><a href="https://www.meteor.com/tutorials/blaze" target="_blank" rel="external">Meteorの公式チュートリアル</a>の中に、<a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts" target="_blank" rel="external">ユーザアカウントを追加する</a>というステップがあります。<br>このステップで、accounts-uiとaccounts-passwordというパッケージを追加して、ログインフォームを表示するという手順を学びます。</p>
+<p>ところで、このログインフォームのUIが少しだけ時代遅れのLook&amp;Feelになっています。</p>
+<p><img src="https://farm1.staticflickr.com/271/19667540959_41e347d58d.jpg" alt="acccounts-uiのlook&amp;feel"></p>
+<h3 id="accounts-ui-bootstrapパッケージ">accounts-ui-bootstrapパッケージ</h3><p>公式のaccount-uiパッケージの代替として、<a href="http://getbootstrap.com/" target="_blank" rel="external">Bootstrap</a>を用いたものがあります。<br>Meteorのパッケージは<a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a>で、検索できます。困ったことに、<a href="https://atmospherejs.com/?q=accounts-ui-bootstrap" target="_blank" rel="external">複数のパッケージが見つかります</a>。</p>
+<p>Atmosphereには同じ機能を提供する複数のパッケージが存在します。また、フォークして機能追加されたものが次々と公開されます。つまり、現時点で選択したパッケージよりよいものが将来的に登場するかもしれません。現時点でインストール数、スター数、ドキュメントなどからもっともよさそうなパッケージは<a href="https://atmospherejs.com/ian/accounts-ui-bootstrap-3" target="_blank" rel="external">ian:accounts-ui-bootstrap-3</a>です。ちなみにこれは以前(Atmosphereが登場する前)の半公式パッケージとは別物になっています。</p>
+<p>ian:accounts-ui-bootstrap-3をインストールするには、</p>
+<pre><code><span class="label">meteor</span> <span class="keyword">add </span>ian:accounts-ui-<span class="keyword">bootstrap-3</span>
+</code></pre><p>とします。このパッケージは、bootstrapにも依存していますので、</p>
+<pre><code>meteor <span class="built_in">add</span> twb<span class="variable">s:bootstrap</span>
+</code></pre><p>も必要です。他のbootstrapパッケージでもよいので、weak dependencyとなっているそうです。チュートリアルでインストールした、accounts-uiパッケージは不要ですので、</p>
+<pre><code>meteor <span class="keyword">remove</span> accounts-ui
+</code></pre><p>で削除します。</p>
+<p>これにより、ログインフォームのLook&amp;Feelはboostrapのものになりますので、サイト全体でbootstrapを使っている場合は一貫性が出るでしょう。</p>
+<p><img src="https://farm4.staticflickr.com/3782/19827931216_df45c42229_m.jpg" alt="account-ui-boosrapのlook&amp;feel"></p>
+<h3 id="まとめ">まとめ</h3><p>今回はMeteorのパッケージの一つを紹介しました。今後も他のパッケージやAtmosphereの使い方を紹介する予定です。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/accounts-ui-bootstrap/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[Meteorをインストールしよう]]></title>
+      <link>http://meteor-fan.axlight.com/install-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/install-meteor/</guid>
+      <pubDate>Mon, 20 Jul 2015 07:35:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>チュートリアルの第一歩としてMeteorのインストール方法を紹介します。<br>と言っても、Meteorのインストールはとても簡単です。<br>基本的には、<br><a href="https://www.meteor.com/install" target="_blank]]>
+      </description>
+      <content:encoded><![CDATA[<p>チュートリアルの第一歩としてMeteorのインストール方法を紹介します。<br>と言っても、Meteorのインストールはとても簡単です。<br>基本的には、<br><a href="https://www.meteor.com/install" target="_blank" rel="external">https://www.meteor.com/install</a><br>に書いてある通りに行うだけです。</p>
+<h3 id="Meteorインストール方法">Meteorインストール方法</h3><h5 id="Linuxの場合">Linuxの場合</h5><pre><code>curl http<span class="variable">s:</span>//install.meteor.<span class="keyword">com</span>/ | <span class="keyword">sh</span>
+</code></pre><p>をターミナルで実行するだけです。<br>通信環境にもよりますが、数分くらいで完了します。<br>最後に、パスを通すために/usr/local/binにシンボリックリンクを張るため、sudoのパスワードが聞かれます。ログインユーザのパスワードを入力すればOKです。</p>
+<p>パスワードを入力しなくてもインストールは完了します。<br>その場合、親切にパスの通し方が表示されます。が、英語です。<br>基本的には、~/.meteor/meteorを実行できるようにすればいいだけです。</p>
+<p>一部のディストリビューションでは、curlが入っていないかもしれません。<br>入れるのが手っ取り早いですが、wgetが入っていれば、下記のようにすることで一応インストールできます。</p>
+<pre><code>wget -O- http<span class="variable">s:</span>//install.meteor.<span class="keyword">com</span>/ | sed <span class="string">'s/curl --progress-bar --fail/wget -O-/'</span> | <span class="keyword">sh</span>
+</code></pre><p>将来的にはインストールスクリプトが変わって動かなくなるかもしれませんのであしからず。</p>
+<h5 id="OS_Xの場合">OS Xの場合</h5><p>Mac OS Xの場合もLinuxの場合と同様で、</p>
+<pre><code>curl http<span class="variable">s:</span>//install.meteor.<span class="keyword">com</span>/ | <span class="keyword">sh</span>
+</code></pre><p>をターミナルで実行するだけです。<br>サポートされているのは10.7 (Lion)以上となっています。</p>
+<h5 id="Windowsの場合">Windowsの場合</h5><p><a href="https://install.meteor.com/windows" target="_blank" rel="external">https://install.meteor.com/windows</a><br>からインストーラをダウンロードして実行するだけです。<br>サポートされているのは、Windows 7 / Windows 8.1 / Windows Server 2008 / Windows Server 2012です。</p>
+<h3 id="Meteorアップデート方法">Meteorアップデート方法</h3><p>Meteorをアップデートするには、ターミナル (Windowsの場合はコマンドプロンプト)で、</p>
+<pre><code><span class="title">meteor</span> update
+</code></pre><p>とするだけです。しかし、これは覚えておく必要はありません。なぜなら、meteorをプロジェクトフォルダで実行する度に、アップデートを確認して、アップデート方法を知らせてくれるからです。英語ですが。</p>
+<h3 id="Node-jsやMongoDBについて">Node.jsやMongoDBについて</h3><p>Meteorは内部でNode.jsやMongoDBを利用しています。これらは、上記のインストールスクリプトで同時にMeteorの環境にインストールされます。既にPCにインストールされているNode.jsやMongoDBを使うわけではありません。極端な話、Meteor開発者は内部でNode.jsやMongoDBが使われていることを知らなくてもよいかもしれません。いずれ知ることにはなるでしょうが。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/install-meteor/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[最初のMeteorのスクリーンキャスト]]></title>
+      <link>http://meteor-fan.axlight.com/first-meteor-screencast/</link>
+      <guid>http://meteor-fan.axlight.com/first-meteor-screencast/</guid>
+      <pubDate>Mon, 20 Jul 2015 06:23:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorが最初にオープンソースとしてリリースされたのは、2012年4月のことです。正確には4/20にMIT Licenseでリリースされました(<a href="http://info.meteor.com/blog/mit-license-http-request-p]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorが最初にオープンソースとしてリリースされたのは、2012年4月のことです。正確には4/20にMIT Licenseでリリースされました(<a href="http://info.meteor.com/blog/mit-license-http-request-package-made-with-meteor" target="_blank" rel="external">公式ブログでのアナウンス</a>)。<a href="http://jp.techcrunch.com/2012/04/12/20120411meteor-launch/" target="_blank" rel="external">日本語のニュースサイト</a>でも取り上げられました。</p>
+<p>当時のスクリーンキャストは今でも参考になるので、紹介します。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fsi0aJ9yr2o" frameborder="0" allowfullscreen></iframe>
+
+<p>もちろん細かいところはいっぱい変わっているので注意が必要です。あくまで参考程度にということで。(そういう意味では本記事も現時点での情報であり、今後情報が古くなっていくことは容易に想像できます)</p>
+<p>英語が厳しい方は、<a href="http://www.publickey1.jp/blog/12/meteorjavascripthtmlweb.html" target="_blank" rel="external">こちらの解説記事</a>も合わせて読んでみるとよいでしょう。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-meteor-screencast/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[Meteorの読み方]]></title>
+      <link>http://meteor-fan.axlight.com/how-to-read-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/how-to-read-meteor/</guid>
+      <pubDate>Mon, 20 Jul 2015 02:53:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorを初めて知った時に、その読みに困る人がいるようです。というわけで、今回は読み方について。</p>
+<p>meteorは英語の一般名詞なので辞書に載っています。<br><a href="http://ejje.weblio.jp/content/meteor" t]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorを初めて知った時に、その読みに困る人がいるようです。というわけで、今回は読み方について。</p>
+<p>meteorは英語の一般名詞なので辞書に載っています。<br><a href="http://ejje.weblio.jp/content/meteor" target="_blank" rel="external">http://ejje.weblio.jp/content/meteor</a><br>カタカナ表記するのであれば「ミーティア」でよいでしょう。ちなみに、ストレスは「ミ」にあって、「ミー」と「ティア」の長さは同じくらいです。</p>
+<p>念のため、YoutubeでMeteorの中の人が講演しているものを聞いてみました。</p>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/FsnZB6yRimI" frameborder="0" allowfullscreen></iframe>
+
+<p>よく聞いてみてください。だいぶ発音が短いことに気づくかと思います。</p>
+<p>別にどういう読み方をしてもよいかもしれませんが、人に聞かれたら一番近そうな「ミーティア」と答えればいいかと思います。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/how-to-read-meteor/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[Meteor Fanはじめます]]></title>
+      <link>http://meteor-fan.axlight.com/at-first/</link>
+      <guid>http://meteor-fan.axlight.com/at-first/</guid>
+      <pubDate>Wed, 15 Jul 2015 14:28:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorの日本語情報のサイトが少ないと思って、新しくサイトを始めることにしました。どうぞよろしくお願いします。</p>
+<p>初めは初心者向けのチュートリアルなどをまとめようと思いますが、その後パッケージの紹介や独自パッケージの開発なども進めたいと思います。</p>
+<]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorの日本語情報のサイトが少ないと思って、新しくサイトを始めることにしました。どうぞよろしくお願いします。</p>
+<p>初めは初心者向けのチュートリアルなどをまとめようと思いますが、その後パッケージの紹介や独自パッケージの開発なども進めたいと思います。</p>
+<p>しばらくは手探り状態で内容にまとまりがないかもしれませんが、あとからまとめればよいことにして、雑多な感じでいきます。あまり期待せず、ご期待ください。</p>
+<p><img src="https://www.meteor.com/meteor-logo.png" alt="The Meteor Logo"></p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/at-first/#disqus_comments</comments>
+    </item>
+    
+  </channel>
+</rss>

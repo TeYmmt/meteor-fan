@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>初めてのMeteorアプリ作成</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="http://meteor-fan.axlight.com/" />
+    
+
+    <meta property="og:site_name" content="Meteor Fan (日本語情報)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="初めてのMeteorアプリ作成" />
+    <meta property="og:description" content="Meteorの公式サイトのチュートリアルはとても良くできています。今回は第一歩として、アプリの作成について説明します。公式チュートリアル1の内容に沿った説明と多少の補足をします。事前準備まず、Meteorのインストールが完了している必要があります。まだの方は、Meteorをインストールしようを参照してインストールしてください。既にインストー" />
+    <meta property="og:url" content="http://meteor-fan.axlight.com/creating-first-meteor-app//" />
+    <meta property="article:published_time" content="2015-07-25T12:30:00.000Z" />
+    <meta property="article:modified_time" content="2015-07-28T00:40:06.542Z" />
+    <meta property="article:tag" content="チュートリアル" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="初めてのMeteorアプリ作成" />
+    <meta name="twitter:description" content="Meteorの公式サイトのチュートリアルはとても良くできています。今回は第一歩として、アプリの作成について説明します。公式チュートリアル1の内容に沿った説明と多少の補足をします。事前準備まず、Meteorのインストールが完了している必要があります。まだの方は、Meteorをインストールしようを参照してインストールしてください。既にインストー" />
+    <meta name="twitter:url" content="http://meteor-fan.axlight.com/creating-first-meteor-app//" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Meteor Fan (日本語情報)",
+    "author": {
+        "@type": "Person",
+        "name": "dai-shi",
+        "image": "https://avatars.githubusercontent.com/u/490574?v=3",
+        "url": "https://github.com/dai-shi",
+        "description": ""
+    },
+    "headline": "初めてのMeteorアプリ作成",
+    "url": "http://meteor-fan.axlight.com/creating-first-meteor-app/",
+    "datePublished": "2015-07-25T12:30:00.000Z",
+    "dateModified": "2015-07-28T00:40:06.542Z",
+    "keywords": "チュートリアル",
+    "description": "Meteorの公式サイトのチュートリアルはとても良くできています。今回は第一歩として、アプリの作成について説明します。公式チュートリアル1の内容に沿った説明と多少の補足をします。事前準備まず、Meteorのインストールが完了している必要があります。まだの方は、Meteorをインストールしようを参照してインストールしてください。既にインストー"
+}
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" title="Meteor Fan (日本語情報)" href="http://meteor-fan.axlight.com/rss.xml">
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39025026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/">ホーム</a></li>
+                <li class="nav-" role="presentation"><a href="http://meteor-fan.axlight.com/tag/tutorial">チュートリアル</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="http://meteor-fan.axlight.com/rss.xml">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+
+
+<header class="main-header post-head  blog-cover" style="background-image: url(https://farm1.staticflickr.com/391/19660316200_876376fb9d_o.png)">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="http://meteor-fan.axlight.com"><img src="https://farm1.staticflickr.com/295/19965496572_0b610a9712_m.jpg" alt="Meteor Fan (日本語情報)" /></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Meteor Fan (日本語情報)</h1>
+            <h2 class="page-description">JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト</h2>
+        </div>
+    </div>
+</header>
+
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">初めてのMeteorアプリ作成</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-07-25">25 July 2015</time>  | 
+<a href="http://meteor-fan.axlight.com/tag/tutorial/">チュートリアル</a>
+
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Meteorの公式サイトのチュートリアルはとても良くできています。<br>今回は第一歩として、アプリの作成について説明します。<br><a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">公式チュートリアル1</a>の内容に沿った説明と多少の補足をします。</p>
+<h2 id="事前準備">事前準備</h2><p>まず、Meteorのインストールが完了している必要があります。<br>まだの方は、<a href="http://meteor-fan.axlight.com/install-meteor/">Meteorをインストールしよう</a>を参照してインストールしてください。</p>
+<p>既にインストールされているかは下記のコマンドで確認できます。</p>
+<pre><code>meteor <span class="comment">--version</span>
+</code></pre><p>これでインストールされているバージョンが表示されます。</p>
+<h2 id="アプリ名の決定">アプリ名の決定</h2><p>まず、アプリ名を決めましょう。ここで言うアプリ名はアプリのフォルダ名になります。<br>フォルダ名は一般的には半角文字のみの方が便利なので、日本語ではなく、英語かローマ字表記にしましょう。<br>ここでは、<code>sample-app</code>として説明します。</p>
+<h2 id="アプリの作成">アプリの作成</h2><p>Meteorのコマンドはターミナルで実行します。Windowsの場合はコマンドプロンプトです。ターミナルやコマンドプロンプトに慣れていないと戸惑うかもしれませんが、次第に慣れてくるかと思います。</p>
+<p>ターミナルを開いたら、まずアプリのフォルダを作成したい場所に移動します。よく分からない方は、初期状態のホームディレクトリでよいかと思います。<br>その後、ターミナルに次のように打ち込みます。</p>
+<pre><code>meteor create <span class="keyword">sample</span>-<span class="keyword">app</span>
+</code></pre><p>これでアプリのフォルダが作成されました。</p>
+<pre><code><span class="keyword">cd</span> <span class="keyword">sample</span>-<span class="keyword">app</span>
+<span class="keyword">ls</span> -<span class="keyword">l</span>
+</code></pre><p>と打ち込むと、アプリフォルダの中のファイルが表示されます。cdはディレクトリの移動コマンドです。lsはファイルを表示するコマンドです。<br>3つのファイルが表示されているはずです。チュートリアルでは、この3つのファイルを編集してアプリを開発します。大きめのプロジェクトの場合などのために、ファイルを分割する方法もあります。</p>
+<h2 id="アプリの実行">アプリの実行</h2><p>sample-appのディレクトリ(フォルダと同じ意味)にいる状態で次のコマンドを実行します。</p>
+<pre><code>meteor
+</code></pre><p>これによりサーバが起動しますので、 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a> をブラウザで開きましょう。<br>ページが表示されれば成功です。</p>
+<h2 id="ホットコードプッシュ">ホットコードプッシュ</h2><p>アプリを実行したままファイルを編集してみましょう。<br>エディタでsample-appの中にあるsample-app.htmlを開きます。</p>
+<p>普段からコーディングしている人は困ることはないと思いますが、初めての人はsample-appフォルダがどこにあるか分からず苦労するかもしれません。一度覚えてしまえば、慣れるかと思います。どうしてもファイルの場所が分からなければ、OSの検索機能で探してしまいましょう。</p>
+<p>エディタでファイルを開いたら例えば<code>&lt;h1&gt;</code>の中を変更してみましょう。ファイルを保存すると、ブラウザが自動でリロードします。変更が反映されたことを確認しましょう。この機能を「ホットコードプッシュ」と呼びます。試しに、sample-app.cssも編集してみてください。cssのホットコードプッシュはhtmlよりも速いことに気づくかもしれません。</p>
+
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <span class="img" style="background-image: url(https://avatars.githubusercontent.com/u/490574?v=3)"><span class="hidden">dai-shi's Picture</span></span>
+            </figure>
+
+            <section class="author">
+                <h4>dai-shi</h4>
+
+                <div class="author-meta">
+                    
+                    <span class="author-link icon-link"><a href="https://github.com/dai-shi" target="_blank">https://github.com/dai-shi</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEMeteor%E3%82%A2%E3%83%97%E3%83%AA%E4%BD%9C%E6%88%90&amp;url=http://meteor-fan.axlight.com/creating-first-meteor-app/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://meteor-fan.axlight.com/creating-first-meteor-app/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://meteor-fan.axlight.com/creating-first-meteor-app/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+
+<aside class="sponsored-links">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- meteor-fan-ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6978230900359998"
+     data-ad-slot="6738887462"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</aside>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="http://meteor-fan.axlight.com/first-spacebars-template/">
+        <section class="post">
+            <h2>初めてのSpacebarsでテンプレート</h2>
+            <p>本記事は公式チュートリアル2の内容に沿って説明するものです。チュートリアルの目次初めてのMeteorアプリ作成初めてのSpacebarsでテンプレート (←今ここ)まだ序盤です。テンプレート機能初めにsample-app.htmlの中身を次のようにしましょう。既に書いてあるHTMLは消して、すべて置き換えて構いません。&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="http://meteor-fan.axlight.com/install-meteor/">
+        <section class="post">
+            <h2>Meteorをインストールしよう</h2>
+            <p>チュートリアルの第一歩としてMeteorのインストール方法を紹介します。と言っても、Meteorのインストールはとても簡単です。基本的には、https://www.meteor.com/installに書いてある通りに行うだけです。Meteorインストール方法Linuxの場合curl https://install.meteor.com/ &hellip;</p>
+        </section>
+    </a>
+</aside>
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://meteor-fan.axlight.com">Meteor Fan (日本語情報)</a> &copy; 2015</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/TryGhost/Casper">Casper</a></section>
+        </footer>
+
+    </div>
+
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>
