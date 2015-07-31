@@ -8,8 +8,51 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 30 Jul 2015 15:28:55 GMT</pubDate>
+    <pubDate>Fri, 31 Jul 2015 14:10:44 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[初めてのMeteor Mongoコレクション]]></title>
+      <link>http://meteor-fan.axlight.com/first-meteor-mongo/</link>
+      <guid>http://meteor-fan.axlight.com/first-meteor-mongo/</guid>
+      <pubDate>Fri, 31 Jul 2015 13:02:05 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/collections" target="_blank" rel="external">公式チュートリアル3</a>の内容に沿って説明するものです。</p>
+<h2 id]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/collections" target="_blank" rel="external">公式チュートリアル3</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのSpacebarsでテンプレート</a></li>
+<li>初めてのMeteor Mongoコレクション (←今ここ)</li>
+</ol>
+<h2 id="コレクションを定義する">コレクションを定義する</h2><p>ここからがMeteorのすごいところです。sample-app.jsの先頭に次のように書きましょう。</p>
+<pre><code>Tasks = <span class="keyword">new</span> Mongo.Collection(<span class="string">"tasks"</span>);
+</code></pre><p>これがコレクションの定義です。コレクションとはデータ(ドキュメント)を入れる「箱」のようなものです。ここに書くとサーバ側でもクライアント側でも使えるようになります。</p>
+<h2 id="mongoシェルからデータを追加する">mongoシェルからデータを追加する</h2><p>mongoのシェルを起動するには、ターミナルから次のようにしてください。Meteorのプロジェクトフォルダで実行する必要があります。</p>
+<pre><code><span class="title">meteor</span> mongo
+</code></pre><p>これで起動します。Meteorではアプリ毎に異なるポート番号でmongodが起動するため、このように起動します。</p>
+<p>さて、mongoシェル内で次のようにデータを追加してみましょう。</p>
+<pre><code><span class="tag">db</span><span class="class">.tasks</span><span class="class">.insert</span>(<span class="rules">{ <span class="rule"><span class="attribute">text</span>:<span class="value"> <span class="string">"Hello world!"</span>, createdAt: new <span class="function">Date</span>() })</span></span>;</span>
+</code></pre><p><code>db</code>のあとに来る<code>tasks</code>がコレクションです。insertの中身はJSONのオブジェクトになります。ここで、下記のようにすると追加したデータを見ることができます。</p>
+<pre><code><span class="tag">db</span><span class="class">.tasks</span><span class="class">.find</span>(<span class="rules">{}</span>);
+</code></pre><p>コレクションの詳しいAPIは、<a href="http://docs.meteor.com/#/basic/collections" target="_blank" rel="external">Meteorのドキュメント</a>にありますので、今後参照にするとよいでしょう。また、基本的には、MongoDBのコレクションと同じですので、MongoDBのドキュメントや解説も参考になります。</p>
+<p>mongoシェルは、</p>
+<pre><code><span class="keyword">exit</span>
+</code></pre><p>と打つと終了することができます。</p>
+<h2 id="コレクションのデータを表示する">コレクションのデータを表示する</h2><p>上記で追加したデータをMeteorのアプリ上で表示させたいと思います。まず、Meteorアプリは立ち上げておきましょう。sample-app.jsのtasksの定義を次のように変更します。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Template</span><span class="class">.body</span><span class="class">.helpers</span>(<span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">tasks</span>:<span class="value"> function () &#123;</span><br><span class="line">    return Tasks.<span class="function">find</span>(&#123;&#125;)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>正確には変更するのは3行のみです。以前あった配列での定義を置き換えています。この修正をしてファイル保存すると、コードホットプッシュにより、アプリ側の表示も更新されているはずです。”Hello World!”の一つになったら成功です。</p>
+<p>変更されたsample-app.jsは、<a href="https://github.com/meteor/simple-todos/blob/f78906af3d2d15fdb1851ff28122f9e08bc4ac9f/simple-todos.js" target="_blank" rel="external">こちら</a>と同じになっているはずなので確認しましょう。</p>
+<h2 id="リアクティビティを体験する">リアクティビティを体験する</h2><p>もう一度mongoシェルを起動しましょう。Meteorアプリは起動したままがよいので、新しいターミナルを立ち上げることになります。</p>
+<pre><code><span class="title">meteor</span> mongo
+</code></pre><p>で起動したら<code>tasks</code>コレクションに新しいデータを追加してみましょう。</p>
+<pre><code><span class="tag">db</span><span class="class">.tasks</span><span class="class">.insert</span>(<span class="rules">{ <span class="rule"><span class="attribute">text</span>:<span class="value"> <span class="string">"task 1 from shell"</span>, createdAt: new <span class="function">Date</span>() })</span></span>;</span>
+</code></pre><p>これの入力が終わると即座にMeteorアプリ側に反映されるはずです。ブラウザ上の表示が変わったことに気づいたでしょうか。<code>&quot;task 1 from shell&quot;</code>の部分を変更してもう何件かデータを追加してみてください。ブラウザに反映されるまでの時間も体験できるかと思います。</p>
+<h2 id="次のステップ">次のステップ</h2><p>今回はmongoシェルでデータを入力しましたが、次のステップではアプリのUIから新しいデータを入力するやり方を見ていきましょう。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-meteor-mongo/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[2015年夏に登場予定のMeteor v1.2]]></title>
@@ -41,7 +84,7 @@
     </item>
     
     <item>
-      <title><![CDATA[初めてのSpacebarsでテンプレート]]></title>
+      <title><![CDATA[初めてのMeteor Spacebarsでテンプレート]]></title>
       <link>http://meteor-fan.axlight.com/first-spacebars-template/</link>
       <guid>http://meteor-fan.axlight.com/first-spacebars-template/</guid>
       <pubDate>Sun, 26 Jul 2015 14:18:00 GMT</pubDate>
@@ -136,7 +179,7 @@
     </item>
     
     <item>
-      <title><![CDATA[accounts-ui-bootstrapパッケージを使ってみよう]]></title>
+      <title><![CDATA[Meteorのaccounts-ui-bootstrapパッケージを使ってみよう]]></title>
       <link>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</link>
       <guid>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</guid>
       <pubDate>Mon, 20 Jul 2015 10:25:00 GMT</pubDate>
