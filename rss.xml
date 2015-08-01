@@ -8,8 +8,112 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Fri, 31 Jul 2015 14:10:44 GMT</pubDate>
+    <pubDate>Sat, 01 Aug 2015 14:48:35 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[30分以内でMeteorを紹介する公式ビデオ]]></title>
+      <link>http://meteor-fan.axlight.com/30min-meteor-intro-video/</link>
+      <guid>http://meteor-fan.axlight.com/30min-meteor-intro-video/</guid>
+      <pubDate>Sat, 01 Aug 2015 13:27:04 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorを紹介するビデオが公開されたのでご紹介します。</p>
+<p>20分以上ある長いビデオですが、最新情報やデモも含まれていて参考になります。Rev-1.0となっているので今後も更新されるかもしれません。</p>
+<iframe width="560" height]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorを紹介するビデオが公開されたのでご紹介します。</p>
+<p>20分以上ある長いビデオですが、最新情報やデモも含まれていて参考になります。Rev-1.0となっているので今後も更新されるかもしれません。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dOCMpoeuwTI" frameborder="0" allowfullscreen></iframe>
+
+<p>導入部だけ翻訳しましたのでご参考にどうぞ。</p>
+<h2 id="Meteor_(タイトル)">Meteor (タイトル)</h2><p>I’m Robert Dickert and I’m here to talk to you about Meteor.</p>
+<p>私はロバート・ディカートです。今日はミーティアについてお話しします。</p>
+<h2 id="What_we’ll_cover_(話す内容)">What we’ll cover (話す内容)</h2><p>Today, we’re going to do a broad overview of Meteor.</p>
+<p>今日は、ミーティアの全体像を概観します。</p>
+<p>We talk about what it is, while you might want to consider it,<br>and we’ll do a code demo.</p>
+<p>ミーティアがどういうものであり、なぜ気にする必要があるのかをお話し、コードデモを行います。</p>
+<p>And talk about who’s using it, who’s behind it, and what’s next. so let’s get started.</p>
+<p>その後、誰がミーティアを使っているか、誰がミーティアを作っているか、これからどうなるのかをお話しします。さあ、始めましょう。</p>
+<h2 id="What_is_Meteor?_(ミーティアとは何か)">What is Meteor? (ミーティアとは何か)</h2><p>So what is Meteor?</p>
+<p>さて、ミーティアとは何でしょうか。</p>
+<p>Meteor is a full stack open source platform for building web and mobile apps in JavaScript.</p>
+<p>ミーティアはフルスタックでオープンソースのプラットフォームであり、JavaScriptでWebアプリやモバイルアプリを作るためのものです。</p>
+<p>With Meteor, you can write your whole code in pure JavaScript, front-end and back-end. </p>
+<p>ミーティアではすべてのコードをJavaScriptのみで書くことができます。フロントエンドもバックエンドもです。</p>
+<p>From the single JavaScript code base you could target iOS, Android and the web.</p>
+<p>一つのJavaScriptコードからiOS向け、アンドロイド向け、Web向けに展開可能です。</p>
+<p>Meteor is made of packages, and it’s MIT licensed, so it’s very open an extensible.</p>
+<p>ミーティアは複数のパッケージで構成され、MITライセンスで公開されています。よって、とてもオープンで拡張性があります。</p>
+<p>And because it was designed to truly, you get started in productive very quickly.</p>
+<p>また、とてもうまく設計されているため、すぐに生産性が上がります。</p>
+<p>For example, the app pictured on the right is a demo that implements a collaborative mobile app in less than a thousand lines of JavaScript.</p>
+<p>例えば、右上の画像(ビデオ中の)アプリは共同作業のモバイルアプリのデモですが、1000行未満のJavaScriptコードで書かれています。</p>
+<p>In short, the goal of Meteor is to allow you to build advanced apps quickly with a small team allowing even individuals to achieve things that used to be possible only a large companies like Google and Facebook.</p>
+<p>一言で言うと、ミーティアのゴールは小さいチームですばやく先進的なアプリを開発できるようにすることです。さらには、これまでGoogleやFacebookなどの大きな会社だけができていたようなことを個人でもできるようにすることです。</p>
+<p>so how does Meteor do this?</p>
+<p>さて、ミーティアはどのようにこれを実現するのでしょうか。</p>
+<p>Let’s step through Meteor’s components.</p>
+<p>ミーティアの要素を見ていきましょう。</p>
+<p>It has a command-line tool which allows you to create, edit and deploy apps.</p>
+<p>アプリを作成、編集、公開することができるコマンドラインツールがあります。</p>
+<p>It has a view layer which by default as Meteor’s Blaze package, but you can use any framework you want such as Angular React, and Famous.</p>
+<p>標準のBlazeというビュー層があります。これは、お好みで、AngularやReactやFamousなどの他のフレームワークを使うこともできます。</p>
+<p>Livequery takes a production database like MongoDB and transforms it into a real time database.</p>
+<p>ライブクエリはMongoDBのような既存のデータベースをリアルタイムデータベースに変換します。</p>
+<p>You can think of it like an open source version firebase.</p>
+<p>Firebaseのオープンソース版と考えてもらえればよいでしょう。</p>
+<p>Meteor has a full stack package system that coordinates server, client and mobile code bases and is hosted on atmospherejs.com.</p>
+<p>ミーティアにはフルスタックのパッケージシステムがあります。サーバコード、クライアントコード、モバイルコードがそろっていて、atmospherejs.comにまとめられています。</p>
+<p>And it has a built system that includes not just client and browser but also mobile.</p>
+<p>最後に、ミーティアにはビルドシステムがあり、クライアントやブラウザだけでなくモバイルも対象にしています。</p>
+<h2 id="“Why_Meteor?”_(なぜミーティアか)">“Why Meteor?” (なぜミーティアか)</h2><p>Everyone here probably has a framework<br>that they’re already comfortable with.</p>
+<p>みなさんは既にご自分が気に入ったフレームワークを使っていることと思います。</p>
+<p>So why would you want to consider trying Meteor.</p>
+<p>そこでなぜ新しいミーティアを検討する必要があるでしょうか。</p>
+<p>To begin with, table stakes for app functionality have changed a lot over the last five to ten years.</p>
+<p>まず、ここ5年から10年でアプリの機能に必要となるコストが大きく変わったことがあげられます。</p>
+<p>We went from a place where all users came to sites on desktop browsers to the majority now arrives on mobile.</p>
+<p>以前は、ユーザがデスクトップのブラウザでサイトにいるだけでしたが、今では大多数はモバイルです。</p>
+<p>We went from where we didn’t mind hitting the refresh button to get updates to where we expect to be notified live.</p>
+<p>また、以前はページを更新するのにリロードボタンを押すことは普通でしたが、今では瞬時に通知されることを期待します。</p>
+<p>We went for being a group individuals consuming content to being a collaborative team that can create and change that content together.</p>
+<p>以前は一人ひとりの個人がコンテンツを消費するだけでしたが、今ではチームが一つのコンテンツを共同で作成し修正します。</p>
+<p>And we went from support web links and forms to where we expect our web app to have a UI that’s as good as native apps.</p>
+<p>以前はリンクとフォームのUIでしたが、今ではネイティブアプリと同じようによいUIを持ったアプリが求められます。</p>
+<p>This started with apps like Twitter which notifies you with the scrolling alert<br>when there are new tweets in the conversation.</p>
+<p>これはツイッターのようなアプリが新しい更新があるときに通知することから始まりました。</p>
+<p>This is pretty easy to do and most frameworks by pulling the server and it’s okay if the notification comes in a few seconds after new tweets come in.</p>
+<p>これ自体はほとんどのフレームワークで簡単に実現でき、サーバから定期的に取得するだけです。これは更新から通知が数秒かかってよい場合は問題ありません。</p>
+<p>But things have become more complicated.</p>
+<p>しかし状況はもう少し複雑になってきました。</p>
+<p>This is Trello.</p>
+<p>これ(ビデオ中の)はTrelloです。</p>
+<p>We have two users one on top and one on bottom.</p>
+<p>2人のユーザが上下に分かれています。</p>
+<p>When the top user adds some text and hits enter the other user immediately<br>sees the text appear as a card.</p>
+<p>上のユーザがテキストを入力してエンターキーを置すと、下のユーザは瞬時にそのテキストをカードとして見ることができます。</p>
+<p>Then, the first user can drag my card and the user at the bottom can see it move.</p>
+<p>そして上のユーザがカードをドラッグすると、下のユーザは動いているのみ見ることができます。</p>
+<p>This is a more sophisticated UI.</p>
+<p>これはだいぶ洗練されたUIです。</p>
+<p>Also those people may be talking live on<br>the phone or maybe on a hangout.</p>
+<p>この2人のユーザは電話はハングアウトで会話中かもしれません。</p>
+<p>So it’s important that the changes be reflected immediately.</p>
+<p>つまり変更が瞬時に反映されることは重要なのです。</p>
+<p>There’s a lot going on here and managing it can get really complex.</p>
+<p>これは内部では複雑なことをしていて管理するのは大変です。</p>
+<p>The Trello’s own words. “We’ve bred all over it”.</p>
+<p>Trelloの言葉としてこれがあります。「私たちはこれを完全に作り上げた」</p>
+<p>The problem is that we started with support frameworks that<br>were designed for the way the web used to be.</p>
+<p>問題は、我々が旧来のwebを想定して設計されたフレームワークにこれらの機能を追加し始めたことです。</p>
+<p>And we’re adding more and more tools to them, spending much more time integrating them.</p>
+<p>そして旧来のフレームワークに次々と機能を追加し、それに多大な時間をかけていることです。</p>
+<p>This is why Meteor was created to bring together collection well integrated tools allowing you to build highly interactive apps with much less code.</p>
+<p>これがミーティアが開発された理由です。インタラクティブなアプリを少ないコードで開発するためのツールを統合したフレームワーク、それがミーティアです。</p>
+<p>(ビデオは、デモ紹介へと続きます)</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/30min-meteor-intro-video/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[初めてのMeteor Mongoコレクション]]></title>
