@@ -8,8 +8,42 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sun, 02 Aug 2015 01:10:29 GMT</pubDate>
+    <pubDate>Sun, 02 Aug 2015 13:33:56 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[meteor debugでnode-inspectorを使ったデバッグ]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-debug/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-debug/</guid>
+      <pubDate>Sun, 02 Aug 2015 13:00:17 GMT</pubDate>
+      <description>
+      <![CDATA[<p>「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的には<a href="https://github.com/node-inspector/n]]>
+      </description>
+      <content:encoded><![CDATA[<p>「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的には<a href="https://github.com/node-inspector/node-inspector" target="_blank" rel="external">node-inspector</a>を使っているようです。</p>
+<h2 id="見つけ方">見つけ方</h2><p>Meteorでは、すべては<code>meteor</code>コマンドから始まります。ヘルプも<code>meteor</code>からというわけで、</p>
+<pre><code>meteor <span class="built_in">help</span>
+</code></pre><p>とします。debugというのがありました。</p>
+<pre><code><span class="title">meteor</span> help <span class="built_in">debug</span>
+</code></pre><p>とすると使い方が表示されます。</p>
+<h2 id="使い方">使い方</h2><p><code>meteor help debug</code>で表示される説明を少し見てみます。</p>
+<p>The server process will be suspended just before the first statement of server code that would normally execute.</p>
+<p>サーバプロセスは通常最初に実行される文の直前で止まります。</p>
+<p>In order to continue execution of server code, use either the web-based Node Inspector or the command-line debugger (further instructions will be printed in the console).</p>
+<p>実行を再開するにはWebベースのNode Inspectorかコマンドラインのデバッガーを使います(詳細説明は、コンソールに表示されます)。</p>
+<p>The easiest way to set breakpoints is to use the <code>debugger</code> keyword: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger</a></p>
+<p>最も簡単な方法は<code>debugger</code>キーワードを使ってブレークポイントを設定することです。</p>
+<h2 id="ドキュメント">ドキュメント</h2><p>以下のMeteorのドキュメントにもmeteor debugの説明があります。</p>
+<p><a href="http://docs.meteor.com/#/full/meteordebug" target="_blank" rel="external">http://docs.meteor.com/#/full/meteordebug</a></p>
+<p>しかし<code>meteor help debug</code>とあまり情報が変わりません。</p>
+<h2 id="使ってみる">使ってみる</h2><pre><code><span class="title">meteor</span> <span class="built_in">debug</span>
+</code></pre><p>で起動すると、Node Inspectorの接続先が表示されます。これにChromeでアクセスすると、コードの初期の部分で止まっています。そこからステップ実行すると、Meteorの内部に入って大変なので、アプリのコードに<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank" rel="external">debuggerキーワード</a>を入力する方がよいです。</p>
+<p>というような説明が、コードが止まったところのコメントに書いてあるので、とても親切です。</p>
+<p>Node InspectorはChromeのDeveloper Toolsを使ったことがあれば、同じような操作なのでそれほど苦労することはなさそうです。</p>
+<h2 id="感想">感想</h2><p>Meteorのプラットフォームのデバッグや勉強のためには使えそうですが、アプリのデバッグには低レベルすぎるかと思いました。そもそもMeteorのコーディングは、手続き的ではなく、宣言的であるため、あまり実行順を意識しないと思います。今後、Meteorならではのデバッグツールが登場するとよいですね。既に出てきているかもしれません。</p>
+<p>node-inspectorは単なるインタフェースなので、内部で使われているのは<a href="https://nodejs.org/api/debugger.html" target="_blank" rel="external">Node.js Debugger</a>と言うのがおそらく正しいですね。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-debug/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorで初めてのフォームとイベント処理]]></title>
