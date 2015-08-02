@@ -8,7 +8,7 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sat, 01 Aug 2015 16:31:27 GMT</pubDate>
+    <pubDate>Sun, 02 Aug 2015 01:10:29 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -28,14 +28,16 @@
 <li>初めてのフォームとイベント処理 (←今ここ)</li>
 </ol>
 <h2 id="フォームを追加する">フォームを追加する</h2><p>sample-app.htmlの中のheaderの中にフォームを追加しましょう。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">form</span> <span class="keyword">class</span>=<span class="string">"new-task"</span>&gt;</span><br><span class="line">  &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"text"</span> placeholder=<span class="string">"Type to add new tasks"</span> /&gt;</span><br><span class="line">&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>HTMLの経験がある方は何の不自由もないと思います。class名が<code>new-task</code>になっていることに注意します。</p>
+<pre><code>&lt;<span class="keyword">form</span> <span class="keyword">class</span>=<span class="string">"new-task"</span>&gt;
+  &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"text"</span> placeholder=<span class="string">"Type to add new tasks"</span> /&gt;
+&lt;/<span class="keyword">form</span>&gt;
+</code></pre><p>HTMLの経験がある方は何の不自由もないと思います。class名が<code>new-task</code>になっていることに注意します。</p>
 <p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/8434ab7042eb750c50ab58efd7231f1c97c630ed/simple-todos.html" target="_blank" rel="external">こちら</a>と同じになっているはずなので確認しましょう。</p>
 <p>画面上にもフォームが追加されていることを確認しましょう。meteorが既に起動されている必要があります。現時点ではフォームに入力しても何も起きません。</p>
 <h2 id="イベントの処理を追加する">イベントの処理を追加する</h2><p>次にフォームに入力した際のイベント処理を追加しましょう。フォームにテキストを入力してエンターキーを押すとsubmitイベントが発生します。下記をsample-app.jsの<code>if (Meteor.isClient) {}</code>ブロック内に追加してください。</p>
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Template.body.events(&#123;</span><br><span class="line">  <span class="string">"submit .new-task"</span>: function (<span class="keyword">event</span>) &#123;</span><br><span class="line">    <span class="keyword">event</span>.preventDefault();</span><br><span class="line">    var <span class="keyword">text</span> = <span class="keyword">event</span>.target.<span class="keyword">text</span>.value;</span><br><span class="line">    Tasks.insert(&#123;</span><br><span class="line">      <span class="keyword">text</span>: <span class="keyword">text</span>,</span><br><span class="line">      createdAt: new Date() <span class="comment">// current time</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">event</span>.target.<span class="keyword">text</span>.value = <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/7a1ace1482bbdd5ce38aa5db28ecb20ce0e12863/simple-todos.js" target="_blank" rel="external">こちら</a>と同じになっているはずです。ただし、コメント行は省略しています。</p>
-<p>bodyテンプレートのイベントリストに”submit .new-task”を定義しました。ここで定ぎした関数がフォームに入力してsubmitされた際に呼ばれます。フォームに入力した値は、<code>event.target.text.value</code>で取得できます。ここで、<code>text</code>はフォームの<code>&lt;input&gt;</code>のname属性です。</p>
+<p>bodyテンプレートのイベントリストに”submit .new-task”を定義しました。ここで定義した関数がフォームに入力してsubmitされた際に呼ばれます。フォームに入力した値は、<code>event.target.text.value</code>で取得できます。ここで、<code>text</code>はフォームの<code>&lt;input&gt;</code>のname属性です。</p>
 <p>mongoコレクションへの登録は、<code>Tasks.insert</code>を使います。今回の例では、textの他にcreatedAtもプロパティとして登録しています。mongoではこのように自由にデータ(ドキュメント)のプロパティを登録できます。</p>
 <h2 id="実際の動作を確認する">実際の動作を確認する</h2><p>上記2つの修正が完了したら動作するはずです。表示部分はすでにこれまでのチュートリアルで作成したものでできています。</p>
 <p>フォームにいろいろテキストを入力して登録してみましょう。すぐに反映されましたか。これもリアクティビティなのですが、難しい言葉を使わなくても直感的に理解できるかと思います。</p>
@@ -59,11 +61,11 @@
       <guid>http://meteor-fan.axlight.com/30min-meteor-intro-video/</guid>
       <pubDate>Sat, 01 Aug 2015 13:27:04 GMT</pubDate>
       <description>
-      <![CDATA[<p>Meteorを紹介するビデオが公開されたのでご紹介します。</p>
+      <![CDATA[<p>Meteorを紹介するビデオが公開されたので紹介します。</p>
 <p>20分以上ある長いビデオですが、最新情報やデモも含まれていて参考になります。Rev-1.0となっているので今後も更新されるかもしれません。</p>
-<iframe width="560" height]]>
+<iframe width="560" height=]]>
       </description>
-      <content:encoded><![CDATA[<p>Meteorを紹介するビデオが公開されたのでご紹介します。</p>
+      <content:encoded><![CDATA[<p>Meteorを紹介するビデオが公開されたので紹介します。</p>
 <p>20分以上ある長いビデオですが、最新情報やデモも含まれていて参考になります。Rev-1.0となっているので今後も更新されるかもしれません。</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dOCMpoeuwTI" frameborder="0" allowfullscreen></iframe>
 
