@@ -8,8 +8,52 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sun, 02 Aug 2015 13:33:56 GMT</pubDate>
+    <pubDate>Mon, 03 Aug 2015 14:29:03 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorで初めてのコレクション更新と削除]]></title>
+      <link>http://meteor-fan.axlight.com/first-collection-update-in-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/first-collection-update-in-meteor/</guid>
+      <pubDate>Mon, 03 Aug 2015 13:30:50 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/update-and-remove" target="_blank" rel="external">公式チュートリアル5</a>の内容に沿って説明するものです。</p>
+]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/update-and-remove" target="_blank" rel="external">公式チュートリアル5</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li>Meteorで初めてのコレクション更新と削除 (←今ここ)</li>
+</ol>
+<h2 id="チェックボックスと削除ボタンを追加する">チェックボックスと削除ボタンを追加する</h2><p>これまではデータ(ドキュメント)を追加するのみでしたが、今回は更新や削除を学びましょう。タスクのチェックボックスはそのタスクが完了したかどうかを意味します。</p>
+<p>sample-app.htmlの中のtaskテンプレートを次のようにしましょう。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">template</span> name=<span class="string">"task"</span>&gt;</span><br><span class="line">  &lt;li class=<span class="string">"&#123;&#123;#if checked&#125;&#125;checked&#123;&#123;/if&#125;&#125;"</span>&gt;</span><br><span class="line">    &lt;button class=<span class="string">"delete"</span>&gt;&amp;times;&lt;/button&gt;</span><br><span class="line">    &lt;input <span class="keyword">type</span>=<span class="string">"checkbox"</span> checked=<span class="string">"&#123;&#123;checked&#125;&#125;"</span> class=<span class="string">"toggle-checked"</span> /&gt;</span><br><span class="line">    &lt;span class=<span class="string">"text"</span>&gt;&#123;&#123;text&#125;&#125;&lt;/span&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/<span class="keyword">template</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/5cdfa73dcd1a1973bf31e76ffb0e6af96d9a2d8a/simple-todos.html" target="_blank" rel="external">こちら</a>と同じになっているはずなので確認しましょう。</p>
+<p>画面上にもチェックボックスとボタンが追加されていることを確認しましょう。meteorが既に起動されている必要があります。現時点ではこれらは機能しません。</p>
+<h2 id="チェックボックスと削除ボタンの処理を追加する">チェックボックスと削除ボタンの処理を追加する</h2><p>次にこれらの機能のイベント処理を追加しましょう。下記をsample-app.jsの<code>if (Meteor.isClient) {}</code>ブロック内に追加してください。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Template.task.events(&#123;</span><br><span class="line">  <span class="string">"click .toggle-checked"</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    Tasks.update(<span class="keyword">this</span>._id, &#123;</span><br><span class="line">      $<span class="keyword">set</span>: &#123;checked: ! <span class="keyword">this</span>.checked&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"click .delete"</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    Tasks.remove(<span class="keyword">this</span>._id);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/383896358ebfb53c237a8611fc11a86aa71fbbf6/simple-todos.js" target="_blank" rel="external">こちら</a>と同じになっているはずです。ただし、コメント行は省略しています。</p>
+<p>今回はtaskテンプレートにイベント処理を追加しました。対象がtaskテンプレートとなっているからです。2つとも<code>click</code>イベントでそれぞれclass名で対象を特定しています。それぞれの関数の中身を見ていきましょう。</p>
+<p>まず、チェックボックス(<code>.toggle-checked</code>)の方は、<code>Tasks.update()</code>によってデータを更新しています。このとき、第一引数にidを渡し、第二引数にupdateオブジェクトを渡します。<code>this</code>が分かりにくいですが、この関数が呼ばれた所でのtaskオブジェクトを指しています。ここでは、<code>checked</code>というプロパティにチェックボックスの値を入れています。とても分かりにくいですが、<code>this.checked</code>がチェックボックスの値で変更前のものを指します。updateに関する詳しいドュメントは<a href="http://docs.meteor.com/#/full/update" target="_blank" rel="external">こちら</a>から。</p>
+<p>次に、削除ボタン(<code>.delete</code>)の方は、<code>Tasks.remove()</code>によってデータを削除しています。引数にはidを渡しています。updateより簡単なので、updateが理解できていれば分かると思います。</p>
+<p>Node.jsやMongoDBに慣れている方はcallbackがないことを不思議に思うかもしれませんが、実はcallbackを書くこともできます。しかし、通常はデータ(やコレクション)自体はリアクティブに更新されますので、callbackを使うのはエラー処理をする場合などに限られます。</p>
+<h2 id="実際の動作を確認する">実際の動作を確認する</h2><p>上記2つの修正が完了したら動作するはずです。チェックボックスをチェックすると表示が変わるのが分かると思います(CSSが正しく設定できていれば)。これが表示上の変更だけでなく、mongoデータベースもちんと更新されていることを確認するため、ブラウザをリロードしてみてください。</p>
+<p>削除ボタンも試してみてください。すぐ消えます。拡張としては確認ダイアログを出すなどが考えられますね。</p>
+<h2 id="checkedのクラス指定について補足">checkedのクラス指定について補足</h2><p>今回追加したHTMLに</p>
+<pre><code>&lt;li class="&#x7b;&#x7b;#if checked}}checked&#x7b;&#x7b;/if}}"&gt;</code></pre>
+
+<p>というものがありますが、これはtaskオブジェクトのcheckedプロパティがtrueのときにcheckedクラスを設定するというものです。すなわち、</p>
+<pre><code>&lt;li <span class="keyword">class</span>=<span class="string">"checked"</span>&gt;
+</code></pre><p>と同じになります。一つcheckedプロパティがfalseであったり、そもそもcheckedプロパティが存在しない場合は、</p>
+<pre><code>&lt;li <span class="keyword">class</span>=<span class="string">""</span>&gt;
+</code></pre><p>と同じになります。</p>
+<h2 id="次のステップ">次のステップ</h2><p>これでアプリの基本機能は完成です。次のステップでは、アプリをクラウドサーバにデプロイする方法を学びましょう。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-collection-update-in-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[meteor debugでnode-inspectorを使ったデバッグ]]></title>
@@ -205,7 +249,7 @@
       <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/collections" target="_blank" rel="external">公式チュートリアル3</a>の内容に沿って説明するものです。</p>
 <h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
 <li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
-<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのSpacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
 <li>初めてのMeteor Mongoコレクション (←今ここ)</li>
 </ol>
 <h2 id="コレクションを定義する">コレクションを定義する</h2><p>ここからがMeteorのすごいところです。sample-app.jsの先頭に次のように書きましょう。</p>
@@ -274,7 +318,7 @@
       <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/templates">公式チュートリアル2</a>の内容に沿って説明するものです。</p>
 <h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
 <li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
-<li>初めてのSpacebarsでテンプレート (←今ここ)</li>
+<li>初めてのMeteor Spacebarsでテンプレート (←今ここ)</li>
 </ol>
 <p>まだ序盤です。</p>
 <h2 id="テンプレート機能">テンプレート機能</h2><p>初めにsample-app.htmlの中身を次のようにしましょう。<br>既に書いてあるHTMLは消して、すべて置き換えて構いません。<br>]]>
@@ -283,7 +327,7 @@
       <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/templates" target="_blank" rel="external">公式チュートリアル2</a>の内容に沿って説明するものです。</p>
 <h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
 <li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
-<li>初めてのSpacebarsでテンプレート (←今ここ)</li>
+<li>初めてのMeteor Spacebarsでテンプレート (←今ここ)</li>
 </ol>
 <p>まだ序盤です。</p>
 <h2 id="テンプレート機能">テンプレート機能</h2><p>初めにsample-app.htmlの中身を次のようにしましょう。<br>既に書いてあるHTMLは消して、すべて置き換えて構いません。<br><a id="more"></a></p>

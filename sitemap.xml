@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/first-collection-update-in-meteor/</loc>
+    <lastmod>2015-08-03T14:29:03.126Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-spacebars-template/</loc>
+    <lastmod>2015-08-03T13:34:11.209Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-meteor-mongo/</loc>
+    <lastmod>2015-08-03T13:33:52.225Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/meteor-debug/</loc>
     <lastmod>2015-08-02T13:33:56.602Z</lastmod>
   </url>
@@ -17,18 +32,8 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/first-meteor-mongo/</loc>
-    <lastmod>2015-07-31T14:10:44.830Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</loc>
     <lastmod>2015-07-31T13:03:57.296Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-spacebars-template/</loc>
-    <lastmod>2015-07-31T13:03:35.725Z</lastmod>
   </url>
   
   <url>
