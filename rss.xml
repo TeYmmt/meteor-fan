@@ -166,7 +166,7 @@
 <p>一つのJavaScriptコードからiOS向け、アンドロイド向け、Web向けに展開可能です。</p>
 <p>Meteor is made of packages, and it’s MIT licensed, so it’s very open an extensible.</p>
 <p>ミーティアは複数のパッケージで構成され、MITライセンスで公開されています。よって、とてもオープンで拡張性があります。</p>
-<p>And because it was designed to truly, you get started in productive very quickly.</p>
+<p>And because it was designed to link, you get started in productive very quickly.</p>
 <p>また、とてもうまく設計されているため、すぐに生産性が上がります。</p>
 <p>For example, the app pictured on the right is a demo that implements a collaborative mobile app in less than a thousand lines of JavaScript.</p>
 <p>例えば、右上の画像(ビデオ中の)アプリは共同作業のモバイルアプリのデモですが、1000行未満のJavaScriptコードで書かれています。</p>
