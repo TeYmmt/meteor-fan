@@ -8,8 +8,28 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Mon, 03 Aug 2015 14:29:03 GMT</pubDate>
+    <pubDate>Tue, 04 Aug 2015 15:58:49 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[MeteorでFamousを使うfamous-viewsの紹介]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-famous-integration-intro/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-famous-integration-intro/</guid>
+      <pubDate>Tue, 04 Aug 2015 14:29:26 GMT</pubDate>
+      <description>
+      <![CDATA[<p><a href="http://info.meteor.com/blog/june-devshop-london-famousviews-and-the-internet-of-things" target="_blank" rel="external">2015/7/24]]>
+      </description>
+      <content:encoded><![CDATA[<p><a href="http://info.meteor.com/blog/june-devshop-london-famousviews-and-the-internet-of-things" target="_blank" rel="external">2015/7/24のMeteorの公式ブログ</a>で、famous-viewsが取り上げられていましたので紹介します。</p>
+<h2 id="Famousとは">Famousとは</h2><p><a href="http://famous.org/" target="_blank" rel="external">Famous</a>は、とてもユニークなJavaScriptのレンダリングエンジンです。機会があればもっと紹介したいところですが、一言で言うとアニメーションをふんだんに使ったユーザインタフェースを作れるライブラリであり、デスクトップでもモバイルでも高速で動くことが強みです。DOMはフラットにしてCSSの3d transformを使って配置することでGPUアクセラレーションが活用できるとのことです。</p>
+<h2 id="famous-viewsとは">famous-viewsとは</h2><p><a href="https://famous-views.meteor.com/" target="_blank" rel="external">famous-views</a>はMeteorのBlazeと連携して簡単にFamousを使えるようにするライブラリです。Meteorの一つのコードでデスクトップでもモバイルでも動くアプリを作れる強みと、Famousの一つの仕組みでデスクトップでもモバイルでも高速に動く描画機能は、ベストマッチと言えるかもしれません。Meteorで素のFamousを使うこともできますが、famous-viewsを使うとBlazeと融合してとてもMeteorらしくコーディングができます。</p>
+<h2 id="開発者のトーク">開発者のトーク</h2><p>ライブデモが見ものです。45分と長いですがぜひご覧ください。</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zR63GD9aeKw" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="今後の展望と感想">今後の展望と感想</h2><p>Famousは開発が進んでいて、v0.5という新しいバージョンが<a href="https://blog.famous.org/getting-started" target="_blank" rel="external">登場しました</a>。加えて、Famous Frameworkというウィジェットのライブラリも開発中のようです。famous-viewsも新バージョンに対応するとのことです。</p>
+<p>Famousは以前から注目していました。当初のふれこみからペースダウンしていたのですが、最近はやる気を出してきたように見えます。famous-viewsを使うと、画面の一部分だけにFamousを使うなど柔軟な使い方が簡単にできるのがよいです。MeteorのViewとしては、最近AngularやReactが注目されていますが、Blazeの付加価値が上がるのではないでしょうか。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-famous-integration-intro/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorで初めてのコレクション更新と削除]]></title>
