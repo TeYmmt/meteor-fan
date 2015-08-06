@@ -8,8 +8,39 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Tue, 04 Aug 2015 15:58:49 GMT</pubDate>
+    <pubDate>Thu, 06 Aug 2015 13:38:33 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[初めてのMeteorアプリのデプロイ]]></title>
+      <link>http://meteor-fan.axlight.com/deploying-first-meteor-app/</link>
+      <guid>http://meteor-fan.axlight.com/deploying-first-meteor-app/</guid>
+      <pubDate>Thu, 06 Aug 2015 12:07:22 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/deploying-your-app" target="_blank" rel="external">公式チュートリアル6</a>の内容に沿って説明するものです。</p>]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/deploying-your-app" target="_blank" rel="external">公式チュートリアル6</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li>初めてのMeteorアプリのデプロイ (←とうとうここまで来た)</li>
+</ol>
+<h2 id="Meteorのクラウドサーバ">Meteorのクラウドサーバ</h2><p>自分が作成したアプリを簡単に公開できるようにMeteorがクラウドサーバを用意してくれています。しかも、無料で使えます。今後のどのようになるかは分かりませんが、テスト用途や永続性がそれほど重要ではないアプリの場合は当面は使えるのではないでしょうか。</p>
+<h2 id="実際にデプロイしてみる">実際にデプロイしてみる</h2><p>アプリのプロジェクトディレクトリで、</p>
+<pre><code>meteor deploy sample-app<span class="class">.meteor</span><span class="class">.com</span>
+</code></pre><p>と入力して実行してください。しばらくすると完了するはずです。<code>sample-app</code>のところは適宜変更してください。</p>
+<p>既にデプロイ先が存在していて、別の開発者に所属している場合は、エラーになると思います。その場合は、デプロイ先の名前(上記の<code>sample-app</code>のところ)を変更してみてください。</p>
+<h2 id="サイトにアクセスする">サイトにアクセスする</h2><p><a href="http://sample-app.meteor.com/" target="_blank" rel="external">http://sample-app.meteor.com/</a></p>
+<p>をブラウザで開きましょう。今までローカルで動かしていたものと全く同じものが動いているはずです。ただし、データベースは異なりますので、中身は空の状態でしょう。</p>
+<h2 id="開発者アカウント">開発者アカウント</h2><p>初めてアプリをデプロイした際に電子メールアドレスを聞かれるかもしれません。手順に従うと開発者アカウントを作ることができます。開発者アカウントを作るとデプロイしたアプリに権限を設定することができ、自分もしくは権限を付与した開発者のみがアプリを操作できるようになります。</p>
+<p>詳しくは<a href="http://docs.meteor.com/#/full/meteordeploy" target="_blank" rel="external">ドキュメント</a>を参照。</p>
+<h2 id="次のステップ">次のステップ</h2><p>ここまででチュートリアルの前半は終了です。後半はユーザ認証はデータベースの同期制御などより実際的な機能を学びます。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/deploying-first-meteor-app/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[MeteorでFamousを使うfamous-viewsの紹介]]></title>
