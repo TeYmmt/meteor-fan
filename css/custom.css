@@ -27,12 +27,8 @@
   }
 }
 
-.post-footer .author {
-  margin-right: 240px;
-}
-
 .post-footer .share {
-  width: 200px;
+  width: auto;
 }
 
 .post-footer .share a {
