@@ -8,8 +8,37 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 06 Aug 2015 13:38:33 GMT</pubDate>
+    <pubDate>Sun, 09 Aug 2015 12:58:19 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[MeteorでMongoDBのデバッグに使えるMongolパッケージ]]></title>
+      <link>http://meteor-fan.axlight.com/mongol-for-debugging/</link>
+      <guid>http://meteor-fan.axlight.com/mongol-for-debugging/</guid>
+      <pubDate>Sun, 09 Aug 2015 02:07:53 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorでアプリの開発をするときにはどのようなデバッグ方法があるでしょうか。<code>meteor shell</code>や<code>meteor debug</code>はサーバサイドのツールです。クライアントサイドはどうでしょう。Meteorのチュートリアルを]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorでアプリの開発をするときにはどのようなデバッグ方法があるでしょうか。<code>meteor shell</code>や<code>meteor debug</code>はサーバサイドのツールです。クライアントサイドはどうでしょう。Meteorのチュートリアルを見ているとブラウザのデベロッパーツールを使って、コンソールで操作することが一つの方法のようです。</p>
+<p>今回は、クライアントサイドでのデバッグに使えるライブラリであるMongolを紹介します。</p>
+<h2 id="Mongolとは">Mongolとは</h2><p><a href="https://github.com/msavin/Mongol/" target="_blank" rel="external">Mongol</a>は、Mongoのクライアントサイドのコレクション(データ)を見るためのビューアライブラリです。開発している動作中のアプリに追加して使います。できることは基本的にコンソール操作と変わらないのですが、UIがあるのでとても手軽に操作できます。</p>
+<p>コレクションを閲覧するだけでなく修正したり、新しいドキュメントを追加したりすることもできます。また、insecureパッケージに依存しておらず、独自のmethodをサーバサイドに用意しているため、通常のコードに影響しません。</p>
+<p>Mongolはデバッグ用のライブラリ(debugOnly)なので、デプロイ時には自動的に外されます。</p>
+<p>インストール方法は開発中のアプリで、</p>
+<pre><code><span class="label">meteor</span> <span class="keyword">add </span>msavin:mongol
+</code></pre><p>とするだけです。</p>
+<h2 id="試してみる">試してみる</h2><p><a href="http://mongol.meteor.com/" target="_blank" rel="external">http://mongol.meteor.com/</a>にデモがありますので試してみましょう。ビューアの表示・非表示の切り替えはCtrl-Mで行います。</p>
+<p><img src="https://farm1.staticflickr.com/562/19803725534_aacc9b514e.jpg" alt="スクリーンショット1"></p>
+<p>初めて表示する際は、コレクションのリストが表示されています。この状態でもドキュメント数が分かります。</p>
+<p><img src="https://farm1.staticflickr.com/359/20432571781_18c9243bb5_b.jpg" alt="スクリーンショット2"></p>
+<p>コレクション名をクリックすると中身を見ることができます。修正(Update)や削除(Remove)もできます。複数(Duplicate)してから修正することでできます。</p>
+<p><img src="https://farm1.staticflickr.com/462/20400134536_7500a373e6_b.jpg" alt="スクリーンショット3"></p>
+<p>コレクションが空の場合は新規作成になります。Subscriptionsの対象になっていれば、Insert後にすぐに反映されます。</p>
+<h2 id="Meteor_Toysについて">Meteor Toysについて</h2><p>作者の方は<a href="http://meteor.toys/" target="_blank" rel="external">Meteor Toys</a>というサイトでMongol Proを提供しています。Pro版は有償ですが、データベースのリセットや復活できるゴミ箱機能などが入っているそうです。また、Meteor ToysにはMongol以外のライブラリも提供されています。</p>
+<h2 id="感想">感想</h2><p>Meteorのデバッグ方法は従来のやり方とは異なるのではないかと思っていました。Mongolはコンソールでできることを簡単にしただけですが、DB周りの動作を確認するツールとしてはとても有用ではないかと思います。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/mongol-for-debugging/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[初めてのMeteorアプリのデプロイ]]></title>
@@ -415,11 +444,11 @@
       <content:encoded><![CDATA[<p>Meteorを手短に紹介するビデオを紹介します。</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b4U2MaZSuXg" frameborder="0" allowfullscreen></iframe>
 
-<h2 id="内容紹介">内容紹介</h2><p><img src="https://farm1.staticflickr.com/440/20002089191_794361c54c_z.jpg" alt="タイトル"><br>「ミーティアとは何か」</p>
-<p><img src="https://farm4.staticflickr.com/3767/19808801328_58464f4d0e_z.jpg" alt="タイトル"><br>「言語はJavaScript一つだけ」</p>
-<p><img src="https://farm1.staticflickr.com/303/19970619786_584f2c592b_z.jpg" alt="タイトル"><br>「変更があるデータだけを通信」</p>
-<p><img src="https://farm1.staticflickr.com/415/19810183949_9e9803e5c2_z.jpg" alt="タイトル"><br>「サーバとクライアントでデータベースの同期」</p>
-<p><img src="https://farm4.staticflickr.com/3725/19374245224_bc3e34838c_z.jpg" alt="タイトル"><br>色々よく出来たシステムです</p>
+<h2 id="内容紹介">内容紹介</h2><p><img src="https://farm1.staticflickr.com/440/20002089191_794361c54c_z.jpg" alt="図1"><br>「ミーティアとは何か」</p>
+<p><img src="https://farm4.staticflickr.com/3767/19808801328_58464f4d0e_z.jpg" alt="図2"><br>「言語はJavaScript一つだけ」</p>
+<p><img src="https://farm1.staticflickr.com/303/19970619786_584f2c592b_z.jpg" alt="図3"><br>「変更があるデータだけを通信」</p>
+<p><img src="https://farm1.staticflickr.com/415/19810183949_9e9803e5c2_z.jpg" alt="図4"><br>「サーバとクライアントでデータベースの同期」</p>
+<p><img src="https://farm4.staticflickr.com/3725/19374245224_bc3e34838c_z.jpg" alt="図5"><br>色々よく出来たシステムです</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/3min-meteor-intro-video/#disqus_comments</comments>
     </item>

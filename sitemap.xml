@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/mongol-for-debugging/</loc>
+    <lastmod>2015-08-09T12:58:19.746Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/3min-meteor-intro-video/</loc>
+    <lastmod>2015-08-09T05:11:01.942Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/meteor-12-coming/</loc>
+    <lastmod>2015-08-09T01:38:56.092Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/deploying-first-meteor-app/</loc>
     <lastmod>2015-08-06T13:38:33.381Z</lastmod>
   </url>
@@ -47,11 +62,6 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/meteor-12-coming/</loc>
-    <lastmod>2015-07-30T15:28:55.182Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://meteor-fan.axlight.com/how-to-read-meteor/</loc>
     <lastmod>2015-07-29T01:42:47.163Z</lastmod>
   </url>
@@ -64,11 +74,6 @@
   <url>
     <loc>http://meteor-fan.axlight.com/at-first/</loc>
     <lastmod>2015-07-29T01:41:52.751Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/3min-meteor-intro-video/</loc>
-    <lastmod>2015-07-29T01:41:19.423Z</lastmod>
   </url>
   
   <url>
