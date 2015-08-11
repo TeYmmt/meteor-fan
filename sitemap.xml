@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/first-session-variables-in-meteor/</loc>
+    <lastmod>2015-08-11T08:18:41.459Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/deploying-first-meteor-app/</loc>
+    <lastmod>2015-08-11T06:33:35.469Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/mongol-for-debugging/</loc>
-    <lastmod>2015-08-09T12:58:19.746Z</lastmod>
+    <lastmod>2015-08-09T13:01:49.718Z</lastmod>
   </url>
   
   <url>
@@ -14,11 +24,6 @@
   <url>
     <loc>http://meteor-fan.axlight.com/meteor-12-coming/</loc>
     <lastmod>2015-08-09T01:38:56.092Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/deploying-first-meteor-app/</loc>
-    <lastmod>2015-08-06T13:38:33.381Z</lastmod>
   </url>
   
   <url>

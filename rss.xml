@@ -8,8 +8,56 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sun, 09 Aug 2015 12:58:19 GMT</pubDate>
+    <pubDate>Tue, 11 Aug 2015 08:18:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorで初めてのセッション変数]]></title>
+      <link>http://meteor-fan.axlight.com/first-session-variables-in-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/first-session-variables-in-meteor/</guid>
+      <pubDate>Tue, 11 Aug 2015 06:23:13 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/temporary-ui-state" target="_blank" rel="external">公式チュートリアル8</a>の内容に沿って説明するものです。</p>]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/temporary-ui-state" target="_blank" rel="external">公式チュートリアル8</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li>Meteorで初めてのセッション変数 (←今ここ)</li>
+</ol>
+<p>チュートリアルも後半に入りました。ここからは少し実際的な機能に入ります。</p>
+<h2 id="セッション変数とは">セッション変数とは</h2><p>セッション変数はクライアント側のみで使う変数です。通常のJavaScript変数と似ていますが、ホットコードプッシュでアプリが更新されても変数の中身が変わらなかったり、リアクティブ性を備えていたりと使い勝手がよいです。</p>
+<h2 id="完了したタスクを非表示にする機能を追加する">完了したタスクを非表示にする機能を追加する</h2><p><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">以前のチュートリアル</a>で実装した「完了」タスクを表示上隠すチェックボックスを追加しましょう。この表示はクライアント毎に異なる方がよいので、セッション変数を使います。</p>
+<p>sample-app.htmlに次のコードを追加します。<code>&lt;h1&gt;</code>タグのすぐ下に追加しましょう。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">label</span> <span class="attribute">class</span>=<span class="value">"hide-completed"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">checked</span>=<span class="value">"</span></span></span><span class="expression">&#123;&#123;<span class="variable">hideCompleted</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="value">"</span> /&gt;</span></span><br><span class="line">  Hide Completed Tasks</span><br><span class="line"><span class="tag">&lt;/<span class="title">label</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>変更後のファイルは<a href="https://github.com/meteor/simple-todos/blob/e62e4c1f8ca6f9808b6f3a78c39c4874dffdcbb4/simple-todos.html" target="_blank" rel="external">こちら</a>と同じになっているはずなので確認しましょう。</p>
+<p>次にsample-app.jsを修正します。1つ目は、イベントハンドラの登録です。次のコードを<code>Template.body.events({})</code>に追加しましょう。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"change .hide-completed input"</span>: <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span><br><span class="line">  Session.<span class="keyword">set</span>(<span class="string">"hideCompleted"</span>, event.target.checked);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>これによりチェックボックスを変更する度にチェックボックスの値が<code>hideCompleted</code>というセッション変数に設定されます。</p>
+<p>2つ目は、bodyのへルパー関数の追加です。<code>Template.body.helpers({})</code>に次のコードを追加しましょう。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hideCompleted: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Session.<span class="keyword">get</span>(<span class="string">"hideCompleted"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>これによりHTMLで<code>&#x7b;{hideCompleted}}</code>とするとセッション変数の<code>hideCompleted</code>の値がとれることになります。</p>
+<p>3つ目は、bodyのヘルパー関数の<code>tasks</code>の修正です。次のコードで置き換えてください。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">tasks</span>: <span class="tag">function</span> () &#123;</span><br><span class="line">  <span class="tag">if</span> (Session.<span class="function">get</span>(<span class="string">"hideCompleted"</span>)) &#123;</span><br><span class="line">    <span class="tag">return</span> <span class="tag">Tasks</span><span class="class">.find</span>(&#123;<span class="tag">checked</span>: &#123;$<span class="tag">ne</span>: <span class="tag">true</span>&#125;&#125;, &#123;<span class="tag">sort</span>: &#123;<span class="attribute">createdAt</span>: -<span class="number">1</span>&#125;&#125;);</span><br><span class="line">  &#125; <span class="tag">else</span> &#123;</span><br><span class="line">    <span class="tag">return</span> <span class="tag">Tasks</span><span class="class">.find</span>(&#123;&#125;, &#123;<span class="tag">sort</span>: &#123;<span class="attribute">createdAt</span>: -<span class="number">1</span>&#125;&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>これにより<code>hideCompleted</code>が設定されている(truthy)場合は、checkedがないものだけに絞り込まれます。そうでない場合は、今まで通りになります。</p>
+<p>これら3つの修正を終えたsample-app.jsは、<a href="https://github.com/meteor/simple-todos/blob/3352071c6d1c414f94ee21038f28c45651d6216c/simple-todos.js" target="_blank" rel="external">こちら</a>と同じようになっているはずです。</p>
+<h2 id="動作確認">動作確認</h2><p>“Hide Completed Tasks”のチェックボックスをクリックして完了タスクが非表示になることを確認しましょう。ブラウザのリロードをしたり、別のブラウザを用いたりして、互いに影響がないことも確認しましょう。</p>
+<h2 id="未完了タスク数を表示する">未完了タスク数を表示する</h2><p>未完了タスクのクエリを使って数を表示するようにしてみましょう。</p>
+<p>sample-app.htmlの<code>&lt;h1&gt;</code>タグを次のように変更します。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>Todo List (</span><span class="expression">&#123;&#123;<span class="variable">incompleteCount</span>&#125;&#125;</span><span class="xml">)<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>変更後のファイルは<a href="https://github.com/meteor/simple-todos/blob/48c14895d510dd095da3e114a40152d9291cbb83/simple-todos.html" target="_blank" rel="external">こちら</a>です。</p>
+<p>これを表示するためのヘルパーをsample-app.jsの<code>Template.body.helpers({})</code>に追加します。</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">incompleteCount: <span class="keyword">function</span> () &#123;</span><br><span class="line">  return Tasks.find(&#123;checked: &#123;<span class="variable">$ne</span>: true&#125;&#125;).count();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>これで未完了タスク数が表示されるはずです。</p>
+<h2 id="次のステップ">次のステップ</h2><p>セッション変数についてはこれで終わりです。次はユーザ管理について学びます。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-session-variables-in-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[MeteorでMongoDBのデバッグに使えるMongolパッケージ]]></title>
@@ -66,7 +114,7 @@
 <p>をブラウザで開きましょう。今までローカルで動かしていたものと全く同じものが動いているはずです。ただし、データベースは異なりますので、中身は空の状態でしょう。</p>
 <h2 id="開発者アカウント">開発者アカウント</h2><p>初めてアプリをデプロイした際に電子メールアドレスを聞かれるかもしれません。手順に従うと開発者アカウントを作ることができます。開発者アカウントを作るとデプロイしたアプリに権限を設定することができ、自分もしくは権限を付与した開発者のみがアプリを操作できるようになります。</p>
 <p>詳しくは<a href="http://docs.meteor.com/#/full/meteordeploy" target="_blank" rel="external">ドキュメント</a>を参照。</p>
-<h2 id="次のステップ">次のステップ</h2><p>ここまででチュートリアルの前半は終了です。後半はユーザ認証はデータベースの同期制御などより実際的な機能を学びます。</p>
+<h2 id="次のステップ">次のステップ</h2><p>ここまででチュートリアルの前半は終了です。後半はユーザ認証やデータベースの同期制御などより実際的な機能を学びます。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/deploying-first-meteor-app/#disqus_comments</comments>
     </item>
