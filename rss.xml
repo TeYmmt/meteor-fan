@@ -8,8 +8,51 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Tue, 11 Aug 2015 08:18:41 GMT</pubDate>
+    <pubDate>Wed, 12 Aug 2015 06:29:32 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorのファイル・ディレクトリ(フォルダ)構成について]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-file-structure/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-file-structure/</guid>
+      <pubDate>Wed, 12 Aug 2015 01:55:40 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事では、Meteorのファイル構成について説明します。Meteorのファイル構成は複雑ではありませんが色々決まりがあるため理解する必要があります。</p>
+<p>Meteorの初めのチュートリアルでは、HTML, JavaScript, CSSでそれぞれ1ファイルで合計]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事では、Meteorのファイル構成について説明します。Meteorのファイル構成は複雑ではありませんが色々決まりがあるため理解する必要があります。</p>
+<p>Meteorの初めのチュートリアルでは、HTML, JavaScript, CSSでそれぞれ1ファイルで合計3ファイルだけを使います。練習としてはこれで十分ですが、分割すると便利なことがあります。</p>
+<p><a href="http://docs.meteor.com/#/full/structuringyourapp" target="_blank" rel="external">公式マニュアル</a>に詳しい説明がありますので、合わせて参照してください。</p>
+<h2 id="まず原則として">まず原則として</h2><p>プロジェクトディレクトリに置かれたファイルはmeteorが認識して自動で読み込まれます。ファイルは拡張子やディレクトリ名で分類されます。複数のファイルに分割されている場合でも同じ種類のファイルはMeteorが自動で結合します。</p>
+<h2 id="特殊ディレクトリ">特殊ディレクトリ</h2><p>次に特殊ディレクトリについて説明します。</p>
+<h3 id="client">client</h3><p><code>client</code>という名前のディレクトリはクライアント側のファイル専用になり、サーバ側では読み込まれなくなります。JavaScriptファイルの場合は、普通の場所に置いたJavaScriptファイルの中で<code>if (Meteor.isClient) {}</code>のブロック内に記述するのと同じになります。JavaScriptファイルとCSSファイルは結合されます。production環境ではさらにminifyされます。</p>
+<p>HTMLファイルの結合方式は少し特殊で、すべてのHTMLファイルから<code>&lt;head&gt;</code>と<code>&lt;body&gt;</code>が抜き出されて結合されたものが初回のページロードで送られます。</p>
+<h3 id="server">server</h3><p><code>server</code>という名前のディレクトリはサーバ側のファイル専用になり、クライアント側では読み込まれなくなります。JavaScriptファイルの場合は、普通の場所に置いたJavaScriptファイルの中で<code>if (Meteor.isServer) {}</code>のブロック内に記述するのと同じようになりますが、<code>server</code>内のファイルはクライアント側には一切送られないことが異なります。認証機能などクライアント側から見られたくないファイルはここに置きます。</p>
+<p><code>client</code>, <code>public</code>, <code>private</code>以外のディレクトリのJavaScriptファイルは一つにまとめられてサーバ(Node.js)に読み込まれます。</p>
+<h3 id="public">public</h3><p><code>public</code>という名前のトップディレクトリはそのままの形でクライアント側に渡されます。ファイルの結合は行なわれません。画像ファイルなどはここに置きます。</p>
+<p>HTMLの中で<code>&lt;img src=&quot;/bg.png&quot; /&gt;</code>のように参照すると、<code>public/bg.png</code>のファイルを指します。</p>
+<h3 id="private">private</h3><p><code>private</code>という名前のトップディレクトリはサーバ側のJavaScriptコードや<a href="http://docs.meteor.com/#/full/assets" target="_blank" rel="external">Assets</a>からのみアクセスできます。ここには外部から読み込まれたくないデータファイルなどを置きます。</p>
+<h3 id="client/compatibility">client/compatibility</h3><p><code>client</code>の中の<code>compatibility</code>ディレクトリには必要に応じて旧来のJavaScriptライブラリファイルを入れます。これらのJavaScriptファイルは通常の読み込みとは異なり、新しい変数スコープに閉じられません。var宣言された変数をグローバルスコープに出したい場合に使います。これらのファイルは外のclientのJavaScriptファイルより先に読み込まれます。</p>
+<h3 id="tests">tests</h3><p><code>tests</code>という名前のディレクトリはテスト用のコードを置くディレクトリです。ここのファイルはどこからも読み込まれません。</p>
+<h2 id="特殊ディレクトリ以外に置かれたファイル">特殊ディレクトリ以外に置かれたファイル</h2><p>上記の特殊ディレクトリ以外に置かれたJavaScriptファイルはサーバ側でもクライアント側でも読み込まれます。その上で、<code>Meteor.isServer</code>, <code>Meteor.isClient</code>によって、実行を制御することができます。</p>
+<p>上記の特殊ディレクトリ以外に置かれたCSS, HTMLファイルはクライアント側のみで読み込まれます。</p>
+<h2 id="ファイルの読み込み順序">ファイルの読み込み順序</h2><p>まず原則としてはファイルの読み込み順に依存せずコードを構成することがよいでしょう。これには<code>Meteor.startup()</code>を利用したり、パッケージ化を行って依存性を明確にする方法があります。</p>
+<p>しかし、どうしても読み込み順を制御したい場合には、下記のルールを参考にしましょう。</p>
+<ol>
+<li>HTMLファイルは何よりも先に読み込まれます</li>
+<li><code>main.</code>で始まるファイルは最後に読み込まれます</li>
+<li><code>lib</code>ディレクトリのファイルが次に読み込まれます</li>
+<li>深い階層にあるファイルが次に読み込まれます</li>
+<li>上のルールで同じ順になったファイルはフルパスのアルファベット順に読み込まれます</li>
+</ol>
+<p>このルールに従うと例えば正しい読み込み順に並べられたファイルは下記のようになります。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">nav</span><span class="class">.html</span></span><br><span class="line">main<span class="class">.html</span></span><br><span class="line">client/lib/methods<span class="class">.js</span></span><br><span class="line">client/lib/styles<span class="class">.js</span></span><br><span class="line">lib/feature/styles<span class="class">.js</span></span><br><span class="line">lib/collections<span class="class">.js</span></span><br><span class="line">client/feature-y<span class="class">.js</span></span><br><span class="line">feature-x<span class="class">.js</span></span><br><span class="line">client/main.js</span><br></pre></td></tr></table></figure>
+<h2 id="まとめ">まとめ</h2><p>Meteorではファイルは比較的自由に分割して配置することができます。自動で読み込んで結合してくれるので手軽です。また、特殊ディレクトリについても少し覚えれば分かりやすいものでしょう。</p>
+<p>一方、ファイルの読み込み順についてはルールがあるものの複雑な構成にすると分かりにくくなる可能性があります。できればおすすめされているように読み込み順に依存しないように構成できるとよいのではないでしょうか。パッケージ化は、コードの分離や再利用性を考えるとよい選択肢であると思われます。</p>
+<p>ファイルの分割は単なる整理上の話だけではなく、ホットコードプッシュにも影響するようです。例えば、クライアント側のJavaScriptファイルのみを編集した場合は、クライアント側のみが更新され、サーバ側には影響がないため、共通JavaScriptファイルで<code>Meteor.isClient</code>で分けるより高速な場合があるようです。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-file-structure/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorで初めてのセッション変数]]></title>
