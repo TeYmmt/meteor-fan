@@ -8,7 +8,7 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 13 Aug 2015 10:59:48 GMT</pubDate>
+    <pubDate>Thu, 13 Aug 2015 11:09:47 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -18,11 +18,13 @@
       <pubDate>Thu, 13 Aug 2015 09:41:56 GMT</pubDate>
       <description>
       <![CDATA[<p>accounts-facebookというのはMeteorでFacebook認証を行うためのパッケージです。</p>
-<h2 id="accounts-facebookの簡単な使い方説明">accounts-facebookの簡単な使い方説明</h2><pre><code><]]>
+<h2 id="accounts-facebookの簡単な使い方説明">accounts-facebookの簡単な使い方説明</h2><pre><code><span class="label">meteor</span> <span class="keyword">add </span>accounts-ui accounts-facebook
+</code></pre><p>でアプリにパッケージを導入し、HTMLで<br>]]>
+      
       </description>
       <content:encoded><![CDATA[<p>accounts-facebookというのはMeteorでFacebook認証を行うためのパッケージです。</p>
 <h2 id="accounts-facebookの簡単な使い方説明">accounts-facebookの簡単な使い方説明</h2><pre><code><span class="label">meteor</span> <span class="keyword">add </span>accounts-ui accounts-facebook
-</code></pre><p>でアプリにパッケージを導入し、HTMLで</p>
+</code></pre><p>でアプリにパッケージを導入し、HTMLで<br><a id="more"></a></p>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123;<span class="collection">&#123;&gt; loginButtons&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure>
 <p>とすると、ログインボタンを設置できます。<br>設置した直後は「未設定」の状態になっており、</p>
 <p><img src="https://farm6.staticflickr.com/5802/20509477696_4331ea4c60.jpg" alt="ボタン1"></p>
