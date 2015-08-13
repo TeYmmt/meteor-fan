@@ -8,8 +8,60 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 13 Aug 2015 11:09:47 GMT</pubDate>
+    <pubDate>Thu, 13 Aug 2015 14:46:26 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorで初めてのパーミッション制御]]></title>
+      <link>http://meteor-fan.axlight.com/first-permission-control-in-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/first-permission-control-in-meteor/</guid>
+      <pubDate>Thu, 13 Aug 2015 12:12:28 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/security-with-methods" target="_blank" rel="external">公式チュートリアル10</a>の内容に沿って説明するものです。]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/security-with-methods" target="_blank" rel="external">公式チュートリアル10</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">Meteorで初めてのセッション変数</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-user-accounts-in-meteor/">Meteorで初めてのユーザアカウント</a></li>
+<li>Meteorで初めてのパーミッション制御 (←今ここ)</li>
+</ol>
+<h2 id="これまでのmongoデータベースのパーミッション">これまでのmongoデータベースのパーミッション</h2><p>上記の一連のチュートリアルにおいては、これまでのところmongoに誰でもアクセスできるようになっていました。完全にオープンです。ユーザ認証機能を加えたことでもこれは変わりません。例えば、ログイン前はタスクを登録できないようにフォームを非表示にしましたが、実際にはJavaScriptのコードを直接実行すればログインしなくてもタスクが登録できてしまいます。</p>
+<p>ただし、これは一概に悪いことではありません。そのようなセキュリティモデルであることを正しく理解して使う分には価値があります。例えば、開発途中のアプリで外部に公開しないもの、一人だけで使うアプリ、寿命が極端に短いアプリ、何かしらの方法で別のセキュリティモデルを提供しているアプリなど、利用シーンは様々です。</p>
+<h2 id="mongoデータベースのパーミッションを制御する">mongoデータベースのパーミッションを制御する</h2><p>この完全にオープンなパーミッションは、実はデフォルトで追加されている<code>insecure</code>というパッケージによって実現されています。よってこのパッケージを削除すると、パーミッションはオープンではなくなり自分で制御することになります。</p>
+<p>さて、パッケージを削除してみましょう。meteorを起動している状態で、</p>
+<pre><code>meteor <span class="keyword">remove</span> insecure
+</code></pre><p>を実行してください。パッケージが削除されると、今までできていたタスクの追加などができなくなっているはずです。この時点で動作を確認しましょう。</p>
+<h2 id="Meteor-methodsを定義する">Meteor.methodsを定義する</h2><p>クライアント側で直接データを修正することができなくなったので、データを修正するAPI(methods)を用意してクライアントから呼び出せるようにします。その際にmethodsの内部でログインしていかなどの権限をチェックすればよいことになります。</p>
+<p>少しややこしいのですが、このmethodsはサーバ側とクライアント側両方に動作するように定義することができます。そうすることで、クライアントではサーバにリクエストを送ると同時に定義されたmethodを実行します。そうすることでサーバの処理の結果を待たずに処理を完了してUIに反映することができます。これをOptimistic UIと呼びます。後ほどサーバからの処理結果が反映されたら再度それをUIに反映します。このとき、結果が同じであればUI上は変化がないため、ユーザからはとても反応のよいUIに見えることになります。</p>
+<p>さて、methodsを定義しましょう。sample-app.jsの最後に下記のコードを追加してください。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Meteor</span><span class="class">.methods</span>(<span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">addTask</span>:<span class="value"> function (text) &#123;</span><br><span class="line">    if (! Meteor.<span class="function">userId</span>()) &#123;</span><br><span class="line">      throw new Meteor.<span class="function">Error</span>(<span class="string">"not-authorized"</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    <span class="tag">Tasks</span><span class="class">.insert</span>(<span class="rules">&#123;</span><br><span class="line">      <span class="rule"><span class="attribute">text</span>:<span class="value"> text,</span><br><span class="line">      createdAt: new <span class="function">Date</span>(),</span><br><span class="line">      owner: Meteor.<span class="function">userId</span>(),</span><br><span class="line">      username: Meteor.<span class="function">user</span>().username</span><br><span class="line">    &#125;)</span></span>;</span><br><span class="line">  &#125;</span>,</span><br><span class="line">  <span class="rule"><span class="attribute">deleteTask</span>:<span class="value"> function (taskId) &#123;</span><br><span class="line">    Tasks.<span class="function">remove</span>(taskId)</span></span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="rule"><span class="attribute">setChecked</span>:<span class="value"> function (taskId, setChecked) &#123;</span><br><span class="line">    Tasks.<span class="function">update</span>(taskId, &#123; $set: &#123; checked: setChecked&#125; &#125;)</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>addTask</code>の初めにログインのチェックが加わりました。これにより、ログインしていないユーザからのアクセスを確実に拒否することができます。</p>
+<h2 id="methodsを呼び出す">methodsを呼び出す</h2><p>次に、これらのmethodsを呼び出すようにクライアント側のコードを修正します。</p>
+<p>sample-app.jsのisClientブロック内の<code>Task.insert()</code>文は、</p>
+<pre><code>Meteor.<span class="keyword">call</span>(<span class="string">"addTask"</span>, <span class="keyword">text</span>);
+</code></pre><p>になります。同じく、<code>Task.update()</code>文は、</p>
+<pre><code>Meteor.call(<span class="string">"setChecked"</span>, <span class="keyword">this</span>._id, ! <span class="keyword">this</span>.<span class="keyword">checked</span>);
+</code></pre><p>になります。同じく、<code>Task.remove()</code>文は、</p>
+<pre><code>Meteor.<span class="keyword">call</span>(<span class="string">"deleteTask"</span>, <span class="keyword">this</span>._id);
+</code></pre><p>になります。</p>
+<p>すべての修正が完了したファイルは、<a href="https://github.com/meteor/simple-todos/blob/40f20dec61f94269f434f8e6600f52e48dab9c59/simple-todos.js" target="_blank" rel="external">こちらのJavaScriptファイル</a>のようになっているはずですので、確認してください。</p>
+<h2 id="動作確認">動作確認</h2><p>今回の修正でこれまでと同じように正しく動くか確認しましょう。タスクの追加、タスクの変更・削除ができるはずです。</p>
+<p>ログインしていない場合にタスクが追加できないことを確認するには、一旦、フォームをログインしていなくても表示するように変更を戻してから、試してみるとよいでしょう。具体的には、</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;&#123;<span class="begin-block">#<span class="keyword">if</span> currentUser</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">  ...</span><br><span class="line"></span><span class="expression">&#123;&#123;<span class="end-block">/<span class="keyword">if</span></span>&#125;&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<p>のifの開始と終了のそれぞれ1行を一時的に削除することで戻すことができます。</p>
+<h2 id="まとめと次のステップ">まとめと次のステップ</h2><p>今回はパーミッションを完全オープンではなく独自に制御する方法を学びました。ここはMeteorの複雑な部分でもあり、すぐに全体を見通すことは難しいかもしれません。しかし、重要な部分でもあるため、時間をかけて理解する必要があるでしょう。</p>
+<p>次回は最後のデータの読み込み権限に関する改善について学びます。</p>
+<h2 id="おまけ">おまけ</h2><p>実は、Meteor.methods以外にもパーミッションを制御する方法があります。collection.allowとcollection.denyです。これらは、ある利用シーンにおいては、比較的手軽に制御することができます。しかし、現在(2015/8/13)の公式チュートリアルでは言及されていないので割愛しました。詳しくは、<a href="http://docs.meteor.com/#/full/allow" target="_blank" rel="external">ドキュメント</a>をご覧ください。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-permission-control-in-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorのaccounts-facebookの設定をリセットする方法]]></title>
@@ -111,7 +163,7 @@
 <p>に変更しましょう。</p>
 <p>今回の以上の修正で変更した後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/cd80f2966275060c64e4418c44cf13669386ce4d/simple-todos.js" target="_blank" rel="external">こちらのJavaScriptファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/d7ad84ff5ae149e78621c85a1d2fd32959439f29/simple-todos.html" target="_blank" rel="external">こちらのHTMLファイル</a>と同じようになっているはずなので必要応じて確認してください。</p>
 <h2 id="動作確認">動作確認</h2><p>実際に想定通りに動くか確認しましょう。可能であれば複数のアカウントを作成してそれぞれでタスクを追加してみるとよいです。以前に追加したタスクにはusernameプロパティはないのでユーザ名は表示されないことに注意しましょう。</p>
-<h2 id="次のステップ">次のステップ</h2><p>今回はパスワード認証のパッケージを用いましたが、OAuthなどの外の認証機構を用いることもできます。これらを使い込なすことでよりアプリ開発が楽になるでしょう。次回はデータの書き込み権限に関する改善について学びます。</p>
+<h2 id="まとめと次のステップ">まとめと次のステップ</h2><p>今回はパスワード認証のパッケージを用いましたが、OAuthなどの外の認証機構を用いることもできます。これらを使い込なすことでよりアプリ開発が楽になるでしょう。次回はデータの書き込み権限に関する改善について学びます。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/#disqus_comments</comments>
     </item>
@@ -753,26 +805,6 @@
 <p>英語が厳しい方は、<a href="http://www.publickey1.jp/blog/12/meteorjavascripthtmlweb.html" target="_blank" rel="external">こちらの解説記事</a>も合わせて読んでみるとよいでしょう。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-meteor-screencast/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[Meteorの読み方]]></title>
-      <link>http://meteor-fan.axlight.com/how-to-read-meteor/</link>
-      <guid>http://meteor-fan.axlight.com/how-to-read-meteor/</guid>
-      <pubDate>Mon, 20 Jul 2015 02:53:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>Meteorを初めて知った時に、その読みに困る人がいるようです。というわけで、今回は読み方について。</p>
-<p>meteorは英語の一般名詞なので辞書に載っています。<br><a href="http://ejje.weblio.jp/content/meteor" t]]>
-      </description>
-      <content:encoded><![CDATA[<p>Meteorを初めて知った時に、その読みに困る人がいるようです。というわけで、今回は読み方について。</p>
-<p>meteorは英語の一般名詞なので辞書に載っています。<br><a href="http://ejje.weblio.jp/content/meteor" target="_blank" rel="external">http://ejje.weblio.jp/content/meteor</a><br>カタカナ表記するのであれば「ミーティア」でよいでしょう。ちなみに、ストレスは「ミ」にあって、「ミー」と「ティア」の長さは同じくらいです。</p>
-<p>念のため、YoutubeでMeteorの中の人が講演しているものを聞いてみました。</p>
-<iframe width="420" height="315" src="https://www.youtube.com/embed/FsnZB6yRimI" frameborder="0" allowfullscreen></iframe>
-
-<p>よく聞いてみてください。だいぶ発音が短いことに気づくかと思います。</p>
-<p>別にどういう読み方をしてもよいかもしれませんが、人に聞かれたら一番近そうな「ミーティア」と答えればいいかと思います。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/how-to-read-meteor/#disqus_comments</comments>
     </item>
     
   </channel>
