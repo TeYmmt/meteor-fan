@@ -8,8 +8,75 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Wed, 12 Aug 2015 06:29:32 GMT</pubDate>
+    <pubDate>Thu, 13 Aug 2015 03:25:16 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorで初めてのユーザアカウント]]></title>
+      <link>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</guid>
+      <pubDate>Thu, 13 Aug 2015 01:00:51 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts" target="_blank" rel="external">公式チュートリアル9</a>の内容に沿って説明するものです。</]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts" target="_blank" rel="external">公式チュートリアル9</a>の内容に沿って説明するものです。</p>
+<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/">Meteorで初めてのセッション変数</a></li>
+<li>Meteorで初めてのユーザアカウント (←今ここ)</li>
+</ol>
+<h2 id="Meteorに標準で用意されているユーザアカウント機能">Meteorに標準で用意されているユーザアカウント機能</h2><p>Meteorには標準ですぐに使えるアカウント機能が組み込まれています。現状では、下記のパッケージが用意されています。</p>
+<ul>
+<li>accounts-password</li>
+<li>accounts-facebook</li>
+<li>accounts-github</li>
+<li>accounts-google</li>
+<li>accounts-meetup</li>
+<li>accounts-twitter</li>
+<li>accounts-weibo</li>
+</ul>
+<p>これらのパッケージを使うと、例えばFacebookの認証に対応したWebアプリを簡単に作ることができます。今回のチュートリアルでは外部システムと連携不要なaccounts-passwordを使います。accounts-passwordはhttpで用いるとパスワードが平文で流れるため、production環境で用いるにはhttpsが前提になるでしょう。テスト環境で使う分にはとても手軽です。</p>
+<h2 id="accounts-passwordパッケージを追加する">accounts-passwordパッケージを追加する</h2><p>まずパッケージを追加しましょう。meteorは起動したままで大丈夫です。</p>
+<pre><code><span class="label">meteor</span> <span class="keyword">add </span>accounts-ui accounts-password
+</code></pre><p>を実行してください。これで関係する依存パッケージも自動で追加されます。</p>
+<h2 id="ログインボタンを配置する">ログインボタンを配置する</h2><p>次にログインボタンを表示するためのコードを追加します。sample-app.jsの<code>&lt;form class=&quot;new-task&quot;&gt;</code>のすぐ上に下記のコードを追加してください。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123;<span class="collection">&#123;&gt; loginButtons&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure>
+<p>これだけでログインボタン(リンク)が表示されるはずです。ブラウザで確認しましょう。</p>
+<p>デフォルトではログインのアカウント作成時に電子メールアドレスの入力を求めます。これはテスト上は不要なので、次のコードをsample-app.jsの<code>if (Meteor.isClient) {}</code>ブロック内の最後に追加してください。</p>
+<pre><code><span class="tag">Accounts</span><span class="class">.ui</span><span class="class">.config</span>(<span class="rules">{
+  <span class="rule"><span class="attribute">passwordSignupFields</span>:<span class="value"> <span class="string">"USERNAME_ONLY"</span>
+})</span></span>;</span>
+</code></pre><p>これにより電子メールアドレスのフィールドがなくなって、ユーザ名のパスワードだけになるはずです。</p>
+<h2 id="ログイン動作の確認">ログイン動作の確認</h2><p>ログインボタンを押すとログインダイアログが表示され、そこにアカウント作成のリンクもあります。まずは、新規にアカウントを作成しましょう。その後、ログインやログアウトの機能がどのように動くかを確認しましょう。</p>
+<h2 id="ログインによる機能拡張">ログインによる機能拡張</h2><p>さて、ログイン自体はできましたが、このままでは特に機能に変化はありません。そこで、ログインによって次の2つの機能を実現します。</p>
+<ol>
+<li>ログインしている場合のみ新規タスク追加のフォームを表示する</li>
+<li>タスクに作成者を設定してログインユーザを作成者にする</li>
+</ol>
+<p>1つ目の機能のためには、sample-app.jsの<code>&lt;form class=&quot;new-task&quot;&gt;</code>のブロック全体を次のようにifブロックで囲みます。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;&#123;<span class="begin-block">#<span class="keyword">if</span> currentUser</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">  <span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"new-task"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"text"</span> <span class="attribute">placeholder</span>=<span class="value">"Type to add new tasks"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"></span><span class="expression">&#123;&#123;<span class="end-block">/<span class="keyword">if</span></span>&#125;&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<p><code>currentUser</code>はログインしているユーザの情報を格納しているオブジェクトで、ログインしていない状態では空(null)になるのでifブロックで表示の制御ができます。</p>
+<p>2つ目の機能のためには、DBに追加するドキュメント(データ)にプロパティを追加します。具体的には、sample-app.jsの<code>Tasks.insert()</code>文を次のように変更します。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Tasks</span><span class="class">.insert</span>(<span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">text</span>:<span class="value"> text,</span><br><span class="line">  createdAt: new <span class="function">Date</span>(),</span><br><span class="line">  owner: Meteor.<span class="function">userId</span>(),</span><br><span class="line">  username: Meteor.<span class="function">user</span>().username</span><br><span class="line">&#125;)</span></span>;</span></span><br></pre></td></tr></table></figure>
+<p><code>Meteor.userId()</code>はログインユーザのIDを返します。<code>Meteor.user()</code>はログインユーザのオブジェクトを返すもので、HTMLで用いるhelperの<code>currentUser</code>と同等の情報が格納されます。<code>username</code>プロパティでユーザ名を取り出すことができます。<code>_id</code>プロパティがユーザIDであり、<code>Meteor.user()._id</code>と<code>Meteor.userId()</code>は基本的に同じ意味になります。</p>
+<p>ところで、このownerとusernameを両方指定する手法は非正規化と言ってJOINのないMongoDBではしばしば使われるようです。そもそもユーザIDが分かればユーザ名は一意に決まるはずなので冗長なのですが、ユーザ名も合わせて格納することで高速化できます。</p>
+<p>最後に、DBに追加したユーザ名を表示するようにします。sample-app.htmlの</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"text"</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">text</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>を</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"text"</span>&gt;</span><span class="tag">&lt;<span class="title">strong</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">username</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">strong</span>&gt;</span> - </span><span class="expression">&#123;&#123;<span class="variable">text</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>に変更しましょう。</p>
+<p>今回の以上の修正で変更した後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/cd80f2966275060c64e4418c44cf13669386ce4d/simple-todos.js" target="_blank" rel="external">こちらのJavaScriptファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/d7ad84ff5ae149e78621c85a1d2fd32959439f29/simple-todos.html" target="_blank" rel="external">こちらのHTMLファイル</a>と同じようになっているはずなので必要応じて確認してください。</p>
+<h2 id="動作確認">動作確認</h2><p>実際に想定通りに動くか確認しましょう。可能であれば複数のアカウントを作成してそれぞれでタスクを追加してみるとよいです。以前に追加したタスクにはusernameプロパティはないのでユーザ名は表示されないことに注意しましょう。</p>
+<h2 id="次のステップ">次のステップ</h2><p>今回はパスワード認証のパッケージを用いましたが、OAuthなどの外の認証機構を用いることもできます。これらを使い込なすことでよりアプリ開発が楽になるでしょう。次回はデータの書き込み権限に関する改善について学びます。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorのファイル・ディレクトリ(フォルダ)構成について]]></title>
@@ -96,6 +163,7 @@
 <p>変更後のファイルは<a href="https://github.com/meteor/simple-todos/blob/48c14895d510dd095da3e114a40152d9291cbb83/simple-todos.html" target="_blank" rel="external">こちら</a>です。</p>
 <p>これを表示するためのヘルパーをsample-app.jsの<code>Template.body.helpers({})</code>に追加します。</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">incompleteCount: <span class="keyword">function</span> () &#123;</span><br><span class="line">  return Tasks.find(&#123;checked: &#123;<span class="variable">$ne</span>: true&#125;&#125;).count();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>変更後のファイルは<a href="https://github.com/meteor/simple-todos/blob/d7e04b692a361153918f4a88548dfdc1c0220367/simple-todos.js" target="_blank" rel="external">こちら</a>です。</p>
 <p>これで未完了タスク数が表示されるはずです。</p>
 <h2 id="次のステップ">次のステップ</h2><p>セッション変数についてはこれで終わりです。次はユーザ管理について学びます。</p>
 ]]></content:encoded>
