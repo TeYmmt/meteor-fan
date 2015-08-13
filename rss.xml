@@ -8,8 +8,44 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 13 Aug 2015 03:25:16 GMT</pubDate>
+    <pubDate>Thu, 13 Aug 2015 10:59:48 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorのaccounts-facebookの設定をリセットする方法]]></title>
+      <link>http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/</guid>
+      <pubDate>Thu, 13 Aug 2015 09:41:56 GMT</pubDate>
+      <description>
+      <![CDATA[<p>accounts-facebookというのはMeteorでFacebook認証を行うためのパッケージです。</p>
+<h2 id="accounts-facebookの簡単な使い方説明">accounts-facebookの簡単な使い方説明</h2><pre><code><]]>
+      </description>
+      <content:encoded><![CDATA[<p>accounts-facebookというのはMeteorでFacebook認証を行うためのパッケージです。</p>
+<h2 id="accounts-facebookの簡単な使い方説明">accounts-facebookの簡単な使い方説明</h2><pre><code><span class="label">meteor</span> <span class="keyword">add </span>accounts-ui accounts-facebook
+</code></pre><p>でアプリにパッケージを導入し、HTMLで</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123;<span class="collection">&#123;&gt; loginButtons&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure>
+<p>とすると、ログインボタンを設置できます。<br>設置した直後は「未設定」の状態になっており、</p>
+<p><img src="https://farm6.staticflickr.com/5802/20509477696_4331ea4c60.jpg" alt="ボタン1"></p>
+<p>のようなボタンになっています。(このスクリーンショットはbootstrap cssを適用したものなので通常のものとLook&amp;Feelが異なりますが機能は同じです。</p>
+<p>この”Configure Facebook”という赤いボタンを押すと、</p>
+<p><img src="https://farm6.staticflickr.com/5622/20526823262_00580e88e7_b.jpg" alt="ダイアログ"></p>
+<p>のようなダイアログ画面が出ます。これを設定するとログインボタンは、</p>
+<p><img src="https://farm6.staticflickr.com/5830/20535716395_16257d7e88.jpg" alt="ボタン2"></p>
+<p>のような青いボタンになり、ログインができるようになります。</p>
+<h2 id="一度設定したボタンを元に戻すには?">一度設定したボタンを元に戻すには?</h2><p>上記の設定は一度行うとUI上からは当然元に戻せません。しかし、開発途中の段階では再設定したくなる場合があります。</p>
+<p>そこで設定をリセットする、すなわち、青いボタンを赤いボタンに戻す方法を説明します。</p>
+<p>情報源は<a href="http://stackoverflow.com/questions/17140483/how-do-i-reconfigure-meteors-accounts-facebook-or-where-is-meteors-facebook-c" target="_blank" rel="external">こちらのstackoverflowの記事</a>です。</p>
+<p>いくつか方法があるようですが、一つ手軽な方法を紹介します。まず、下記のコマンドでmongo shellを開きます。</p>
+<pre><code><span class="title">meteor</span> mongo
+</code></pre><p>次に、下記のコマンドで設定データを削除します。</p>
+<pre><code><span class="tag">db</span><span class="class">.meteor_accounts_loginServiceConfiguration</span><span class="class">.remove</span>({<span class="attribute">service</span>:<span class="string">'facebook'</span>})
+</code></pre><p>これでブラウザをリロードするとボタンが設定前の状態(赤いボタン)に戻るはずです。</p>
+<h3 id="最後に">最後に</h3><p>今回はaccounts-facebookに関する説明でしたが、基本的には他のaccountsのパッケージでも同様に設定がリセットできると思われます。いずれにしても、mongo shellでデータを削除する前に、</p>
+<pre><code>db<span class="class">.meteor_accounts_loginServiceConfiguration</span><span class="class">.find</span>()
+</code></pre><p>で消すデータを事前に確認しておくことが必要でしょう。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorで初めてのユーザアカウント]]></title>
@@ -735,24 +771,6 @@
 <p>別にどういう読み方をしてもよいかもしれませんが、人に聞かれたら一番近そうな「ミーティア」と答えればいいかと思います。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/how-to-read-meteor/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[Meteor Fanはじめます]]></title>
-      <link>http://meteor-fan.axlight.com/at-first/</link>
-      <guid>http://meteor-fan.axlight.com/at-first/</guid>
-      <pubDate>Wed, 15 Jul 2015 14:28:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>Meteorの日本語情報のサイトが少ないと思って、新しくサイトを始めることにしました。どうぞよろしくお願いします。</p>
-<p>初めは初心者向けのチュートリアルなどをまとめようと思いますが、その後パッケージの紹介や独自パッケージの開発なども進めたいと思います。</p>
-<]]>
-      </description>
-      <content:encoded><![CDATA[<p>Meteorの日本語情報のサイトが少ないと思って、新しくサイトを始めることにしました。どうぞよろしくお願いします。</p>
-<p>初めは初心者向けのチュートリアルなどをまとめようと思いますが、その後パッケージの紹介や独自パッケージの開発なども進めたいと思います。</p>
-<p>しばらくは手探り状態で内容にまとまりがないかもしれませんが、あとからまとめればよいことにして、雑多な感じでいきます。あまり期待せず、ご期待ください。</p>
-<p><img src="https://www.meteor.com/meteor-logo.png" alt="The Meteor Logo"></p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/at-first/#disqus_comments</comments>
     </item>
     
   </channel>

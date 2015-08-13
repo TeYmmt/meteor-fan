@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/</loc>
+    <lastmod>2015-08-13T10:59:48.379Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
     <lastmod>2015-08-13T03:25:16.673Z</lastmod>
   </url>
