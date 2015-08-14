@@ -118,7 +118,7 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
     </item>
     
     <item>
-      <title><![CDATA[Meteorをブラウザ環境のみで試すMeteorPadの紹介]]></title>
+      <title><![CDATA[Meteorをブラウザ環境のみで試すMeteorPad]]></title>
       <link>http://meteor-fan.axlight.com/introducing-meteorpad/</link>
       <guid>http://meteor-fan.axlight.com/introducing-meteorpad/</guid>
       <pubDate>Fri, 14 Aug 2015 01:13:48 GMT</pubDate>
@@ -132,12 +132,12 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p><a href="http://meteorpad.com/" target="_blank" rel="external">http://meteorpad.com/</a></p>
 <p><img src="https://farm6.staticflickr.com/5676/20367079670_d6e12dc436_k.jpg" alt="スクリーンショット"></p>
 <p>Leaderboardというアプリがデフォルトで入っています。右のエリアで実際にアプリが動いています。別ウインドウで動作させることも可能です。</p>
-<p>左のエリアでMeteorのバージョンを指定したり、パッケージを追加したりできます。過去のバージョンで動作確認できるのはMeteorPadならではの機能かもしれません。</p>
+<p>左のエリアでMeteorのバージョンを指定したり、パッケージを追加したりできます。過去のMeteorのバージョンに切り替えて動作確認もできます。</p>
 <p>中央のエリアがエディタです。スクロールするとすべてのファイルが見えます。規模が大きくなるとつらそうですが。</p>
 <p>下部のエリアが疑似ターミナルです。入力はできません。</p>
 <h3 id="Meteorチュートリアルの実行">Meteorチュートリアルの実行</h3><p>Leaderboardを<a href="https://www.meteor.com/tutorials/blaze" target="_blank" rel="external">Meteorチュートリアル</a>のsimple-todosに置き換えて実行することができます。インポート機能がまだないようなので、コピー&amp;ペーストでコードを置き換えてください。パッケージの追加削除もできるので、チュートリアルの各ステップをちゃんと再現できるはずです。</p>
 <h3 id="制限事項">制限事項</h3><p>MeteorPadのアプリ(pad)には有効期限があるようですので、永続的には使えません。</p>
-<h2 id="作者のトーク">作者のトーク</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/zF2iBgS9qJU" frameborder="0" allowfullscreen></iframe>
+<h2 id="作者の発表動画">作者の発表動画</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/zF2iBgS9qJU" frameborder="0" allowfullscreen></iframe>
 
 <h2 id="感想">感想</h2><p>Meteorをインストールしないで試してみたいという人はいそうなので、初期ユーザに需要があるのではないでしょうか。さらに機能が増えて、インポート、アップロード、ファイルブラウザ、デプロイなどができるようになれば、ブラウザ環境だけで実用的な開発もできそうです。</p>
 ]]></content:encoded>
