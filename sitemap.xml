@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/first-data-filtering-in-meteor/</loc>
+    <lastmod>2015-08-14T12:28:53.563Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/introducing-meteorpad/</loc>
     <lastmod>2015-08-14T02:19:46.940Z</lastmod>
   </url>
