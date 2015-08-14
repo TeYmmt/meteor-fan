@@ -8,8 +8,41 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Fri, 14 Aug 2015 12:28:53 GMT</pubDate>
+    <pubDate>Fri, 14 Aug 2015 12:59:26 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteor日本語チュートリアル (Blaze)]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-tutorial-blaze/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-tutorial-blaze/</guid>
+      <pubDate>Fri, 14 Aug 2015 12:37:19 GMT</pubDate>
+      <description>
+      <![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の日本語版のチュートリアルです。</p>
+<p><a href="https://www.meteor.com/tutori]]>
+      </description>
+      <content:encoded><![CDATA[<p><a href="https://www.meteor.com/" target="_blank" rel="external">Meteor</a>の日本語版のチュートリアルです。</p>
+<p><a href="https://www.meteor.com/tutorials/blaze" target="_blank" rel="external">公式のチュートリアル</a>を元にしていますが、単なる翻訳ではなく多少アレンジしています。</p>
+<h2 id="コンテンツ">コンテンツ</h2><ol>
+<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/" target="_blank">初めてのMeteorアプリ作成</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/" target="_blank">初めてのMeteor Spacebarsでテンプレート</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/" target="_blank">初めてのMeteor Mongoコレクション</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-meteor-forms/" target="_blank">初めてのフォームとイベント処理</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-collection-update-in-meteor/" target="_blank">Meteorで初めてのコレクション更新と削除</a></li>
+<li><a href="http://meteor-fan.axlight.com/deploying-first-meteor-app/" target="_blank">初めてのMeteorアプリのデプロイ</a></li>
+<li>Meteorで初めてのモバイルアプリ (スキップ)</li>
+<li><a href="http://meteor-fan.axlight.com/first-session-variables-in-meteor/" target="_blank">Meteorで初めてのセッション変数</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-user-accounts-in-meteor/" target="_blank">Meteorで初めてのユーザアカウント</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-permission-control-in-meteor/" target="_blank">Meteorで初めてのパーミッション制御</a></li>
+<li><a href="http://meteor-fan.axlight.com/first-data-filtering-in-meteor/" target="_blank">Meteorで初めてのデータフィルタリング制御</a></li>
+</ol>
+<h2 id="注意事項">注意事項</h2><ul>
+<li>本チュートリアルはMeteor v1.1.0.3時点のものです</li>
+<li>本チュートリアルはBlazeと呼ばれるテンプレートエンジンを対象にしたものです</li>
+<li>本チュートリアルの正確性は保証されません、もし間違いなど発見しましたら @dai_shi までご連絡ください</li>
+</ul>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-tutorial-blaze/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorで初めてのデータフィルタリング制御]]></title>
@@ -831,35 +864,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p>エディタでファイルを開いたら例えば<code>&lt;h1&gt;</code>の中を変更してみましょう。ファイルを保存すると、ブラウザが自動でリロードします。変更が反映されたことを確認しましょう。この機能を「ホットコードプッシュ」と呼びます。試しに、sample-app.cssも編集してみてください。cssのホットコードプッシュはhtmlよりも速いことに気づくかもしれません。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/creating-first-meteor-app/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[Meteorのaccounts-ui-bootstrapパッケージを使ってみよう]]></title>
-      <link>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</link>
-      <guid>http://meteor-fan.axlight.com/accounts-ui-bootstrap/</guid>
-      <pubDate>Mon, 20 Jul 2015 10:25:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>今回はパッケージの紹介をします。Meteorのパッケージは、<a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a>で管理されています。</p>
-<h3 id="acc]]>
-      </description>
-      <content:encoded><![CDATA[<p>今回はパッケージの紹介をします。Meteorのパッケージは、<a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a>で管理されています。</p>
-<h3 id="accounts-uiパッケージ">accounts-uiパッケージ</h3><p><a href="https://www.meteor.com/tutorials/blaze" target="_blank" rel="external">Meteorの公式チュートリアル</a>の中に、<a href="https://www.meteor.com/tutorials/blaze/adding-user-accounts" target="_blank" rel="external">ユーザアカウントを追加する</a>というステップがあります。<br>このステップで、accounts-uiとaccounts-passwordというパッケージを追加して、ログインフォームを表示するという手順を学びます。</p>
-<p>ところで、このログインフォームのUIが少しだけ時代遅れのLook&amp;Feelになっています。</p>
-<p><img src="https://farm1.staticflickr.com/271/19667540959_41e347d58d.jpg" alt="acccounts-uiのlook&amp;feel"></p>
-<h3 id="accounts-ui-bootstrapパッケージ">accounts-ui-bootstrapパッケージ</h3><p>公式のaccount-uiパッケージの代替として、<a href="http://getbootstrap.com/" target="_blank" rel="external">Bootstrap</a>を用いたものがあります。<br>Meteorのパッケージは<a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a>で、検索できます。困ったことに、<a href="https://atmospherejs.com/?q=accounts-ui-bootstrap" target="_blank" rel="external">複数のパッケージが見つかります</a>。</p>
-<p>Atmosphereには同じ機能を提供する複数のパッケージが存在します。また、フォークして機能追加されたものが次々と公開されます。つまり、現時点で選択したパッケージよりよいものが将来的に登場するかもしれません。現時点でインストール数、スター数、ドキュメントなどからもっともよさそうなパッケージは<a href="https://atmospherejs.com/ian/accounts-ui-bootstrap-3" target="_blank" rel="external">ian:accounts-ui-bootstrap-3</a>です。ちなみにこれは以前(Atmosphereが登場する前)の半公式パッケージとは別物になっています。</p>
-<p>ian:accounts-ui-bootstrap-3をインストールするには、</p>
-<pre><code><span class="label">meteor</span> <span class="keyword">add </span>ian:accounts-ui-<span class="keyword">bootstrap-3</span>
-</code></pre><p>とします。このパッケージは、bootstrapにも依存していますので、</p>
-<pre><code>meteor <span class="built_in">add</span> twb<span class="variable">s:bootstrap</span>
-</code></pre><p>も必要です。他のbootstrapパッケージでもよいので、weak dependencyとなっているそうです。チュートリアルでインストールした、accounts-uiパッケージは不要ですので、</p>
-<pre><code>meteor <span class="keyword">remove</span> accounts-ui
-</code></pre><p>で削除します。</p>
-<p>これにより、ログインフォームのLook&amp;Feelはboostrapのものになりますので、サイト全体でbootstrapを使っている場合は一貫性が出るでしょう。</p>
-<p><img src="https://farm4.staticflickr.com/3782/19827931216_df45c42229_m.jpg" alt="account-ui-boosrapのlook&amp;feel"></p>
-<h3 id="まとめ">まとめ</h3><p>今回はMeteorのパッケージの一つを紹介しました。今後も他のパッケージやAtmosphereの使い方を紹介する予定です。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/accounts-ui-bootstrap/#disqus_comments</comments>
     </item>
     
   </channel>
