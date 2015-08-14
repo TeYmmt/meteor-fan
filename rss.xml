@@ -8,8 +8,35 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 13 Aug 2015 14:46:26 GMT</pubDate>
+    <pubDate>Fri, 14 Aug 2015 02:19:46 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorをブラウザ環境のみで試すMeteorPadの紹介]]></title>
+      <link>http://meteor-fan.axlight.com/introducing-meteorpad/</link>
+      <guid>http://meteor-fan.axlight.com/introducing-meteorpad/</guid>
+      <pubDate>Fri, 14 Aug 2015 01:13:48 GMT</pubDate>
+      <description>
+      <![CDATA[<p>MeteorPadについて紹介します。過去の<a href="http://info.meteor.com/blog/meteorpad-meteor-code-playground" target="_blank" rel="external">Meteorの公式ブログ<]]>
+      </description>
+      <content:encoded><![CDATA[<p>MeteorPadについて紹介します。過去の<a href="http://info.meteor.com/blog/meteorpad-meteor-code-playground" target="_blank" rel="external">Meteorの公式ブログ</a>でも紹介されていました。</p>
+<h2 id="MeteorPadとは">MeteorPadとは</h2><p>通常、Meteorアプリを開発する場合はローカルマシンに開発環境をインストールして、エディタでコードを書いて、ブラウザで動作を確認します。MeteorPadはこれをブラウザ環境で実行できるようにしたものです。</p>
+<p>MeteorPadを使うとMeteorのインストールの手間が省けるため、とりあえずMeteorがどのなものか試してみるにはとても手軽でよいです。また、疑似ターミナルがあるため、ローカルマシンでの環境と雰囲気も近いです。そのため、MeteorPadで試した後にローカルマシン環境に移行することもスムーズでしょう。</p>
+<h2 id="MeteorPadの使い方">MeteorPadの使い方</h2><p>百聞は一見にしかず。実際に使ってみるのが早いです。</p>
+<p><a href="http://meteorpad.com/" target="_blank" rel="external">http://meteorpad.com/</a></p>
+<p><img src="https://farm6.staticflickr.com/5676/20367079670_d6e12dc436_k.jpg" alt="スクリーンショット"></p>
+<p>Leaderboardというアプリがデフォルトで入っています。右のエリアで実際にアプリが動いています。別ウインドウで動作させることも可能です。</p>
+<p>左のエリアでMeteorのバージョンを指定したり、パッケージを追加したりできます。過去のバージョンで動作確認できるのはMeteorPadならではの機能かもしれません。</p>
+<p>中央のエリアがエディタです。スクロールするとすべてのファイルが見えます。規模が大きくなるとつらそうですが。</p>
+<p>下部のエリアが疑似ターミナルです。入力はできません。</p>
+<h3 id="Meteorチュートリアルの実行">Meteorチュートリアルの実行</h3><p>Leaderboardを<a href="https://www.meteor.com/tutorials/blaze" target="_blank" rel="external">Meteorチュートリアル</a>のsimple-todosに置き換えて実行することができます。インポート機能がまだないようなので、コピー&amp;ペーストでコードを置き換えてください。パッケージの追加削除もできるので、チュートリアルの各ステップをちゃんと再現できるはずです。</p>
+<h3 id="制限事項">制限事項</h3><p>MeteorPadのアプリ(pad)には有効期限があるようですので、永続的には使えません。</p>
+<h2 id="作者のトーク">作者のトーク</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/zF2iBgS9qJU" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="感想">感想</h2><p>Meteorをインストールしないで試してみたいという人はいそうなので、初期ユーザに需要があるのではないでしょうか。さらに機能が増えて、インポート、アップロード、ファイルブラウザ、デプロイなどができるようになれば、ブラウザ環境だけで実用的な開発もできそうです。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/introducing-meteorpad/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorで初めてのパーミッション制御]]></title>
@@ -787,24 +814,6 @@
 <h3 id="Node-jsやMongoDBについて">Node.jsやMongoDBについて</h3><p>Meteorは内部でNode.jsやMongoDBを利用しています。これらは、上記のインストールスクリプトで同時にMeteorの環境にインストールされます。既にPCにインストールされているNode.jsやMongoDBを使うわけではありません。極端な話、Meteor開発者は内部でNode.jsやMongoDBが使われていることを知らなくてもよいかもしれません。いずれ知ることにはなるでしょうが。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/install-meteor/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[最初のMeteorのスクリーンキャスト]]></title>
-      <link>http://meteor-fan.axlight.com/first-meteor-screencast/</link>
-      <guid>http://meteor-fan.axlight.com/first-meteor-screencast/</guid>
-      <pubDate>Mon, 20 Jul 2015 06:23:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>Meteorが最初にオープンソースとしてリリースされたのは、2012年4月のことです。正確には4/20にMIT Licenseでリリースされました(<a href="http://info.meteor.com/blog/mit-license-http-request-p]]>
-      </description>
-      <content:encoded><![CDATA[<p>Meteorが最初にオープンソースとしてリリースされたのは、2012年4月のことです。正確には4/20にMIT Licenseでリリースされました(<a href="http://info.meteor.com/blog/mit-license-http-request-package-made-with-meteor" target="_blank" rel="external">公式ブログでのアナウンス</a>)。<a href="http://jp.techcrunch.com/2012/04/12/20120411meteor-launch/" target="_blank" rel="external">日本語のニュースサイト</a>でも取り上げられました。</p>
-<p>当時のスクリーンキャストは今でも参考になるので、紹介します。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fsi0aJ9yr2o" frameborder="0" allowfullscreen></iframe>
-
-<p>もちろん細かいところはいっぱい変わっているので注意が必要です。あくまで参考程度にということで。(そういう意味では本記事も現時点での情報であり、今後情報が古くなっていくことは容易に想像できます)</p>
-<p>英語が厳しい方は、<a href="http://www.publickey1.jp/blog/12/meteorjavascripthtmlweb.html" target="_blank" rel="external">こちらの解説記事</a>も合わせて読んでみるとよいでしょう。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/first-meteor-screencast/#disqus_comments</comments>
     </item>
     
   </channel>
