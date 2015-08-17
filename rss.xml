@@ -8,8 +8,28 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Fri, 14 Aug 2015 12:59:26 GMT</pubDate>
+    <pubDate>Mon, 17 Aug 2015 14:58:38 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorを選ぶ7つの理由]]></title>
+      <link>http://meteor-fan.axlight.com/7-reasons-to-choose-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/7-reasons-to-choose-meteor/</guid>
+      <pubDate>Mon, 17 Aug 2015 14:14:15 GMT</pubDate>
+      <description>
+      <![CDATA[<p>2014年の記事ですが、<a href="http://www.sitepoint.com/7-reasons-develop-next-web-app-meteor/" target="_blank" rel="external">7 Reasons to Develop]]>
+      </description>
+      <content:encoded><![CDATA[<p>2014年の記事ですが、<a href="http://www.sitepoint.com/7-reasons-develop-next-web-app-meteor/" target="_blank" rel="external">7 Reasons to Develop Your Next Web App with Meteor</a>で、なぜMeteorでアプリを開発するか、7つの理由が書かれているので簡単に紹介します。</p>
+<h2 id="1-_標準でリアルタイムアプリが作れる">1. 標準でリアルタイムアプリが作れる</h2><p>現状、リアルタイムWebアプリを作るにはとても手間がかかります。例外は、Meteorを使う場合です。Meteorでは、普通にコーディングするだけでリアルタイムアプリになります。</p>
+<h2 id="2-_一つのプログラミング言語だけで作れる">2. 一つのプログラミング言語だけで作れる</h2><p>クライアントサイド、サーバサイド、データベースがすべてJavaScriptです。JavaScriptを学ぶだけで済みます。また、クライアントサイドとサーバサイドでコードを共通化することもできます。</p>
+<h2 id="3-_便利なパッケージで時間を節約できる">3. 便利なパッケージで時間を節約できる</h2><p>例えば、accounts-twitterというパッケージがありますが、これを使うとアプリにTwitter認証を簡単に組み込むことができます。Twitter認証以外にも、Facebook認証やGoogle認証など、また認証以外にも様々なパッケージが用意されています。</p>
+<h2 id="4-_コミュニティがとても協力的である">4. コミュニティがとても協力的である</h2><p>コミュニティがとても活発であり、技術が近い将来行き詰まることはないでしょう。情報源もとても増えています。(日本語情報だとそれほど感じられないかもしれません。そのための、Meteor Fanですね)</p>
+<h2 id="5-_開発者の幸せのために最適化されている">5. 開発者の幸せのために最適化されている</h2><p>ファイル配置の柔軟性やファイルの自動結合やホットコードプッシュなど開発者がより楽しくなるように作り込まれています。</p>
+<h2 id="6-_初心者の開発者にやさしい">6. 初心者の開発者にやさしい</h2><p>Meteorは初心者にとって学習しやすいプラットフォームです。プログラミングは必須ですが、JavaScriptの基本が分かれば大丈夫です。</p>
+<h2 id="7-_技術トレンドの先をいっている">7. 技術トレンドの先をいっている</h2><p>リアルタイムWebはへの変化は、大きな会社が大きな予算で開発して実現するだけでは不十分です。ツールによって誰もが実現できるようになって起こる変化です。Meteorはこれを実現する初めてのツールです。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/7-reasons-to-choose-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteor日本語チュートリアル (Blaze)]]></title>
@@ -833,37 +853,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p><img src="https://farm4.staticflickr.com/3725/19374245224_bc3e34838c_z.jpg" alt="図5"><br>色々よく出来たシステムです</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/3min-meteor-intro-video/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[初めてのMeteorアプリ作成]]></title>
-      <link>http://meteor-fan.axlight.com/creating-first-meteor-app/</link>
-      <guid>http://meteor-fan.axlight.com/creating-first-meteor-app/</guid>
-      <pubDate>Sat, 25 Jul 2015 12:30:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>Meteorの公式サイトのチュートリアルはとても良くできています。<br>今回は第一歩として、アプリの作成について説明します。<br><a href="https://www.meteor.com/tutorials/blaze/creating-an-app" targe]]>
-      </description>
-      <content:encoded><![CDATA[<p>Meteorの公式サイトのチュートリアルはとても良くできています。<br>今回は第一歩として、アプリの作成について説明します。<br><a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">公式チュートリアル1</a>の内容に沿った説明と多少の補足をします。</p>
-<h2 id="事前準備">事前準備</h2><p>まず、Meteorのインストールが完了している必要があります。<br>まだの方は、<a href="http://meteor-fan.axlight.com/install-meteor/">Meteorをインストールしよう</a>を参照してインストールしてください。</p>
-<p>既にインストールされているかは下記のコマンドで確認できます。</p>
-<pre><code>meteor <span class="comment">--version</span>
-</code></pre><p>これでインストールされているバージョンが表示されます。</p>
-<h2 id="アプリ名の決定">アプリ名の決定</h2><p>まず、アプリ名を決めましょう。ここで言うアプリ名はアプリのフォルダ名になります。<br>フォルダ名は一般的には半角文字のみの方が便利なので、日本語ではなく、英語かローマ字表記にしましょう。<br>ここでは、<code>sample-app</code>として説明します。</p>
-<h2 id="アプリの作成">アプリの作成</h2><p>Meteorのコマンドはターミナルで実行します。Windowsの場合はコマンドプロンプトです。ターミナルやコマンドプロンプトに慣れていないと戸惑うかもしれませんが、次第に慣れてくるかと思います。</p>
-<p>ターミナルを開いたら、まずアプリのフォルダを作成したい場所に移動します。よく分からない方は、初期状態のホームディレクトリでよいかと思います。<br>その後、ターミナルに次のように打ち込みます。</p>
-<pre><code>meteor <span class="operator"><span class="keyword">create</span> <span class="keyword">sample</span>-app</span>
-</code></pre><p>これでアプリのフォルダが作成されました。</p>
-<pre><code><span class="keyword">cd</span> <span class="keyword">sample</span>-<span class="keyword">app</span>
-<span class="keyword">ls</span> -<span class="keyword">l</span>
-</code></pre><p>と打ち込むと、アプリフォルダの中のファイルが表示されます。cdはディレクトリの移動コマンドです。lsはファイルを表示するコマンドです。<br>3つのファイルが表示されているはずです。チュートリアルでは、この3つのファイルを編集してアプリを開発します。大きめのプロジェクトの場合などのために、ファイルを分割する方法もあります。</p>
-<h2 id="アプリの実行">アプリの実行</h2><p>sample-appのディレクトリ(フォルダと同じ意味)にいる状態で次のコマンドを実行します。</p>
-<pre><code>meteor
-</code></pre><p>これによりサーバが起動しますので、 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a> をブラウザで開きましょう。<br>ページが表示されれば成功です。</p>
-<h2 id="ホットコードプッシュ">ホットコードプッシュ</h2><p>アプリを実行したままファイルを編集してみましょう。<br>エディタでsample-appの中にあるsample-app.htmlを開きます。</p>
-<p>普段からコーディングしている人は困ることはないと思いますが、初めての人はsample-appフォルダがどこにあるか分からず苦労するかもしれません。一度覚えてしまえば、慣れるかと思います。どうしてもファイルの場所が分からなければ、OSの検索機能で探してしまいましょう。</p>
-<p>エディタでファイルを開いたら例えば<code>&lt;h1&gt;</code>の中を変更してみましょう。ファイルを保存すると、ブラウザが自動でリロードします。変更が反映されたことを確認しましょう。この機能を「ホットコードプッシュ」と呼びます。試しに、sample-app.cssも編集してみてください。cssのホットコードプッシュはhtmlよりも速いことに気づくかもしれません。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/creating-first-meteor-app/#disqus_comments</comments>
     </item>
     
   </channel>
