@@ -701,7 +701,7 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p>This is a more sophisticated UI.</p>
 <p>これはだいぶ洗練されたUIです。</p>
 <p>Also those people may be talking live on<br>the phone or maybe on a hangout.</p>
-<p>この2人のユーザは電話はハングアウトで会話中かもしれません。</p>
+<p>この2人のユーザは電話かハングアウトで会話中かもしれません。</p>
 <p>So it’s important that the changes be reflected immediately.</p>
 <p>つまり変更が瞬時に反映されることは重要なのです。</p>
 <p>There’s a lot going on here and managing it can get really complex.</p>
