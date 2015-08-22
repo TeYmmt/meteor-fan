@@ -8,8 +8,42 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Mon, 17 Aug 2015 14:58:38 GMT</pubDate>
+    <pubDate>Sat, 22 Aug 2015 03:46:10 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[MeteorとPostgreSQLの連携プレビュー]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-postgres-preview/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-postgres-preview/</guid>
+      <pubDate>Sat, 22 Aug 2015 03:12:03 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事では、Meteor公式ブログの<a href="http://info.meteor.com/blog/an-early-look-at-sql-in-meteor" target="_blank" rel="external">An early look at SQ]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事では、Meteor公式ブログの<a href="http://info.meteor.com/blog/an-early-look-at-sql-in-meteor" target="_blank" rel="external">An early look at SQL in Meteor</a>の概要を紹介します。</p>
+<h2 id="SQL連携について">SQL連携について</h2><p><a href="http://meteor-fan.axlight.com/meteor-12-coming/">2015年夏に登場予定のMeteor v1.2</a>で紹介したように、MeteorではSQLをサポートしようとしています。いつになるかは記載されいませんが、開発チームは既に検討を開始しているようです。</p>
+<p>MeteorはそもそもデータベースとしてMongoDBを使うことを前提に作られているため、どのようにSQL連携を実現するかは議論中とのことです。そこでプロトタイプを作って評価するというやり方にしたと。</p>
+<h2 id="PostgreSQLサポートのプロトタイプ">PostgreSQLサポートのプロトタイプ</h2><p>今回、第一バージョンができあがったとのことでアナウンスがありました。特徴は、</p>
+<ol>
+<li>クエリの即時アップデート</li>
+<li>クライアント側とサーバ側で類似のコードを動かせる</li>
+<li>Optimistic UI</li>
+<li>Fibersによる同期的API</li>
+</ol>
+<p>であり、これまでのMeteorの特徴が引き継がれているようです。より詳細な情報は下記のサイトから参照してください。</p>
+<p><a href="http://meteor-postgres.readthedocs.org/en/latest/" target="_blank" rel="external">http://meteor-postgres.readthedocs.org/en/latest/</a></p>
+<h2 id="開発者募集">開発者募集</h2><p>プロトタイプを作って評価することが目的ですので、開発者に参加を呼びかけています。具体的には、</p>
+<ul>
+<li>上記のサイトを読んで、サンプルを試してみる</li>
+<li><a href="https://forums.meteor.com/t/an-early-look-at-sql-in-meteor/8736" target="_blank" rel="external">forums</a>に参加して議論する</li>
+<li><a href="https://github.com/meteor/postgres-packages" target="_blank" rel="external">GitHub</a>にissueを登録する</li>
+</ul>
+<p>が期待されているとのこと。</p>
+<p>最後にpublishを定義しているサンプルコードのスクリーンショットがこちらです。</p>
+<p><img src="http://cdn2.hubspot.net/hub/520701/hubfs/Blog/Screenshot_2015-08-21_16.03.25.png" alt="スクリーンショット"></p>
+<h2 id="感想">感想</h2><p>個人的にはMeteorを初めて使う人は素直にMongoDBを使う方がよいと思います。設計としても分かりやすいはずです。どうしても過去のレガシーなシステムと接続しなければならないときにSQLを使うケースがきっとあって、SQL連携によりMeteorのコミュニティが拡大することにはメリットがあるでしょう。開発チームはSQL連携においてもMeteor流は妥協しないようで、今後も期待します。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-postgres-preview/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorを選ぶ7つの理由]]></title>
@@ -832,27 +866,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <h2 id="次のステップ">次のステップ</h2><p>今回は<code>tasks</code>の中身はダミーデータでしたが、これをちゃんとデータベースと連携するようにすることが次のステップです。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-spacebars-template/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[Meteorを3分以内で紹介するビデオ]]></title>
-      <link>http://meteor-fan.axlight.com/3min-meteor-intro-video/</link>
-      <guid>http://meteor-fan.axlight.com/3min-meteor-intro-video/</guid>
-      <pubDate>Sat, 25 Jul 2015 14:31:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>Meteorを手短に紹介するビデオを紹介します。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b4U2MaZSuXg" frameborder="0" allowfullsc]]>
-      </description>
-      <content:encoded><![CDATA[<p>Meteorを手短に紹介するビデオを紹介します。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b4U2MaZSuXg" frameborder="0" allowfullscreen></iframe>
-
-<h2 id="内容紹介">内容紹介</h2><p><img src="https://farm1.staticflickr.com/440/20002089191_794361c54c_z.jpg" alt="図1"><br>「ミーティアとは何か」</p>
-<p><img src="https://farm4.staticflickr.com/3767/19808801328_58464f4d0e_z.jpg" alt="図2"><br>「言語はJavaScript一つだけ」</p>
-<p><img src="https://farm1.staticflickr.com/303/19970619786_584f2c592b_z.jpg" alt="図3"><br>「変更があるデータだけを通信」</p>
-<p><img src="https://farm1.staticflickr.com/415/19810183949_9e9803e5c2_z.jpg" alt="図4"><br>「サーバとクライアントでデータベースの同期」</p>
-<p><img src="https://farm4.staticflickr.com/3725/19374245224_bc3e34838c_z.jpg" alt="図5"><br>色々よく出来たシステムです</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/3min-meteor-intro-video/#disqus_comments</comments>
     </item>
     
   </channel>
