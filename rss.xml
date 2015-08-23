@@ -8,8 +8,75 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sat, 22 Aug 2015 03:46:10 GMT</pubDate>
+    <pubDate>Sun, 23 Aug 2015 14:51:30 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[フォームを簡単に生成するMeteorパッケージ「AutoForm」]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-autoform/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-autoform/</guid>
+      <pubDate>Sun, 23 Aug 2015 12:55:18 GMT</pubDate>
+      <description>
+      <![CDATA[<p>MeteorでFormを簡単に作るパッケージを紹介します。</p>
+<p>管理系のUIを作成する場合には、Meteorのコレクションを操作するためのフォームを作成することがよくあると思います。普通に開発してもそれほど手間はかかりませんが、より手軽に開発できるとよいです。フォ]]>
+      </description>
+      <content:encoded><![CDATA[<p>MeteorでFormを簡単に作るパッケージを紹介します。</p>
+<p>管理系のUIを作成する場合には、Meteorのコレクションを操作するためのフォームを作成することがよくあると思います。普通に開発してもそれほど手間はかかりませんが、より手軽に開発できるとよいです。フォームのバリデーションも簡単にできるよよいです。そのようなことを実現するパッケージを紹介します。</p>
+<h2 id="AutoFormとは">AutoFormとは</h2><p>AutoForm(<a href="https://atmospherejs.com/aldeed/autoform" target="_blank" rel="external">Atomosphere</a>, <a href="https://github.com/aldeed/meteor-autoform" target="_blank" rel="external">GitHub</a>)は、とても簡単にフォームを作成できるMeteorパッケージです。スキーマの定義は依存パッケージである<a href="https://github.com/aldeed/meteor-simple-schema" target="_blank" rel="external">SimpleSchema</a>で実現しており、また<a href="https://github.com/aldeed/meteor-collection2" target="_blank" rel="external">Collections2</a>を使うとサーバ側でのバリデーションも自動で行われるようにできます。本記事ではCollection2は使わずに紹介します。</p>
+<p>インストールは、</p>
+<pre><code><span class="label">meteor</span> <span class="keyword">add </span>aldeed:autoform
+</code></pre><p>でできます。パッケージで提供されている標準フォームタイプ以外にも外部パッケージで様々な追加タイプがサポートされています。詳細は<a href="https://github.com/aldeed/meteor-autoform#community-add-on-packages" target="_blank" rel="external">AutoFormのREADME</a>を参照してください。</p>
+<p>とりあえずどんなことができるのかは<a href="http://autoform.meteor.com/" target="_blank" rel="external">デモサイト</a>を見ると分かりやすいです。</p>
+<h2 id="簡単な使い方">簡単な使い方</h2><p>最も簡単な例として、氏名を入力するフォームを考えます。まずはコレクションの定義をします。</p>
+<pre><code><span class="keyword">var</span> Names = <span class="keyword">new</span> Mongo.Colleciton(<span class="string">'names'</span>);
+</code></pre><p>次にスキーマの定義をします。</p>
+<pre><code><span class="built_in">var</span> NamesSchema = <span class="literal">new</span> SimpleSchema({
+  lastname: {
+    <span class="keyword">type</span>: <span class="built_in">String</span>,
+label: <span class="string">'姓'</span>
+  },
+  firstname: {
+    <span class="keyword">type</span>: <span class="built_in">String</span>,
+label: <span class="string">'名'</span>
+  }
+};
+</code></pre><p>最後にHTMLでテンプレートを呼び出します。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;&#123;&gt; <span class="variable">quickForm</span> <span class="variable">id</span>=<span class="string">"insert-form"</span> <span class="variable">schema</span>=<span class="variable">NamesSchema</span> <span class="variable">type</span>=<span class="string">"insert"</span>&#125;&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<p>へルパーの設定がどこかに必要です。例えば、グローバルへルパーの場合は、</p>
+<pre><code><span class="keyword">if</span> <span class="params">(Meteor.isClient<span class="params">()</span>)</span> {
+  Template.registerHelper<span class="params">('NamesSchema', NamesSchema)</span>;
+}
+</code></pre><p>のようにします。</p>
+<p>以上のコードでフォームが作成されます。下記に補足を述べます。</p>
+<ul>
+<li>デフォルトではBootstrapのスタイルが適用されています</li>
+<li>insecureパッケージが削除されている場合は、<a href="http://docs.meteor.com/#/full/allow" target="_blank" rel="external">allow()</a>で適切に権限が設定されている必要があります</li>
+<li>ほぼ同様に <code>type=&quot;update&quot;</code> もできます</li>
+</ul>
+<h2 id="もう少し柔軟な使い方">もう少し柔軟な使い方</h2><p>上記の例は簡単ですが、もっと表示をカスタマイズしたい場合があるでしょう。また、<a href="http://meteor-fan.axlight.com/meteor-tutorial-blaze/">Meteorのチュートリアル</a>に沿って学習した場合、allowより<a href="http://docs.meteor.com/#/full/meteor_methods" target="_blank" rel="external">Meteor.methods</a>を使う方が慣れているでしょう。</p>
+<p>下記のように書くことができます。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;&#123;<span class="begin-block">#autoForm id</span>=<span class="string">"insert-form"</span> <span class="variable">schema</span>=<span class="variable">NamesSchema</span> <span class="variable">type</span>=<span class="string">"method"</span> <span class="variable">meteormethod</span>=<span class="string">"insertName"</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">  </span><span class="expression">&#123;&#123;&gt; <span class="variable">afQuickField</span> <span class="variable">name</span>=<span class="string">"lastname"</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">  </span><span class="expression">&#123;&#123;&gt; <span class="variable">afQuickField</span> <span class="variable">name</span>=<span class="string">"firstname"</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">  <span class="tag">&lt;<span class="title">buttont</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">class</span>=<span class="value">"btn btn-primary"</span>&gt;</span>保存<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>この場合、次のようなmethodが定義されている必要があります。</p>
+<pre><code>Meteor.methods({
+  insertName: <span class="keyword">function</span>(<span class="annotation">doc</span>) {
+    <span class="comment">// 必要であれば権限の確認をまず行う</span>
+    check(<span class="annotation">doc</span>, NamesSchema);
+    Names.insert(<span class="annotation">doc</span>);
+  }
+});
+</code></pre><p>下記に補足を述べます。</p>
+<ul>
+<li>上記例ではUIは変化がありませんが、いじりやすくはなっています</li>
+<li>Meteor.methodsを使う場合は自前でチェックなどを実装する必要があります</li>
+<li>updateについてもだいただ同様に実現することができます</li>
+</ul>
+<h2 id="さらに高度な使い方">さらに高度な使い方</h2><p>AutoFormはカスタマイズ可能なように多くのテンプレートが用意されており、様々なオプションを指定できます。また、処理のフックも多く柔軟な対応が可能です。あまりに多くて書ききれないため、<a href="https://github.com/aldeed/meteor-autoform#component-and-helper-reference" target="_blank" rel="external">AutoFormのREADME</a>を参照してください。</p>
+<p>ところで、<a href="https://forums.meteor.com/t/good-alternative-for-autoform/1973" target="_blank" rel="external">Meteor Forum</a>では、AutoFormの代替について議論されています。AutoFormは大きすぎるのか多少問題も含んでいるとのことです。一つの案として、<a href="https://github.com/aldeed/meteor-simple-schema" target="_blank" rel="external">SimpleSchema</a>を直接使う案が提示されており、考慮の価値があるかもしれません。また、<a href="https://atmospherejs.com/templates/forms" target="_blank" rel="external">https://atmospherejs.com/templates/forms</a>も紹介されています。</p>
+<h2 id="感想">感想</h2><p>Meteorの精神ではコード量は少なくアプリを開発できるとよいと思うので、その意味でこのパッケージは使い出がありそうです。アプリをある程度開発してから導入するのは手間がかかるので、初めから使う方がよいと思います。AutoFormの流儀に乗っ取れば大幅にコード量を削減できるでしょう。</p>
+<p>カスタマイズ性が高いことは大変すばらしく再利用性も上がりそうですが、一方でカスタマイズを増やすと、コードとしてはかえって分かりにくくなるかもしれません。コード量が変わらないのであれば、Blaze標準機能だけで実装した方がブラックボックスがない分理解しやすい可能性があります。このあたりはトレードオフになりそうです。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-autoform/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[MeteorとPostgreSQLの連携プレビュー]]></title>
@@ -823,49 +890,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <h2 id="感想">感想</h2><p>夏ってもうすぐなわけで動きについていくのが大変ですが、引続きウオッチしましょう。AngularとReactもいいですが、あまり振り回されないようにしたいところですね。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/meteor-12-coming/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[初めてのMeteor Spacebarsでテンプレート]]></title>
-      <link>http://meteor-fan.axlight.com/first-spacebars-template/</link>
-      <guid>http://meteor-fan.axlight.com/first-spacebars-template/</guid>
-      <pubDate>Sun, 26 Jul 2015 14:18:00 GMT</pubDate>
-      <description>
-      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/templates">公式チュートリアル2</a>の内容に沿って説明するものです。</p>
-<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
-<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
-<li>初めてのMeteor Spacebarsでテンプレート (←今ここ)</li>
-</ol>
-<p>まだ序盤です。</p>
-<h2 id="テンプレート機能">テンプレート機能</h2><p>初めにsample-app.htmlの中身を次のようにしましょう。<br>既に書いてあるHTMLは消して、すべて置き換えて構いません。<br>]]>
-      
-      </description>
-      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/templates" target="_blank" rel="external">公式チュートリアル2</a>の内容に沿って説明するものです。</p>
-<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
-<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
-<li>初めてのMeteor Spacebarsでテンプレート (←今ここ)</li>
-</ol>
-<p>まだ序盤です。</p>
-<h2 id="テンプレート機能">テンプレート機能</h2><p>初めにsample-app.htmlの中身を次のようにしましょう。<br>既に書いてあるHTMLは消して、すべて置き換えて構いません。<br><a id="more"></a></p>
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">title</span>&gt;</span>Todo List<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">header</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Todo List<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">header</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">      </span><span class="expression">&#123;&#123;<span class="begin-block">#<span class="keyword">each</span> tasks</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">        </span><span class="expression">&#123;&#123;&gt; <span class="variable">task</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">      </span><span class="expression">&#123;&#123;<span class="end-block">/<span class="keyword">each</span></span>&#125;&#125;</span><span class="xml"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"task"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">text</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/meteor/simple-todos/blob/be5979a8eae5766f74314e57f41037f4977d1372/simple-todos.html" target="_blank" rel="external">こちら</a>を参照しても同じものが見えます。</p>
-<p>ここでの一つ目のポイントは最後の<code>&lt;template&gt;</code>です。このようにHTMLの一部分をテンプレートとして<code>&lt;body&gt;</code>の外に定義することができます。テンプレートを呼び出す際は、<code>&#x7b;{&gt; task}}</code>のようにします。</p>
-<p>次に、<code>&#x7b;{&#x23;each}}</code>です。これは、<code>tasks</code>という配列について繰り返すという処理です。<code>tasks</code>の一つひとつをテンプレート展開することになります。テンプレートには<code>&#x7b;{text}}</code>と記述されており、これが <code>tasks</code>の一つに設定されている(はずの)プロパティを表示することになります。</p>
-<h2 id="tasksの定義">tasksの定義</h2><p>今度は、sample-app.jsを次のように置き換えてください。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Meteor.isClient) &#123;</span><br><span class="line">  <span class="comment">// This code only runs on the client</span></span><br><span class="line">  Template.body.helpers(&#123;</span><br><span class="line"><span class="label">    tasks:</span> [</span><br><span class="line">      &#123; <span class="string">text:</span> <span class="string">"This is task 1"</span> &#125;,</span><br><span class="line">      &#123; <span class="string">text:</span> <span class="string">"This is task 2"</span> &#125;,</span><br><span class="line">      &#123; <span class="string">text:</span> <span class="string">"This is task 3"</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/meteor/simple-todos/blob/eda253878e20ba2577f28fe6fd7c3ce5090aec18/simple-todos.js" target="_blank" rel="external">こちら</a>に同じものがあります。</p>
-<p>これにより<code>&lt;body&gt;</code>で<code>tasks</code>が定義されます。<code>tasks</code>は3つのオブジェクトを含む配列で、それぞれのオブジェクトには<code>text</code>プロパティが設定されています。</p>
-<p>さて、これまでに編集した2つのファイルを保存して、ブラウザを見ると、ホットコードプッシュが効いて画面が更新されているはずです。3つのタスクが表示されていれば成功です。</p>
-<p>細かい定義は今後学んでいくとしても、とりあえずは全体像を把握して、なぜこのような結果になるのか分かるようにしておきましょう。</p>
-<h2 id="Spacebarsの概略">Spacebarsの概略</h2><p>今回、<code>&lt;template&gt;</code>や<code>&#x7b;{&#x23;each}}</code>などの機能を実現しているのがSpacebarsです。これは<a href="http://handlebarsjs.com/" target="_blank" rel="external">Handlebars</a>をもとにしています。</p>
-<p><code>&#x7b;{&#x23;each}}</code>の他にも<code>&#x7b;{&#x23;if}}</code>などが使えます。詳しくは、<a href="https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md" target="_blank" rel="external">こちら</a>のドキュメント(英語)を参照するとよいでしょう。</p>
-<h2 id="cssの準備">cssの準備</h2><p>現状でも機能は問題なく動きますが、より見栄えをよくしてチュートリアルを楽しむために、cssファイルを設置しておきましょう。下記の内容でsample-app.cssの内容を置き換えてください。</p>
-<p>長いので直接<a href="https://github.com/meteor/simple-todos/blob/e15faa0c628c7756e51d2470432f9aa548729739/simple-todos.css" target="_blank" rel="external">こちら</a>を参照するか、<a href="https://github.com/meteor/simple-todos/raw/e15faa0c628c7756e51d2470432f9aa548729739/simple-todos.css" target="_blank" rel="external">ダウンロード</a>しましょう。</p>
-<p>cssに慣れていない人は現時点では詳しく読む必要はありません。</p>
-<p>修正が終わってファイルを保存したら、ブラウザを見てみましょう。ホットコードプッシュされていれば、なにもしなくてもcssが適用されて、画面がきれいになっていると思います。</p>
-<h2 id="次のステップ">次のステップ</h2><p>今回は<code>tasks</code>の中身はダミーデータでしたが、これをちゃんとデータベースと連携するようにすることが次のステップです。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/first-spacebars-template/#disqus_comments</comments>
     </item>
     
   </channel>

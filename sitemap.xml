@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/meteor-autoform/</loc>
+    <lastmod>2015-08-23T14:51:30.806Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/meteor-postgres-preview/</loc>
     <lastmod>2015-08-22T03:46:10.405Z</lastmod>
   </url>
