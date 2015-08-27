@@ -8,8 +8,38 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sun, 23 Aug 2015 14:51:30 GMT</pubDate>
+    <pubDate>Thu, 27 Aug 2015 13:31:30 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[MeteorをHerokuにデプロイする方法]]></title>
+      <link>http://meteor-fan.axlight.com/deploy-meteor-on-heroku/</link>
+      <guid>http://meteor-fan.axlight.com/deploy-meteor-on-heroku/</guid>
+      <pubDate>Thu, 27 Aug 2015 12:35:36 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorアプリは、meteor.comにデプロイする場合はコマンド一つなので楽ですが、その他にデプロイしようとすると意外と大変です。Meteorを普通のnode.jsアプリに変換するツールとして<a href="https://github.com/onmodulus/]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorアプリは、meteor.comにデプロイする場合はコマンド一つなので楽ですが、その他にデプロイしようとすると意外と大変です。Meteorを普通のnode.jsアプリに変換するツールとして<a href="https://github.com/onmodulus/demeteorizer" target="_blank" rel="external">demeteorizer</a>や<a href="https://github.com/arunoda/meteor-up" target="_blank" rel="external">meteor-up</a>がありますが、今回はHerokuに限定した方法を紹介します。</p>
+<h2 id="Heroku_custom_buildpack">Heroku custom buildpack</h2><p><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a>には<a href="https://devcenter.heroku.com/articles/buildpacks" target="_blank" rel="external">buildpack</a>というgit pushしたデータをコンパイルなどして環境を作る仕組みがあります。RubyやNode.jsなど標準的なものはDefault buildpacksとして提供されているのですが、APIが公開されていて第三者が作る<a href="https://devcenter.heroku.com/articles/third-party-buildpacks" target="_blank" rel="external">Third-Party Buildpacks</a>というものがあります。</p>
+<h2 id="Meteor_Buildpack_Horse">Meteor Buildpack Horse</h2><p><a href="https://github.com/AdmitHub/meteor-buildpack-horse" target="_blank" rel="external">Meteor Buildpack Horse</a>はHerokuのMeteor用buildpackです。類似buildpackが乱立していたようですが、今のところこれがメンテされているようです。</p>
+<p>これを使うと拍子抜けするくらい簡単です。使い方を見てみましょう。</p>
+<h2 id="使い方">使い方</h2><p>HerokuでMeteor以外のNode.jsアプリをデプロイしたことがある前提で説明します。</p>
+<p>初めにHerokuでアプリを作成します。Webインタフェースでもできますが、CLIでは下記のようにすると思います。</p>
+<pre><code>heroku <span class="built_in">create</span> myapp
+</code></pre><p>Meteor Buildpack Horseを設定します。(アプリのowner権限が必要)</p>
+<pre><code>heroku <span class="string">buildpacks:</span>set <span class="string">https:</span><span class="comment">//github.com/AdmitHub/meteor-buildpack-horse.git</span>
+</code></pre><p>MeteorはMongoDBを使うので、そのためのアドオンを追加します。Webインタフェースでもできます。</p>
+<pre><code><span class="label">heroku</span> <span class="keyword">addons:create </span>mongolab
+</code></pre><p>最後に一つだけ設定しなければいけない環境変数があります。</p>
+<pre><code>heroku <span class="string">config:</span>set ROOT_URL=<span class="string">https:</span><span class="comment">//myapp.herokuapp.com</span>
+</code></pre><p>URLの中身は適切に変えましょう。これもWebインタフェースから設定できます。</p>
+<p>さて、以上で設定は終わりであとは通常と同じくgit pushすればよいだけです。</p>
+<pre><code><span class="label">git</span> <span class="keyword">push </span>heroku master
+</code></pre><p>リモートリポジトリherokuの設定が正しくされている前提です。</p>
+<h2 id="感想">感想</h2><p>一度設定してしまえば、あとは普通のnode.jsアプリと何ら変わらないのでとても自然です。buildpacksすばらしい。ただ、Meteorの仕様が変わってうまく動かなくなる可能性はあるので注意は必要です。頻繁に最新情報をチェックするのがよいでしょう。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/deploy-meteor-on-heroku/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[フォームを簡単に生成するMeteorパッケージ「AutoForm」]]></title>
@@ -861,35 +891,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <h2 id="次のステップ">次のステップ</h2><p>今回はmongoシェルでデータを入力しましたが、次のステップではアプリのUIから新しいデータを入力するやり方を見ていきましょう。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-meteor-mongo/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[2015年夏に登場予定のMeteor v1.2]]></title>
-      <link>http://meteor-fan.axlight.com/meteor-12-coming/</link>
-      <guid>http://meteor-fan.axlight.com/meteor-12-coming/</guid>
-      <pubDate>Thu, 30 Jul 2015 14:52:11 GMT</pubDate>
-      <description>
-      <![CDATA[<p><a href="http://info.meteor.com/blog/whats-coming-in-meteor-12-and-beyond" target="_blank" rel="external">Meteorの公式ブログ</a>で、次のバージョンであるv1.]]>
-      </description>
-      <content:encoded><![CDATA[<p><a href="http://info.meteor.com/blog/whats-coming-in-meteor-12-and-beyond" target="_blank" rel="external">Meteorの公式ブログ</a>で、次のバージョンであるv1.2が言及されているので紹介します。</p>
-<h2 id="ECMAScript_2015_(ES6)の採用">ECMAScript 2015 (ES6)の採用</h2><p>ES2015に対応するそうです。Babelを使うとのことなのでネイティブではありませんが、それは今後変えていく算段なのでしょう。個人的にはES2015への移行は緩やかなものになるかと想像していましたが、Meteor v1.2が標準でES2015に対応して推奨するとなるとちょっと状況が異なるかもしれません。比較的移行しやすいような気がします。単一フレームワークの強みです。</p>
-<p>ES2015に移行したらチュートリアルなども全部更新されるのでしょうか。もちろんそうあるべきですが、コンテンツを追従する方は大変ですね。</p>
-<h2 id="AngularとReactの正式サポート">AngularとReactの正式サポート</h2><p>Angularは既にチュートリアルもできていますし、公認です。Reactはまだ非公式ですが、今後公式にするようです。結果、BlazeとAngularとReactが対等になるとのことです。</p>
-<p>ちなみに、<a href="https://medium.com/space-camp/your-meteor-app-probably-doesnt-need-angular-13986a0323f6" target="_blank" rel="external">MeteorアプリにAngularはいらないんじゃないか</a>という意見もあります。AngularやReactのコミュニティパワーをMeteorに持ってくるという点では意味があるけども、機能的にBlazeで遜色ないということです。チュートリアルはやはりBlazeから始めた方がよいのではないでしょうか。チュートリアルだけでなく、特段の理由がなければBlazeで満足しておくのもありかと思います。</p>
-<h2 id="迅速で柔軟なビルドパイプライン">迅速で柔軟なビルドパイプライン</h2><p>Meteorは開発体験を大事にしていて、開発者にストレスのかからないように配慮しています。ビルドツールはその点においても重要です。大規模になっても遅くならないようにして、プラグインも開発しやすいようにするようです。新しい便利なプラグインが開発されれば、より快適な体験ができると期待されます。</p>
-<h2 id="リリース時期">リリース時期</h2><p>2015年夏後半を予定しているとのこと。</p>
-<h2 id="1-2より先の話">1.2より先の話</h2><p>あまり確定した話でもなさそうなので、キーワードだけリストアップしておきます。</p>
-<ul>
-<li>SQLサポート</li>
-<li>RESTサポート</li>
-<li>大規模アプリのためのスタック</li>
-<li>ES2015モジュールに置き換え</li>
-<li>テストの改善</li>
-<li>先進的モバイル対応</li>
-</ul>
-<h2 id="感想">感想</h2><p>夏ってもうすぐなわけで動きについていくのが大変ですが、引続きウオッチしましょう。AngularとReactもいいですが、あまり振り回されないようにしたいところですね。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/meteor-12-coming/#disqus_comments</comments>
     </item>
     
   </channel>
