@@ -8,8 +8,67 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Thu, 03 Sep 2015 12:17:33 GMT</pubDate>
+    <pubDate>Sat, 05 Sep 2015 13:56:29 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Kadira DebugでMeteorアプリのデバッグ]]></title>
+      <link>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</link>
+      <guid>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</guid>
+      <pubDate>Sat, 05 Sep 2015 08:52:29 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteorアプリのパフォーマンス向上を支援する<a href="https://kadira.io" target="_blank" rel="external">Kadira Platform</a>というサービスがあります。</p>
+<p>Kadira Platfor]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteorアプリのパフォーマンス向上を支援する<a href="https://kadira.io" target="_blank" rel="external">Kadira Platform</a>というサービスがあります。</p>
+<p>Kadira Platformは下図のように複数のツールから構成されています。</p>
+<p><img src="https://cldup.com/yKMbqySHor.png" alt="Kadira Platform"></p>
+<p>この中のKadira Debugというツールを紹介します。</p>
+<h2 id="Kadira_Debug">Kadira Debug</h2><p><a href="https://kadira.io/platform/kadira-debug/overview" target="_blank" rel="external">Kadira Debug</a>はKadira Platformの中で開発段階で使うツールです。メインのツールはプロダクション段階で使うもののようです。Kadira Platformは基本的にサインアップして使うツールなのですが、Kadira Debugはサインアップ不要で使えるので手軽です。</p>
+<p>現時点では無料で使えるようですが、完全にオープンソースというわけではありません。Meteorアプリに組み込むパッケージはMITライセンスですが、UIのコードはオープンソースではありません。</p>
+<h2 id="インストール方法">インストール方法</h2><p>Meteorアプリに組み込むパッケージのインストールは次のようにします。</p>
+<pre><code><span class="title">meteor</span> add kadira:<span class="built_in">debug</span>
+</code></pre><p>このパッケージはdebugOnlyであるためプロダクション段階では組み込まれません。</p>
+<h2 id="起動方法">起動方法</h2><p>Meteorアプリをいつも通り起動したら、</p>
+<p><a href="http://debug.kadiraio.com/debug" target="_blank" rel="external">http://debug.kadiraio.com/debug</a></p>
+<p>にアクセスします。</p>
+<p><img src="https://farm6.staticflickr.com/5787/20540732563_74018de70c_h.jpg" alt="screenshot"></p>
+<p>このような画面が出たら、テキストフィールドにアプリのURLを入力します。例えば、</p>
+<pre><code><span class="string">http:</span><span class="comment">//localhost:3000/</span>
+</code></pre><p>がよくあるケースでしょう。その後Connectボタンを押すと起動完了です。</p>
+<h2 id="機能説明">機能説明</h2><h3 id="Event_Stream">Event Stream</h3><p>“Event Stream”はMeteorアプリ内で起こっているイベントを表示する機能です。イベントには、ルート変更、メソッド呼び出し、Subscription、データ更新、DOMイベントなどがあります。これらをフィルタで見たいものだけに制限することができます。</p>
+<ul>
+<li>Route: アプリ内でのルートの変更</li>
+<li>Sub: アプリ内でのSubscriptionの実行</li>
+<li>Rready: サーバがSubscriptionを受け付けた時</li>
+<li>Unsub: Subscriptionの解除要求</li>
+<li>Nosub: Subscriptionが停止した時</li>
+<li>Method: アプリ内でMethod呼び出しの実行</li>
+<li>Updated: サーバがUpdatedメッセージを送った時 <a href="https://meteorhacks.com/introduction-to-latency-compensation" target="_blank" rel="external">参照</a></li>
+<li>Live Updates: サーバから来たデータ更新</li>
+<li>HCR: ホットコードリロードが起こった時</li>
+</ul>
+<h3 id="Blaze_Monitoring">Blaze Monitoring</h3><p>“Client Activities”にはBlazeで実行された処理と時間が表示されます。</p>
+<p>下記のようなBlazeの処理を見ることができます。</p>
+<ul>
+<li>テンプレートを作成したり削除したりする時間</li>
+<li>DOMエレメントを作成したり削除したりする時間</li>
+<li>ヘルパー実行、autorun、描画コールバックにかかる時間</li>
+</ul>
+<p>これによりどのテンプレートが作成と削除が頻繁に発生しているかが分かり、それをもとに改善することができます。</p>
+<h3 id="CPU_Monitoring">CPU Monitoring</h3><p>These days, the client side part of a web app does a lot of things. Sometimes, it may become slow for a number of reasons. It may be something to do with your code, or something related to a third party library or package. In those situations, your app might became slow or freeze completely.</p>
+<p>That’s where Kadira Debug can help you to detect what’s going on. In the Client Activities section, it shows the Eventloop Blockness as a percentage. So, when you see a spike there, you can find out what activities and events happened at the same time.</p>
+<p>That will help you to figure out the root cause very quickly and plan your fix.</p>
+<p>The Eventloop Blockness percentage is shown in the Client Activities Chart.</p>
+<p>Eventloop Blockness on Kadira Debug<br>A Note about Eventloop Blockness</p>
+<p>It’s impossible to track the CPU usage of the browser from the web app itself. So, Kadira Debug can’t track it directly. Browsers execute JavaScript in an eventloop. All your code runs in cycles of this eventloop. A lot of CPU activities can block this loop. By measuring the blockness, we can track the CPU usage near perfectly.</p>
+<p>The value of eventloop time is calculated as a percentage. Let’s say our eventloop blockness value is 40%. That means that 40% of the time your app is busy doing things or other processes on the system are blocking it.</p>
+<h3 id="CPU_Profiling">CPU Profiling</h3><p>Analyze the CPU Usage of Your App with CPU Profiling</p>
+<p>CPU Profiling helps to find out exactly what’s happening in the CPU and track bottlenecks. With this feature, you can find out which part of the code is responsible for the bottleneck.</p>
+<p>Kadira Debug comes with a built-in CPU analyzer based on the popular flamegraphs concept. After you’ve taken a CPU profile, you can analyze it with Kadira Debug CPU Analyzer.</p>
+<h2 id="まとめ">まとめ</h2>]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/kadira-debug-for-meteor/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[UCBでのMeteorの講義]]></title>
@@ -467,7 +526,7 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <h2 id="accounts-passwordパッケージを追加する">accounts-passwordパッケージを追加する</h2><p>まずパッケージを追加しましょう。meteorは起動したままで大丈夫です。</p>
 <pre><code><span class="label">meteor</span> <span class="keyword">add </span>accounts-ui accounts-password
 </code></pre><p>を実行してください。これで関係する依存パッケージも自動で追加されます。</p>
-<h2 id="ログインボタンを配置する">ログインボタンを配置する</h2><p>次にログインボタンを表示するためのコードを追加します。sample-app.jsの<code>&lt;form class=&quot;new-task&quot;&gt;</code>のすぐ上に下記のコードを追加してください。</p>
+<h2 id="ログインボタンを配置する">ログインボタンを配置する</h2><p>次にログインボタンを表示するためのコードを追加します。sample-app.htmlの<code>&lt;form class=&quot;new-task&quot;&gt;</code>のすぐ上に下記のコードを追加してください。</p>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123;<span class="collection">&#123;&gt; loginButtons&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure>
 <p>これだけでログインボタン(リンク)が表示されるはずです。ブラウザで確認しましょう。</p>
 <p>デフォルトではログインのアカウント作成時に電子メールアドレスとパスワードの入力を求めます。テスト時は電子メールアドレスでなくても問題ないので、次のコードをsample-app.jsの<code>if (Meteor.isClient) {}</code>ブロック内の最後に追加してください。</p>
@@ -792,110 +851,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <h2 id="次のステップ">次のステップ</h2><p>今回はフォームとイベント処理を追加してUIからデータを入力することができました。次のステップではデータの修正と削除の方法を学びます。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-meteor-forms/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[30分以内でMeteorを紹介する公式ビデオ]]></title>
-      <link>http://meteor-fan.axlight.com/30min-meteor-intro-video/</link>
-      <guid>http://meteor-fan.axlight.com/30min-meteor-intro-video/</guid>
-      <pubDate>Sat, 01 Aug 2015 13:27:04 GMT</pubDate>
-      <description>
-      <![CDATA[<p>Meteorを紹介するビデオが公開されたので紹介します。</p>
-<p>20分以上ある長いビデオですが、最新情報やデモも含まれていて参考になります。Rev-1.0となっているので今後も更新されるかもしれません。</p>
-<iframe width="560" height=]]>
-      </description>
-      <content:encoded><![CDATA[<p>Meteorを紹介するビデオが公開されたので紹介します。</p>
-<p>20分以上ある長いビデオですが、最新情報やデモも含まれていて参考になります。Rev-1.0となっているので今後も更新されるかもしれません。</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dOCMpoeuwTI" frameborder="0" allowfullscreen></iframe>
-
-<p>導入部だけ翻訳しましたのでご参考にどうぞ。</p>
-<h2 id="Meteor_(タイトル)">Meteor (タイトル)</h2><p>I’m Robert Dickert and I’m here to talk to you about Meteor.</p>
-<p>私はロバート・ディカートです。今日はミーティアについてお話しします。</p>
-<h2 id="What_we’ll_cover_(話す内容)">What we’ll cover (話す内容)</h2><p>Today, we’re going to do a broad overview of Meteor.</p>
-<p>今日は、ミーティアの全体像を概観します。</p>
-<p>We talk about what it is, while you might want to consider it,<br>and we’ll do a code demo.</p>
-<p>ミーティアがどういうものであり、なぜ気にする必要があるのかをお話し、コードデモを行います。</p>
-<p>And talk about who’s using it, who’s behind it, and what’s next. so let’s get started.</p>
-<p>その後、誰がミーティアを使っているか、誰がミーティアを作っているか、これからどうなるのかをお話しします。さあ、始めましょう。</p>
-<h2 id="What_is_Meteor?_(ミーティアとは何か)">What is Meteor? (ミーティアとは何か)</h2><p>So what is Meteor?</p>
-<p>さて、ミーティアとは何でしょうか。</p>
-<p>Meteor is a full stack open source platform for building web and mobile apps in JavaScript.</p>
-<p>ミーティアはフルスタックでオープンソースのプラットフォームであり、JavaScriptでWebアプリやモバイルアプリを作るためのものです。</p>
-<p>With Meteor, you can write your whole code in pure JavaScript, front-end and back-end. </p>
-<p>ミーティアではすべてのコードをJavaScriptのみで書くことができます。フロントエンドもバックエンドもです。</p>
-<p>From the single JavaScript code base you could target iOS, Android and the web.</p>
-<p>一つのJavaScriptコードからiOS向け、アンドロイド向け、Web向けに展開可能です。</p>
-<p>Meteor is made of packages, and it’s MIT licensed, so it’s very open an extensible.</p>
-<p>ミーティアは複数のパッケージで構成され、MITライセンスで公開されています。よって、とてもオープンで拡張性があります。</p>
-<p>And because it was designed to link, you get started in productive very quickly.</p>
-<p>また、とてもうまく設計されているため、すぐに生産性が上がります。</p>
-<p>For example, the app pictured on the right is a demo that implements a collaborative mobile app in less than a thousand lines of JavaScript.</p>
-<p>例えば、右上の画像(ビデオ中の)アプリは共同作業のモバイルアプリのデモですが、1000行未満のJavaScriptコードで書かれています。</p>
-<p>In short, the goal of Meteor is to allow you to build advanced apps quickly with a small team allowing even individuals to achieve things that used to be possible only a large companies like Google and Facebook.</p>
-<p>一言で言うと、ミーティアのゴールは小さいチームですばやく先進的なアプリを開発できるようにすることです。さらには、これまでGoogleやFacebookなどの大きな会社だけができていたようなことを個人でもできるようにすることです。</p>
-<p>so how does Meteor do this?</p>
-<p>さて、ミーティアはどのようにこれを実現するのでしょうか。</p>
-<p>Let’s step through Meteor’s components.</p>
-<p>ミーティアの要素を見ていきましょう。</p>
-<p>It has a command-line tool which allows you to create, edit and deploy apps.</p>
-<p>アプリを作成、編集、公開することができるコマンドラインツールがあります。</p>
-<p>It has a view layer which by default as Meteor’s Blaze package, but you can use any framework you want such as Angular React, and Famous.</p>
-<p>標準のBlazeというビュー層があります。これは、お好みで、AngularやReactやFamousなどの他のフレームワークを使うこともできます。</p>
-<p>Livequery takes a production database like MongoDB and transforms it into a real time database.</p>
-<p>ライブクエリはMongoDBのような既存のデータベースをリアルタイムデータベースに変換します。</p>
-<p>You can think of it like an open source version firebase.</p>
-<p>Firebaseのオープンソース版と考えてもらえればよいでしょう。</p>
-<p>Meteor has a full stack package system that coordinates server, client and mobile code bases and is hosted on atmospherejs.com.</p>
-<p>ミーティアにはフルスタックのパッケージシステムがあります。サーバコード、クライアントコード、モバイルコードがそろっていて、atmospherejs.comにまとめられています。</p>
-<p>And it has a built system that includes not just client and browser but also mobile.</p>
-<p>最後に、ミーティアにはビルドシステムがあり、クライアントやブラウザだけでなくモバイルも対象にしています。</p>
-<h2 id="“Why_Meteor?”_(なぜミーティアか)">“Why Meteor?” (なぜミーティアか)</h2><p>Everyone here probably has a framework<br>that they’re already comfortable with.</p>
-<p>みなさんは既にご自分が気に入ったフレームワークを使っていることと思います。</p>
-<p>So why would you want to consider trying Meteor.</p>
-<p>そこでなぜ新しいミーティアを検討する必要があるでしょうか。</p>
-<p>To begin with, table stakes for app functionality have changed a lot over the last five to ten years.</p>
-<p>まず、ここ5年から10年でアプリの機能に必要となるコストが大きく変わったことがあげられます。</p>
-<p>We went from a place where all users came to sites on desktop browsers to the majority now arrives on mobile.</p>
-<p>以前は、ユーザがデスクトップのブラウザでサイトにいるだけでしたが、今では大多数はモバイルです。</p>
-<p>We went from where we didn’t mind hitting the refresh button to get updates to where we expect to be notified live.</p>
-<p>また、以前はページを更新するのにリロードボタンを押すことは普通でしたが、今では瞬時に通知されることを期待します。</p>
-<p>We went for being a group individuals consuming content to being a collaborative team that can create and change that content together.</p>
-<p>以前は一人ひとりの個人がコンテンツを消費するだけでしたが、今ではチームが一つのコンテンツを共同で作成し修正します。</p>
-<p>And we went from support web links and forms to where we expect our web app to have a UI that’s as good as native apps.</p>
-<p>以前はリンクとフォームのUIでしたが、今ではネイティブアプリと同じようによいUIを持ったアプリが求められます。</p>
-<p>This started with apps like Twitter which notifies you with the scrolling alert<br>when there are new tweets in the conversation.</p>
-<p>これはツイッターのようなアプリが新しい更新があるときに通知することから始まりました。</p>
-<p>This is pretty easy to do and most frameworks by pulling the server and it’s okay if the notification comes in a few seconds after new tweets come in.</p>
-<p>これ自体はほとんどのフレームワークで簡単に実現でき、サーバから定期的に取得するだけです。これは更新から通知が数秒かかってよい場合は問題ありません。</p>
-<p>But things have become more complicated.</p>
-<p>しかし状況はもう少し複雑になってきました。</p>
-<p>This is Trello.</p>
-<p>これ(ビデオ中の)はTrelloです。</p>
-<p>We have two users one on top and one on bottom.</p>
-<p>2人のユーザが上下に分かれています。</p>
-<p>When the top user adds some text and hits enter the other user immediately<br>sees the text appear as a card.</p>
-<p>上のユーザがテキストを入力してエンターキーを置すと、下のユーザは瞬時にそのテキストをカードとして見ることができます。</p>
-<p>Then, the first user can drag my card and the user at the bottom can see it move.</p>
-<p>そして上のユーザがカードをドラッグすると、下のユーザは動いているのみ見ることができます。</p>
-<p>This is a more sophisticated UI.</p>
-<p>これはだいぶ洗練されたUIです。</p>
-<p>Also those people may be talking live on<br>the phone or maybe on a hangout.</p>
-<p>この2人のユーザは電話かハングアウトで会話中かもしれません。</p>
-<p>So it’s important that the changes be reflected immediately.</p>
-<p>つまり変更が瞬時に反映されることは重要なのです。</p>
-<p>There’s a lot going on here and managing it can get really complex.</p>
-<p>これは内部では複雑なことをしていて管理するのは大変です。</p>
-<p>The Trello’s own words. “We’ve bred all over it”.</p>
-<p>Trelloの言葉としてこれがあります。「私たちはこれを完全に作り上げた」</p>
-<p>The problem is that we started with support frameworks that<br>were designed for the way the web used to be.</p>
-<p>問題は、我々が旧来のwebを想定して設計されたフレームワークにこれらの機能を追加し始めたことです。</p>
-<p>And we’re adding more and more tools to them, spending much more time integrating them.</p>
-<p>そして旧来のフレームワークに次々と機能を追加し、それに多大な時間をかけていることです。</p>
-<p>This is why Meteor was created to bring together collection well integrated tools allowing you to build highly interactive apps with much less code.</p>
-<p>これがミーティアが開発された理由です。インタラクティブなアプリを少ないコードで開発するためのツールを統合したフレームワーク、それがミーティアです。</p>
-<p>(ビデオは、デモ紹介へと続きます)</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/30min-meteor-intro-video/#disqus_comments</comments>
     </item>
     
   </channel>

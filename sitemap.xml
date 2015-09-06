@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
+    <lastmod>2015-09-06T06:34:07.076Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</loc>
+    <lastmod>2015-09-05T13:56:29.879Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/meteor-lecture-at-ucb/</loc>
     <lastmod>2015-09-03T12:17:33.958Z</lastmod>
   </url>
@@ -44,11 +54,6 @@
   <url>
     <loc>http://meteor-fan.axlight.com/first-data-filtering-in-meteor/</loc>
     <lastmod>2015-08-14T12:28:53.563Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
-    <lastmod>2015-08-14T00:49:36.402Z</lastmod>
   </url>
   
   <url>
