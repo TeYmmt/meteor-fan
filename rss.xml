@@ -8,7 +8,7 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Sat, 05 Sep 2015 13:56:29 GMT</pubDate>
+    <pubDate>Mon, 07 Sep 2015 11:40:04 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -56,17 +56,19 @@
 <li>ヘルパー実行、autorun、描画コールバックにかかる時間</li>
 </ul>
 <p>これによりどのテンプレートが作成と削除が頻繁に発生しているかが分かり、それをもとに改善することができます。</p>
-<h3 id="CPU_Monitoring">CPU Monitoring</h3><p>These days, the client side part of a web app does a lot of things. Sometimes, it may become slow for a number of reasons. It may be something to do with your code, or something related to a third party library or package. In those situations, your app might became slow or freeze completely.</p>
-<p>That’s where Kadira Debug can help you to detect what’s going on. In the Client Activities section, it shows the Eventloop Blockness as a percentage. So, when you see a spike there, you can find out what activities and events happened at the same time.</p>
-<p>That will help you to figure out the root cause very quickly and plan your fix.</p>
-<p>The Eventloop Blockness percentage is shown in the Client Activities Chart.</p>
-<p>Eventloop Blockness on Kadira Debug<br>A Note about Eventloop Blockness</p>
-<p>It’s impossible to track the CPU usage of the browser from the web app itself. So, Kadira Debug can’t track it directly. Browsers execute JavaScript in an eventloop. All your code runs in cycles of this eventloop. A lot of CPU activities can block this loop. By measuring the blockness, we can track the CPU usage near perfectly.</p>
-<p>The value of eventloop time is calculated as a percentage. Let’s say our eventloop blockness value is 40%. That means that 40% of the time your app is busy doing things or other processes on the system are blocking it.</p>
-<h3 id="CPU_Profiling">CPU Profiling</h3><p>Analyze the CPU Usage of Your App with CPU Profiling</p>
-<p>CPU Profiling helps to find out exactly what’s happening in the CPU and track bottlenecks. With this feature, you can find out which part of the code is responsible for the bottleneck.</p>
-<p>Kadira Debug comes with a built-in CPU analyzer based on the popular flamegraphs concept. After you’ve taken a CPU profile, you can analyze it with Kadira Debug CPU Analyzer.</p>
-<h2 id="まとめ">まとめ</h2>]]></content:encoded>
+<h3 id="CPU_Monitoring">CPU Monitoring</h3><p>クライアントコードの負荷を知ることも重要です。”Client Activities”にはイベントループのブロック度合(%)が表示されます。もし急激な増加を見つけたら、その際にどのような動作やイベントがあったか調べることができるでしょう。根本的な原因を探るのに役立つはずです。</p>
+<p>実はCPU利用率は直接は計測できませんが、ブロック度合を観測することでそれなりに追跡することができます。仮にeventloop blocknessが40%だとすると40%の時間は何からの理由でアプリが忙しいという意味です。その理由には他のプロセスの動作も含まれます。</p>
+<h3 id="CPU_Profiling">CPU Profiling</h3><p>CPUプロファイリングを使うと具体的にコードのどの部分がボトルネックかを知ることができます。CPUプロファイルを取得した後にKadiraのアナライザで読み込んで解析することができます。</p>
+<p>サーバサイドのCPUプロファイルを取得するには、下記のパッケージを利用します。</p>
+<pre><code><span class="label">meteorhacks:</span>kadira-profiler
+</code></pre><p>さらに、</p>
+<pre><code><span class="keyword">export</span> KADIRA_PROFILE_LOCALLY=<span class="number">1</span>
+</code></pre><p>の設定をして、アプリを起動し、ブラウザのコンソールから、</p>
+<pre><code>Kadira.<span class="function"><span class="title">profileCpu</span><span class="params">(<span class="number">10</span>)</span></span>
+</code></pre><p>を実行すると、10秒おきにプロファイルが保存されます。</p>
+<p>一方、クライアントサイドのCPUプロファイルを取得するには、Chromeのプロファイリングツールを使います。プロファイル取得後にSaveボタンで保存することでファイルに書き出します。</p>
+<h2 id="まとめ">まとめ</h2><p>以上がKadira Debugの簡単な説明です。どのようなことができるかは紹介したものの、これだけで導入はできないかもしれません。具体的な使い方は、<a href="https://kadira.io/platform/kadira-debug/overview" target="_blank" rel="external">Kadira Debugのページ</a>を参照してください。</p>
+]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/kadira-debug-for-meteor/#disqus_comments</comments>
     </item>
     
