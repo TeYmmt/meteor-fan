@@ -8,7 +8,7 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Mon, 07 Sep 2015 11:40:04 GMT</pubDate>
+    <pubDate>Mon, 07 Sep 2015 11:44:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -67,7 +67,7 @@
 <pre><code>Kadira.<span class="function"><span class="title">profileCpu</span><span class="params">(<span class="number">10</span>)</span></span>
 </code></pre><p>を実行すると、10秒おきにプロファイルが保存されます。</p>
 <p>一方、クライアントサイドのCPUプロファイルを取得するには、Chromeのプロファイリングツールを使います。プロファイル取得後にSaveボタンで保存することでファイルに書き出します。</p>
-<h2 id="まとめ">まとめ</h2><p>以上がKadira Debugの簡単な説明です。どのようなことができるかは紹介したものの、これだけで導入はできないかもしれません。具体的な使い方は、<a href="https://kadira.io/platform/kadira-debug/overview" target="_blank" rel="external">Kadira Debugのページ</a>を参照してください。</p>
+<h2 id="まとめ">まとめ</h2><p>以上がKadira Debugの簡単な説明です。残念ながら、細かい使い方には踏み込めていません。具体的な使い方は、<a href="https://kadira.io/platform/kadira-debug/overview" target="_blank" rel="external">Kadira Debugのページ</a>を参照してください。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/kadira-debug-for-meteor/#disqus_comments</comments>
     </item>
