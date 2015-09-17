@@ -24,7 +24,7 @@
     <meta property="og:description" content="本記事は公式チュートリアル11の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met" />
     <meta property="og:url" content="http://meteor-fan.axlight.com/first-data-filtering-in-meteor/" />
     <meta property="article:published_time" content="2015-08-14T03:49:56.000Z" />
-    <meta property="article:modified_time" content="2015-08-14T12:28:53.563Z" />
+    <meta property="article:modified_time" content="2015-09-17T12:43:34.879Z" />
     <meta property="article:tag" content="チュートリアル" />
     
     <meta name="twitter:card" content="summary" />
@@ -47,7 +47,7 @@
     "headline": "Meteorで初めてのデータフィルタリング制御 - Meteor Fan (日本語情報)",
     "url": "http://meteor-fan.axlight.com/first-data-filtering-in-meteor/",
     "datePublished": "2015-08-14T03:49:56.000Z",
-    "dateModified": "2015-08-14T12:28:53.563Z",
+    "dateModified": "2015-09-17T12:43:34.879Z",
     "keywords": "チュートリアル",
     "description": "本記事は公式チュートリアル11の内容に沿って説明するものです。 チュートリアルの目次 初めてのMeteorアプリ作成 初めてのMeteor Spacebarsでテンプレート 初めてのMeteor Mongoコレクション 初めてのフォームとイベント処理 Meteorで初めてのコレクション更新と削除 初めてのMeteorアプリのデプロイ Met"
 }
@@ -165,6 +165,10 @@
 <h3 id="最終的なコード">最終的なコード</h3><p>すべての修正を終えたファイルは、<a href="https://github.com/meteor/simple-todos/blob/d1a2cc5eefa0b830f5f952cb6a94a496d7bb13aa/simple-todos.html" target="_blank" rel="external">このHTMLファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/b5957208d50a064a4a22780c7ef76259691b2c7a/simple-todos.js" target="_blank" rel="external">このJavaScriptファイル</a>になっているはずです。コメントや空行の有無などの違いはあってもコードとしては同一になっているかを確認するとよいでしょう。</p>
 <h2 id="動作を確認する">動作を確認する</h2><p>複数のユーザを作成して、それぞれプライベートタスクを作成し、互いに他人のプライベートタスクを見ることができないことを確認しましょう。</p>
 <p>また仮にすべてのタスクをpublishするようにした場合でも、他人のプライベートタスクを完了したり削除したりできないことを確認しましょう。このとき、Optimistic UIにより一瞬変更が有効になったように見えて、すぐに戻されるという現象を確認できるかもしれません。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>deleteTaskメソッドが正しく例外処理すること</li>
+<li>setCheckedメソッドが正しく例外処理すること</li>
+</ul>
 <h2 id="まとめと今後の学習法">まとめと今後の学習法</h2><p>以上で、一連のチュートリアルをすべて終了しました。これでMeteorの基本的な仕組みを学習できました。</p>
 <p>Meteorには他にも例題が用意されています。</p>
 <pre><code>meteor <span class="built_in">create</span> <span class="comment">--example todos</span>

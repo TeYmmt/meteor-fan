@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/first-data-filtering-in-meteor/</loc>
+    <lastmod>2015-09-17T12:43:34.879Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-permission-control-in-meteor/</loc>
+    <lastmod>2015-09-17T12:39:13.818Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
+    <lastmod>2015-09-17T12:33:40.694Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-session-variables-in-meteor/</loc>
+    <lastmod>2015-09-17T12:29:56.074Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-collection-update-in-meteor/</loc>
+    <lastmod>2015-09-17T12:26:43.257Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-meteor-forms/</loc>
+    <lastmod>2015-09-17T12:24:17.929Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://meteor-fan.axlight.com/first-meteor-mongo/</loc>
+    <lastmod>2015-09-17T12:21:48.877Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/first-spacebars-template/</loc>
     <lastmod>2015-09-17T12:00:51.672Z</lastmod>
   </url>
@@ -14,11 +49,6 @@
   <url>
     <loc>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</loc>
     <lastmod>2015-09-07T11:44:37.874Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/</loc>
-    <lastmod>2015-09-06T06:46:47.576Z</lastmod>
   </url>
   
   <url>
@@ -62,23 +92,8 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/first-data-filtering-in-meteor/</loc>
-    <lastmod>2015-08-14T12:28:53.563Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-permission-control-in-meteor/</loc>
-    <lastmod>2015-08-13T14:46:26.611Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://meteor-fan.axlight.com/reset-accounts-facebook-config-in-meteor/</loc>
     <lastmod>2015-08-13T11:09:47.635Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-session-variables-in-meteor/</loc>
-    <lastmod>2015-08-13T02:46:58.604Z</lastmod>
   </url>
   
   <url>
@@ -112,23 +127,8 @@
   </url>
   
   <url>
-    <loc>http://meteor-fan.axlight.com/first-collection-update-in-meteor/</loc>
-    <lastmod>2015-08-03T14:29:03.126Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-meteor-mongo/</loc>
-    <lastmod>2015-08-03T13:33:52.225Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://meteor-fan.axlight.com/meteor-debug/</loc>
     <lastmod>2015-08-02T13:33:56.602Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-meteor-forms/</loc>
-    <lastmod>2015-08-02T01:10:29.490Z</lastmod>
   </url>
   
   <url>

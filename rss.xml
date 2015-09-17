@@ -367,6 +367,10 @@ label: <span class="string">'名'</span>
 <h3 id="最終的なコード">最終的なコード</h3><p>すべての修正を終えたファイルは、<a href="https://github.com/meteor/simple-todos/blob/d1a2cc5eefa0b830f5f952cb6a94a496d7bb13aa/simple-todos.html" target="_blank" rel="external">このHTMLファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/b5957208d50a064a4a22780c7ef76259691b2c7a/simple-todos.js" target="_blank" rel="external">このJavaScriptファイル</a>になっているはずです。コメントや空行の有無などの違いはあってもコードとしては同一になっているかを確認するとよいでしょう。</p>
 <h2 id="動作を確認する">動作を確認する</h2><p>複数のユーザを作成して、それぞれプライベートタスクを作成し、互いに他人のプライベートタスクを見ることができないことを確認しましょう。</p>
 <p>また仮にすべてのタスクをpublishするようにした場合でも、他人のプライベートタスクを完了したり削除したりできないことを確認しましょう。このとき、Optimistic UIにより一瞬変更が有効になったように見えて、すぐに戻されるという現象を確認できるかもしれません。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>deleteTaskメソッドが正しく例外処理すること</li>
+<li>setCheckedメソッドが正しく例外処理すること</li>
+</ul>
 <h2 id="まとめと今後の学習法">まとめと今後の学習法</h2><p>以上で、一連のチュートリアルをすべて終了しました。これでMeteorの基本的な仕組みを学習できました。</p>
 <p>Meteorには他にも例題が用意されています。</p>
 <pre><code>meteor <span class="built_in">create</span> <span class="comment">--example todos</span>
@@ -449,6 +453,12 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p>ログインしていない場合にタスクが追加できないことを確認するには、一旦、フォームをログインしていなくても表示するように変更を戻してから、試してみるとよいでしょう。具体的には、</p>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;&#123;<span class="begin-block">#<span class="keyword">if</span> currentUser</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">  ...</span><br><span class="line"></span><span class="expression">&#123;&#123;<span class="end-block">/<span class="keyword">if</span></span>&#125;&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
 <p>のifの開始と終了のそれぞれ1行を一時的に削除することで戻すことができます。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>addTaskメソッドが定義されていること</li>
+<li>addTaskメソッドが正しく例外処理すること</li>
+<li>deleteTaskメソッドが定義されていること</li>
+<li>setCheckedメソッドが定義されていること</li>
+</ul>
 <h2 id="まとめと次のステップ">まとめと次のステップ</h2><p>今回はパーミッションを完全オープンではなく独自に制御する方法を学びました。ここはMeteorの複雑な部分でもあり、すぐに全体を見通すことは難しいかもしれません。しかし、重要な部分でもあるため、時間をかけて理解する必要があるでしょう。</p>
 <p>次回は最後のデータの読み込み権限に関する改善について学びます。</p>
 <h2 id="おまけ">おまけ</h2><p>実は、Meteor.methods以外にもパーミッションを制御する方法があります。collection.allowとcollection.denyです。これらは、ある利用シーンにおいては、比較的手軽に制御することができます。しかし、現在(2015/8/13)の公式チュートリアルでは言及されていないので割愛しました。詳しくは、<a href="http://docs.meteor.com/#/full/allow" target="_blank" rel="external">ドキュメント</a>をご覧ください。</p>
@@ -556,6 +566,10 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p>に変更しましょう。</p>
 <p>今回の以上の修正で変更した後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/cd80f2966275060c64e4418c44cf13669386ce4d/simple-todos.js" target="_blank" rel="external">こちらのJavaScriptファイル</a>と<a href="https://github.com/meteor/simple-todos/blob/d7ad84ff5ae149e78621c85a1d2fd32959439f29/simple-todos.html" target="_blank" rel="external">こちらのHTMLファイル</a>と同じようになっているはずなので必要応じて確認してください。</p>
 <h2 id="動作確認">動作確認</h2><p>実際に想定通りに動くか確認しましょう。可能であれば複数のアカウントを作成してそれぞれでタスクを追加してみるとよいです。以前に追加したタスクにはusernameプロパティはないのでユーザ名は表示されないことに注意しましょう。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>ログインボタンが表示されていること</li>
+<li>ログインボタンが機能すること</li>
+</ul>
 <h2 id="まとめと次のステップ">まとめと次のステップ</h2><p>今回はパスワード認証のパッケージを用いましたが、OAuthなどの外の認証機構を用いることもできます。これらを使い込なすことでよりアプリ開発が楽になるでしょう。次回はデータの書き込み権限に関する改善について学びます。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-user-accounts-in-meteor/#disqus_comments</comments>
@@ -648,6 +662,12 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">incompleteCount: <span class="keyword">function</span> () &#123;</span><br><span class="line">  return Tasks.find(&#123;checked: &#123;<span class="variable">$ne</span>: true&#125;&#125;).count();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>変更後のファイルは<a href="https://github.com/meteor/simple-todos/blob/d7e04b692a361153918f4a88548dfdc1c0220367/simple-todos.js" target="_blank" rel="external">こちら</a>です。</p>
 <p>これで未完了タスク数が表示されるはずです。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>Hide Completed Tasksのチェックボックスが表示されていること</li>
+<li>そのイベントハンドラが登録されていること</li>
+<li>そのイベントハンドラが動作すること</li>
+<li>未完了タスク数が表示されていること</li>
+</ul>
 <h2 id="次のステップ">次のステップ</h2><p>セッション変数についてはこれで終わりです。次はユーザ管理について学びます。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-session-variables-in-meteor/#disqus_comments</comments>
@@ -772,6 +792,14 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 </code></pre><p>と同じになります。一つcheckedプロパティがfalseであったり、そもそもcheckedプロパティが存在しない場合は、</p>
 <pre><code>&lt;li <span class="keyword">class</span>=<span class="string">""</span>&gt;
 </code></pre><p>と同じになります。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>チェックボックスが表示されていること</li>
+<li>削除ボタンが表示されていること</li>
+<li>チェックボックスのイベントハンドラが登録されていること</li>
+<li>削除ボタンのイベントハンドラが登録されていること</li>
+<li>チェックボックスのイベントハンドラが動作すること</li>
+<li>削除ボタンのイベントハンドラが動作すること</li>
+</ul>
 <h2 id="次のステップ">次のステップ</h2><p>これでアプリの基本機能は完成です。次のステップでは、アプリをクラウドサーバにデプロイする方法を学びましょう。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-collection-update-in-meteor/#disqus_comments</comments>
@@ -850,6 +878,12 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/a06c2235fa31bb876edc2f62ba62310dee40ab6c/simple-todos.js" target="_blank" rel="external">こちら</a>と同じになっているはずです。ただし、コメント行は省略しています。</p>
 <p>このようにsortオプションを指定するとcreatedAtの逆順になります。-1を1にすると降順から昇順になります。</p>
 <p>さらに新しいタスクを追加してみて一番上の順序に表示されることを確認しましょう。</p>
+<h2 id="確認項目">確認項目</h2><ul>
+<li>入力フォームが表示されていること</li>
+<li>イベントハンドラが登録されていること</li>
+<li>イベントハンドラが動作すること</li>
+<li>タスクリストがソートされて表示されていること</li>
+</ul>
 <h2 id="次のステップ">次のステップ</h2><p>今回はフォームとイベント処理を追加してUIからデータを入力することができました。次のステップではデータの修正と削除の方法を学びます。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-meteor-forms/#disqus_comments</comments>
