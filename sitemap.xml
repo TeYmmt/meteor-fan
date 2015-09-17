@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/first-spacebars-template/</loc>
+    <lastmod>2015-09-17T12:00:51.672Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/creating-first-meteor-app/</loc>
     <lastmod>2015-09-17T11:52:38.683Z</lastmod>
   </url>
@@ -109,11 +114,6 @@
   <url>
     <loc>http://meteor-fan.axlight.com/first-collection-update-in-meteor/</loc>
     <lastmod>2015-08-03T14:29:03.126Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/first-spacebars-template/</loc>
-    <lastmod>2015-08-03T13:34:11.209Z</lastmod>
   </url>
   
   <url>
