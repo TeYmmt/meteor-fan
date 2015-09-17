@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/creating-first-meteor-app/</loc>
+    <lastmod>2015-09-17T11:52:38.683Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/kadira-debug-for-meteor/</loc>
     <lastmod>2015-09-07T11:44:37.874Z</lastmod>
   </url>
@@ -144,11 +149,6 @@
   <url>
     <loc>http://meteor-fan.axlight.com/at-first/</loc>
     <lastmod>2015-07-29T01:41:52.751Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://meteor-fan.axlight.com/creating-first-meteor-app/</loc>
-    <lastmod>2015-07-28T00:40:06.542Z</lastmod>
   </url>
   
   <url>
