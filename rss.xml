@@ -8,8 +8,38 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Mon, 07 Sep 2015 11:44:37 GMT</pubDate>
+    <pubDate>Fri, 18 Sep 2015 11:26:46 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteorアプリでnpmを使う方法]]></title>
+      <link>http://meteor-fan.axlight.com/meteor-app-with-npm/</link>
+      <guid>http://meteor-fan.axlight.com/meteor-app-with-npm/</guid>
+      <pubDate>Fri, 18 Sep 2015 10:56:38 GMT</pubDate>
+      <description>
+      <![CDATA[<p>本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。</p>
+<h2 id="Npm-require">Npm.require</h2><p>Meteorではnpmを使ってパッケージを利用する方法が公式に用意されています]]>
+      </description>
+      <content:encoded><![CDATA[<p>本記事はMeteor v1.1時代のものです。今後の新しいバージョンでは推奨の方法が変わるかもしれません。</p>
+<h2 id="Npm-require">Npm.require</h2><p>Meteorではnpmを使ってパッケージを利用する方法が公式に用意されています。</p>
+<p><a href="http://docs.meteor.com/#/full/Npm-require" target="_blank" rel="external">http://docs.meteor.com/#/full/Npm-require</a></p>
+<p>しかし、この<code>Npm.require</code>はMeteorパッケージの中でしか使うことができません。Meteorパッケージをアプリ内で作ることは比較的容易ですし、モジュール化できるためおすすめなのですが、1つのnpmパッケージを使うためだけにMeteorパッケージを作成するのは少し手間と感じることがあります。</p>
+<h2 id="meteorhacks:npm">meteorhacks:npm</h2><p>そこで、<code>Npm.require</code>を汎用的に呼び出せるMeteorパッケージが公開されています。</p>
+<p><a href="https://atmospherejs.com/meteorhacks/npm" target="_blank" rel="external">https://atmospherejs.com/meteorhacks/npm</a></p>
+<p>これを使うとMeteorパッケージで数ファイル用意しなければならないことが1行でできるようになります。</p>
+<h3 id="使い方">使い方</h3><p>インストール方法は、</p>
+<pre><code>meteor <span class="built_in">add</span> meteorhack<span class="variable">s:npm</span>
+</code></pre><p>です。使いたいnpmパッケージをpackages.jsonに書きます。”s”を忘れずに。例えば、<a href="https://www.npmjs.com/package/github" target="_blank" rel="external">github</a>を使いたい場合には下記のようにします。</p>
+<pre><code>{
+  "<span class="attribute">github</span>": <span class="value"><span class="string">"0.2.4"</span>
+</span>}
+</code></pre><p>あとはMeteorのサーバサイドのコードで次のようにすることでロードできます。</p>
+<pre><code><span class="keyword">var</span> Github = Meteor.npmRequire(<span class="string">'github'</span>);
+</code></pre><p>非同期処理をfibersで同期的に使うためには、<a href="http://docs.meteor.com/#/full/meteor_wrapasync" target="_blank" rel="external">Meteor.wrapAsync</a>を使いましょう。もしくは、meteorhacks:npmに用意されているAsync Utilitiesを使うこともできるでしょう。</p>
+<h2 id="おまけ">おまけ</h2><p>クライアントサイドで使いたい場合は、<a href="https://atmospherejs.com/cosmos/browserify" target="_blank" rel="external">こちら</a>も試してみるとよさそうです。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/meteor-app-with-npm/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Kadira DebugでMeteorアプリのデバッグ]]></title>
@@ -837,56 +867,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <p>node-inspectorは単なるインタフェースなので、内部で使われているのは<a href="https://nodejs.org/api/debugger.html" target="_blank" rel="external">Node.js Debugger</a>と言うのがおそらく正しいですね。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/meteor-debug/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[Meteorで初めてのフォームとイベント処理]]></title>
-      <link>http://meteor-fan.axlight.com/first-meteor-forms/</link>
-      <guid>http://meteor-fan.axlight.com/first-meteor-forms/</guid>
-      <pubDate>Sat, 01 Aug 2015 15:14:59 GMT</pubDate>
-      <description>
-      <![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/forms-and-events" target="_blank" rel="external">公式チュートリアル4</a>の内容に沿って説明するものです。</p>
-<]]>
-      </description>
-      <content:encoded><![CDATA[<p>本記事は<a href="https://www.meteor.com/tutorials/blaze/forms-and-events" target="_blank" rel="external">公式チュートリアル4</a>の内容に沿って説明するものです。</p>
-<h2 id="チュートリアルの目次">チュートリアルの目次</h2><ol>
-<li><a href="http://meteor-fan.axlight.com/creating-first-meteor-app/">初めてのMeteorアプリ作成</a></li>
-<li><a href="http://meteor-fan.axlight.com/first-spacebars-template/">初めてのSpacebarsでテンプレート</a></li>
-<li><a href="http://meteor-fan.axlight.com/first-meteor-mongo/">初めてのMeteor Mongoコレクション</a></li>
-<li>初めてのフォームとイベント処理 (←今ここ)</li>
-</ol>
-<h2 id="フォームを追加する">フォームを追加する</h2><p>sample-app.htmlの中のheaderの中にフォームを追加しましょう。</p>
-<pre><code>&lt;<span class="keyword">form</span> <span class="keyword">class</span>=<span class="string">"new-task"</span>&gt;
-  &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"text"</span> name=<span class="string">"text"</span> placeholder=<span class="string">"Type to add new tasks"</span> /&gt;
-&lt;/<span class="keyword">form</span>&gt;
-</code></pre><p>HTMLの経験がある方は何の不自由もないと思います。class名が<code>new-task</code>になっていることに注意します。</p>
-<p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/8434ab7042eb750c50ab58efd7231f1c97c630ed/simple-todos.html" target="_blank" rel="external">こちら</a>と同じになっているはずなので確認しましょう。</p>
-<p>画面上にもフォームが追加されていることを確認しましょう。meteorが既に起動されている必要があります。現時点ではフォームに入力しても何も起きません。</p>
-<h2 id="イベントの処理を追加する">イベントの処理を追加する</h2><p>次にフォームに入力した際のイベント処理を追加しましょう。フォームにテキストを入力してエンターキーを押すとsubmitイベントが発生します。下記をsample-app.jsの<code>if (Meteor.isClient) {}</code>ブロック内に追加してください。</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Template.body.events(&#123;</span><br><span class="line">  <span class="string">"submit .new-task"</span>: function (<span class="keyword">event</span>) &#123;</span><br><span class="line">    <span class="keyword">event</span>.preventDefault();</span><br><span class="line">    var <span class="keyword">text</span> = <span class="keyword">event</span>.target.<span class="keyword">text</span>.value;</span><br><span class="line">    Tasks.insert(&#123;</span><br><span class="line">      <span class="keyword">text</span>: <span class="keyword">text</span>,</span><br><span class="line">      createdAt: new Date() <span class="comment">// current time</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">event</span>.target.<span class="keyword">text</span>.value = <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/7a1ace1482bbdd5ce38aa5db28ecb20ce0e12863/simple-todos.js" target="_blank" rel="external">こちら</a>と同じになっているはずです。ただし、コメント行は省略しています。</p>
-<p>bodyテンプレートのイベントリストに”submit .new-task”を定義しました。ここで定義した関数がフォームに入力してsubmitされた際に呼ばれます。フォームに入力した値は、<code>event.target.text.value</code>で取得できます。ここで、<code>text</code>はフォームの<code>&lt;input&gt;</code>のname属性です。</p>
-<p>mongoコレクションへの登録は、<code>Tasks.insert</code>を使います。今回の例では、textの他にcreatedAtもプロパティとして登録しています。mongoではこのように自由にデータ(ドキュメント)のプロパティを登録できます。</p>
-<h2 id="実際の動作を確認する">実際の動作を確認する</h2><p>上記2つの修正が完了したら動作するはずです。表示部分はすでにこれまでのチュートリアルで作成したものでできています。</p>
-<p>フォームにいろいろテキストを入力して登録してみましょう。すぐに反映されましたか。これもリアクティビティなのですが、難しい言葉を使わなくても直感的に理解できるかと思います。</p>
-<h2 id="タスクをソートする">タスクをソートする</h2><p>現状では新しいタスクが順序的に下に表示されているはずです。せっかくなので新しいタスクが上に表示されるようにしましょう。</p>
-<p>sample-app.jsの</p>
-<pre><code><span class="function"><span class="keyword">return</span> Tasks.<span class="title">find</span><span class="params">({})</span></span>;
-</code></pre><p>を</p>
-<pre><code><span class="tag">return</span> <span class="tag">Tasks</span><span class="class">.find</span>({}, {<span class="tag">sort</span>: {<span class="attribute">createdAt</span>: -<span class="number">1</span>}});
-</code></pre><p>に変更してください。</p>
-<p>変更後のファイルは、<a href="https://github.com/meteor/simple-todos/blob/a06c2235fa31bb876edc2f62ba62310dee40ab6c/simple-todos.js" target="_blank" rel="external">こちら</a>と同じになっているはずです。ただし、コメント行は省略しています。</p>
-<p>このようにsortオプションを指定するとcreatedAtの逆順になります。-1を1にすると降順から昇順になります。</p>
-<p>さらに新しいタスクを追加してみて一番上の順序に表示されることを確認しましょう。</p>
-<h2 id="確認項目">確認項目</h2><ul>
-<li>入力フォームが表示されていること</li>
-<li>イベントハンドラが登録されていること</li>
-<li>イベントハンドラが動作すること</li>
-<li>タスクリストがソートされて表示されていること</li>
-</ul>
-<h2 id="次のステップ">次のステップ</h2><p>今回はフォームとイベント処理を追加してUIからデータを入力することができました。次のステップではデータの修正と削除の方法を学びます。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/first-meteor-forms/#disqus_comments</comments>
     </item>
     
   </channel>
