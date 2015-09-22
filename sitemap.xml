@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meteor-fan.axlight.com/changes-in-meteor-12/</loc>
+    <lastmod>2015-09-22T06:53:34.855Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://meteor-fan.axlight.com/meteor-app-with-npm/</loc>
     <lastmod>2015-09-18T11:26:46.446Z</lastmod>
   </url>

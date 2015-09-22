@@ -8,8 +8,49 @@
     <link>http://meteor-fan.axlight.com//</link>
     <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[JavaScriptフレームワークMeteorに関して概要、チュートリアル、開発方法、便利パッケージ、Tipsなどを紹介する日本語情報サイト]]></description>
-    <pubDate>Fri, 18 Sep 2015 11:26:46 GMT</pubDate>
+    <pubDate>Tue, 22 Sep 2015 06:53:34 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[Meteor 1.2での変更点]]></title>
+      <link>http://meteor-fan.axlight.com/changes-in-meteor-12/</link>
+      <guid>http://meteor-fan.axlight.com/changes-in-meteor-12/</guid>
+      <pubDate>Tue, 22 Sep 2015 05:32:43 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Meteor 1.2がリリースされました→ <a href="https://www.meteor.com/" target="_blank" rel="external">https://www.meteor.com/</a></p>
+<p>サイトの構成はほとんど変わって]]>
+      </description>
+      <content:encoded><![CDATA[<p>Meteor 1.2がリリースされました→ <a href="https://www.meteor.com/" target="_blank" rel="external">https://www.meteor.com/</a></p>
+<p>サイトの構成はほとんど変わっていないので、あまり大きなバージョンアップではないようにも見えますが、大きいはずです。<a href="https://www.meteor.com/tutorials/blaze" target="_blank" rel="external">チュートリアル</a>は3種類になりました。</p>
+<h2 id="Meteor_1-2のBreaking_changes">Meteor 1.2のBreaking changes</h2><p>公式ブログでのアナウンス記事はまだありませんが、GitHubのwikiに載っている<a href="https://github.com/meteor/meteor/wiki/Breaking-changes-in-Meteor-1.2" target="_blank" rel="external">Breaking changes in Meteor 1.2</a>をもとに変更点を列挙します。</p>
+<h3 id="ビルドツールとパッケージの改良">ビルドツールとパッケージの改良</h3><ol>
+<li>standard-minifiersパッケージ(自動アップデート)<br>Meteor 1.1では組み込まれていましたが、1.2からは<code>standard-minifiers</code>パッケージを明示的に読み込む必要があります。このパッケージはコードをまとめて(production時は)minifyするためのものですが、別パッケージになったことで開発中に外すことも可能になりました。</li>
+<li>PackageAPIのaddAssets(package.jsへの変更が必要)<br>Meteor 1.1では<code>api.addFiles</code>ですべてのファイルを登録可能でしたが、1.2からは静的アセットは<code>api.addAssets</code>を使って登録することになりました。パッケージをMeteor 1.2で公開する前にpackage.jsを変更する必要があります。</li>
+<li>LESS,CoffeeScript,Stylusの非互換性(package依存性の更新が必要)<br>LESSとCoffeeScriptとStylusのビルドシステムが新しく変更されたため、これらを使っているパッケージは新しいバージョンを使うように変更して再度公開する必要があります。</li>
+</ol>
+<h3 id="meteor-platformの分割">meteor-platformの分割</h3><ol>
+<li>新規アプリはmeteor-platformを含まない(利用するパッケージをすべて明示する)<br>これまでは<code>jquery</code>や<code>mongo</code>などの標準的なパッケージは宣言しなくても動作していました。これからはこれらのパッケージも分割されたため、利用する場合は明示的に宣言する必要があります。</li>
+<li>test-packagesは何もパッケージを読み込まない<br>上記の変更に合わせて<code>test-packages</code>コマンドはグローバルパッケージを使えることがないようになりました。例えば、Meteor 1.2で<code>$ is undefined</code>とエラーがでる場合はjQueryパッケージの依存が不足していることが分かります。その場合、<code>package.js</code>に正しく記述することで解決します。</li>
+</ol>
+<h3 id="Ecmascript">Ecmascript</h3><ol>
+<li>新しい言語キーワード(変数名などに変更が必要)<br>ES2015に準拠するためいくつかの名前がキーワードとなりました。例えば、<code>package</code>や<code>let</code>などです。これらを利用しているとエラーになるので変更しましょう。</li>
+</ol>
+<h3 id="ユーザ名やメールアドレスで大文字小文字を無視">ユーザ名やメールアドレスで大文字小文字を無視</h3><ol>
+<li>ユーザ名とメールアドレスをできるだけ固有のものにする(ユーザデータの読み書きをするコードは修正が必要)<br>Meteor 1.2ではaccounts-passwordパッケージはユーザ名とメールアドレスの大文字と小文字の違いを無視するようになります。ユーザを検索するために<code>Meteor.users.findOne({username: x})</code>というコードを用いている場合は大文字・小文字を区別してしまいます。そこで、ユーザ名を正しく検索するには<code>Accounts.findUserByUsername(x)</code>を使う必要があります。メールアドレスの場合は<code>Accounts.findUserByEmail</code>です。</li>
+</ol>
+<h3 id="React">React</h3><ol>
+<li>公式Reactパッケージ(古いパッケージを使っている場合は更新が必要)<br>これまで複数のReactパッケージが存在していましたが、これらを統一する公式パッケージ<code>react</code>ができました。<code>reactjs:react</code>などの別のパッケージを使っている場合は、公式パッケージに切り替えましょう。リアクティブデータのために<code>getMeteorData</code>を使っている場合は<code>react</code>パッケージを使います。Reactレンダリングライブラリのみを使いたい場合は、サブセットである<code>react-runtime</code>パッケージを使います。</li>
+</ol>
+<h3 id="モバイル">モバイル</h3><ol>
+<li>自らAndroidツールを準備する<br>Meteorに付属していたAndroidツールは削除されました。そのためシステムにインストールされたAndroid SDKが必要になります。これにより、開発環境を更新することが容易になります。Android SDKに関する詳細情報は→ <a href="https://github.com/meteor/meteor/wiki/Mobile-Development-Install:-Android-on-Mac" target="_blank" rel="external">Mac</a> / <a href="https://github.com/meteor/meteor/wiki/Mobile-Development-Install:-Android-on-Linux" target="_blank" rel="external">Linux</a></li>
+<li>Cordovaが4.2.0から5.2.0にアップデート<br>ツール、プラットフォーム、プラグインがアップデートされました。アプリのコードにも更新が必要になるかもしれません。詳細情報は<a href="https://cordova.apache.org/#news" target="_blank" rel="external">こちら</a></li>
+<li>Cordovaプラグインの新しい名前<br>新しいCordovaではnpmでプラグインを管理します。そのため多くのプラグインの名前が変更されました。Meteorが自動で変更しますが、それを理解しておく必要があります。詳細情報は<a href="https://cordova.apache.org/announcements/2015/04/21/plugins-release-and-move-to-npm.html" target="_blank" rel="external">こちら</a></li>
+<li>ロギング出力<br>既知の問題としてiOSシミュレータでログが出力されない問題がありました。解決策として、<code>meteor run ios-device</code>でXcodeのプロジェクトを開きデバッグエリアでコンソールログを見えるようにしました。</li>
+</ol>
+<h2 id="感想">感想</h2><p>列挙してみるとbreaking changesではあるものの普通にアプリを開発している分にはそれほど困るほどの変化でもないような気がしてきました。この変化をどう取り込んでいくかがポイントですね。今後のレポートなどに期待しましょう。</p>
+]]></content:encoded>
+      <comments>http://meteor-fan.axlight.com/changes-in-meteor-12/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[Meteorアプリでnpmを使う方法]]></title>
@@ -833,40 +874,6 @@ meteor <span class="built_in">create</span> <span class="comment">--example loca
 <h2 id="次のステップ">次のステップ</h2><p>これでアプリの基本機能は完成です。次のステップでは、アプリをクラウドサーバにデプロイする方法を学びましょう。</p>
 ]]></content:encoded>
       <comments>http://meteor-fan.axlight.com/first-collection-update-in-meteor/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[meteor debugでnode-inspectorを使ったデバッグ]]></title>
-      <link>http://meteor-fan.axlight.com/meteor-debug/</link>
-      <guid>http://meteor-fan.axlight.com/meteor-debug/</guid>
-      <pubDate>Sun, 02 Aug 2015 13:00:17 GMT</pubDate>
-      <description>
-      <![CDATA[<p>「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的には<a href="https://github.com/node-inspector/n]]>
-      </description>
-      <content:encoded><![CDATA[<p>「Meteorではどのようにデバッグするのですか」という素朴な質問に対しては、まだいい答えは見つけられていませんが、meteor debugというのがあるので簡単に説明します。内部的には<a href="https://github.com/node-inspector/node-inspector" target="_blank" rel="external">node-inspector</a>を使っているようです。</p>
-<h2 id="見つけ方">見つけ方</h2><p>Meteorでは、すべては<code>meteor</code>コマンドから始まります。ヘルプも<code>meteor</code>からというわけで、</p>
-<pre><code>meteor <span class="built_in">help</span>
-</code></pre><p>とします。debugというのがありました。</p>
-<pre><code><span class="title">meteor</span> help <span class="built_in">debug</span>
-</code></pre><p>とすると使い方が表示されます。</p>
-<h2 id="使い方">使い方</h2><p><code>meteor help debug</code>で表示される説明を少し見てみます。</p>
-<p>The server process will be suspended just before the first statement of server code that would normally execute.</p>
-<p>サーバプロセスは通常最初に実行される文の直前で止まります。</p>
-<p>In order to continue execution of server code, use either the web-based Node Inspector or the command-line debugger (further instructions will be printed in the console).</p>
-<p>実行を再開するにはWebベースのNode Inspectorかコマンドラインのデバッガーを使います(詳細説明は、コンソールに表示されます)。</p>
-<p>The easiest way to set breakpoints is to use the <code>debugger</code> keyword: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger</a></p>
-<p>最も簡単な方法は<code>debugger</code>キーワードを使ってブレークポイントを設定することです。</p>
-<h2 id="ドキュメント">ドキュメント</h2><p>以下のMeteorのドキュメントにもmeteor debugの説明があります。</p>
-<p><a href="http://docs.meteor.com/#/full/meteordebug" target="_blank" rel="external">http://docs.meteor.com/#/full/meteordebug</a></p>
-<p>しかし<code>meteor help debug</code>とあまり情報が変わりません。</p>
-<h2 id="使ってみる">使ってみる</h2><pre><code><span class="title">meteor</span> <span class="built_in">debug</span>
-</code></pre><p>で起動すると、Node Inspectorの接続先が表示されます。これにChromeでアクセスすると、コードの初期の部分で止まっています。そこからステップ実行すると、Meteorの内部に入って大変なので、アプリのコードに<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank" rel="external">debuggerキーワード</a>を入力する方がよいです。</p>
-<p>というような説明が、コードが止まったところのコメントに書いてあるので、とても親切です。</p>
-<p>Node InspectorはChromeのDeveloper Toolsを使ったことがあれば、同じような操作なのでそれほど苦労することはなさそうです。</p>
-<h2 id="感想">感想</h2><p>Meteorのプラットフォームのデバッグや勉強のためには使えそうですが、アプリのデバッグには低レベルすぎるかと思いました。そもそもMeteorのコーディングは、手続き的ではなく、宣言的であるため、あまり実行順を意識しないと思います。今後、Meteorならではのデバッグツールが登場するとよいですね。既に出てきているかもしれません。</p>
-<p>node-inspectorは単なるインタフェースなので、内部で使われているのは<a href="https://nodejs.org/api/debugger.html" target="_blank" rel="external">Node.js Debugger</a>と言うのがおそらく正しいですね。</p>
-]]></content:encoded>
-      <comments>http://meteor-fan.axlight.com/meteor-debug/#disqus_comments</comments>
     </item>
     
   </channel>
