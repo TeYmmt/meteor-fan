@@ -139,17 +139,31 @@ figure.highlight {
 }
 
 .post-footer .share .icon2-twitter:hover {
-    color: #55acee;
+  color: #55acee;
 }
 .post-footer .share .icon2-facebook:hover {
-    color: #3b5998;
+  color: #3b5998;
 }
 .post-footer .share .icon2-google-plus:hover {
-    color: #dd4b39;
+  color: #dd4b39;
 }
 .post-footer .share .icon2-hatena:hover {
-    color: #008fde;
+  color: #008fde;
 }
 .post-footer .share .icon2-pocket:hover {
-    color: #ee4056;
+  color: #ee4056;
+}
+
+.social-links {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 7px 12px;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+}
+
+.social-links a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 4px 9px 1px 9px;
 }
